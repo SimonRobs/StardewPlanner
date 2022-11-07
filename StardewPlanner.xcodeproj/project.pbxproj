@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F42580422919B581005F1CCC /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580412919B581005F1CCC /* LibraryView.swift */; };
+		F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580442919B5DD005F1CCC /* SKViewAdditions.swift */; };
+		F42580472919B619005F1CCC /* LibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580462919B619005F1CCC /* LibraryObject.swift */; };
+		F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580482919B621005F1CCC /* PlannerLibrary.swift */; };
+		F425804B2919B689005F1CCC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804A2919B689005F1CCC /* SettingsView.swift */; };
 		F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */; };
-		F4388A1529135F0600FB39BC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1429135F0600FB39BC /* ContentView.swift */; };
+		F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1429135F0600FB39BC /* PlannerView.swift */; };
 		F4388A1729135F0900FB39BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1629135F0900FB39BC /* Assets.xcassets */; };
 		F4388A1A29135F0900FB39BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1929135F0900FB39BC /* Preview Assets.xcassets */; };
+		F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1410B29199DA4006E762E /* ColorAdditions.swift */; };
 		F4C93B182915B65500D121B2 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4C93B172915B65500D121B2 /* FarmScene.sks */; };
 		F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B192915B78F00D121B2 /* FarmScene.swift */; };
 		F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */; };
@@ -21,15 +27,23 @@
 		F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */; };
 		F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */; };
 		F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FA29182CDE00970C07 /* Constants.swift */; };
+		F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */; };
+		F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FE291975B400970C07 /* TitleBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F42580412919B581005F1CCC /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
+		F42580442919B5DD005F1CCC /* SKViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewAdditions.swift; sourceTree = "<group>"; };
+		F42580462919B619005F1CCC /* LibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObject.swift; sourceTree = "<group>"; };
+		F42580482919B621005F1CCC /* PlannerLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerLibrary.swift; sourceTree = "<group>"; };
+		F425804A2919B689005F1CCC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F4388A0F29135F0600FB39BC /* StardewPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StardewPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StardewPlannerApp.swift; sourceTree = "<group>"; };
-		F4388A1429135F0600FB39BC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F4388A1429135F0600FB39BC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		F4388A1629135F0900FB39BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F4388A1929135F0900FB39BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StardewPlanner.entitlements; sourceTree = "<group>"; };
+		F4A1410B29199DA4006E762E /* ColorAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdditions.swift; sourceTree = "<group>"; };
 		F4C93B172915B65500D121B2 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		F4C93B192915B78F00D121B2 /* FarmScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildableTiles.swift; sourceTree = "<group>"; };
@@ -40,6 +54,8 @@
 		F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringTileMap.swift; sourceTree = "<group>"; };
 		F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSprite.swift; sourceTree = "<group>"; };
 		F4E5A5FA29182CDE00970C07 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarButton.swift; sourceTree = "<group>"; };
+		F4E5A5FE291975B400970C07 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +69,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F425803E2919B3C0005F1CCC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4388A1429135F0600FB39BC /* PlannerView.swift */,
+				F42580412919B581005F1CCC /* LibraryView.swift */,
+				F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */,
+				F4E5A5FE291975B400970C07 /* TitleBar.swift */,
+				F425804A2919B689005F1CCC /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F425803F2919B3CA005F1CCC /* SpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				F42580432919B5D0005F1CCC /* Utilities */,
+				F4E5A5EB291620A300970C07 /* Tile Sets */,
+				F4E5A5FA29182CDE00970C07 /* Constants.swift */,
+				F4C93B172915B65500D121B2 /* FarmScene.sks */,
+				F4C93B192915B78F00D121B2 /* FarmScene.swift */,
+				F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */,
+				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
+				F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */,
+				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
+			);
+			path = SpriteKit;
+			sourceTree = "<group>";
+		};
+		F42580402919B46C005F1CCC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F42580462919B619005F1CCC /* LibraryObject.swift */,
+				F42580482919B621005F1CCC /* PlannerLibrary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F42580432919B5D0005F1CCC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		F4388A0629135F0600FB39BC = {
 			isa = PBXGroup;
 			children = (
@@ -72,19 +133,12 @@
 		F4388A1129135F0600FB39BC /* StardewPlanner */ = {
 			isa = PBXGroup;
 			children = (
-				F4E5A5EB291620A300970C07 /* Tile Sets */,
 				F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */,
-				F4388A1429135F0600FB39BC /* ContentView.swift */,
-				F4E5A5FA29182CDE00970C07 /* Constants.swift */,
-				F4C93B172915B65500D121B2 /* FarmScene.sks */,
-				F4C93B192915B78F00D121B2 /* FarmScene.swift */,
-				F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */,
-				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
-				F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */,
-				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
-				F4388A1629135F0900FB39BC /* Assets.xcassets */,
-				F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */,
-				F4388A1829135F0900FB39BC /* Preview Content */,
+				F42580402919B46C005F1CCC /* Models */,
+				F425803E2919B3C0005F1CCC /* Views */,
+				F4A1410A29199D96006E762E /* Utilities */,
+				F4A1410D2919B387006E762E /* Resources */,
+				F425803F2919B3CA005F1CCC /* SpriteKit */,
 			);
 			path = StardewPlanner;
 			sourceTree = "<group>";
@@ -94,7 +148,26 @@
 			children = (
 				F4388A1929135F0900FB39BC /* Preview Assets.xcassets */,
 			);
-			path = "Preview Content";
+			name = "Preview Content";
+			path = "../Preview Content";
+			sourceTree = "<group>";
+		};
+		F4A1410A29199D96006E762E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F4A1410B29199DA4006E762E /* ColorAdditions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F4A1410D2919B387006E762E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4388A1629135F0900FB39BC /* Assets.xcassets */,
+				F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */,
+				F4388A1829135F0900FB39BC /* Preview Content */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {
@@ -178,17 +251,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42580472919B619005F1CCC /* LibraryObject.swift in Sources */,
 				F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
-				F4388A1529135F0600FB39BC /* ContentView.swift in Sources */,
+				F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */,
+				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
+				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
+				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
+				F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
 				F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */,
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
 				F4E5A5F32918274700970C07 /* Extensions.swift in Sources */,
+				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
+				F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */,
+				F425804B2919B689005F1CCC /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,17 +396,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = StardewPlanner/StardewPlanner.entitlements;
+				CODE_SIGN_ENTITLEMENTS = StardewPlanner/Resources/StardewPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"StardewPlanner/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StardewPlanner/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = A3E5NJZ7MX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Stardew Planner";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -345,17 +429,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = StardewPlanner/StardewPlanner.entitlements;
+				CODE_SIGN_ENTITLEMENTS = StardewPlanner/Resources/StardewPlanner.entitlements;
 				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"StardewPlanner/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StardewPlanner/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = A3E5NJZ7MX;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Stardew Planner";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -8,11 +8,26 @@
 import SwiftUI
 
 @main
-struct StardewPlannerApp: App {    
+struct StardewPlannerApp: App {
+    
+    @StateObject var objectLibrary = PlannerLibrary()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PlannerView()
+                .environmentObject(objectLibrary)
         }
         .windowStyle(.hiddenTitleBar)
+        Settings {
+            SettingsView()
+        }
+        
+        Window("Library", id: "lib") {
+            LibraryView()
+                .environmentObject(objectLibrary)
+        }
+        .defaultSize(width: 800, height: 600)
+        .windowStyle(.hiddenTitleBar)
+        .keyboardShortcut("l", modifiers: [.shift, .command])
     }
 }

@@ -21,13 +21,5 @@ struct StardewPlannerApp: App {
         Settings {
             SettingsView()
         }
-        
-        Window("Library", id: "lib") {
-            LibraryView()
-                .environmentObject(objectLibrary)
-        }
-        .defaultSize(width: 800, height: 600)
-        .windowStyle(.hiddenTitleBar)
-        .keyboardShortcut("l", modifiers: [.shift, .command])
     }
 }

@@ -84,11 +84,10 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     private func moveSelectedSprite(to location: CGPoint) {
-        let halfTileSize = TileSize / 2
-        let xOffset: CGFloat = location.x < 0 ? -halfTileSize : halfTileSize
-        let yOffset: CGFloat = location.y < 0 ? -halfTileSize : halfTileSize
-        selectedFlooringTile.position.x = (location.x - location.x.truncatingRemainder(dividingBy: TileSize) + xOffset).rounded()
-        selectedFlooringTile.position.y = (location.y - (location.y - halfTileSize).truncatingRemainder(dividingBy: TileSize)).rounded() + yOffset
+        var adaptedLocation = location
+        adaptedLocation.y -= TileSize / 2
+        selectedFlooringTile.position = SnapToTile(adaptedLocation)
+        selectedFlooringTile.position.y += TileSize / 2
     }
     
     private func drawFlooringTile(at location: CGPoint, ignoringPreviousTile: Bool = true) {

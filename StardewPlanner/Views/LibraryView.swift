@@ -11,9 +11,9 @@ struct LibraryView: View  {
     
     @EnvironmentObject() var objectLibrary: PlannerLibrary
     
+    @State private var selectedTab = 0
     @State private var searchString = ""
     @State private var selectedObjectId: LibraryObject.ID?
-    
     
     var body: some View {
         VStack {
@@ -28,26 +28,20 @@ struct LibraryView: View  {
                     .font(.title3)
                     .padding()
             }
-            .padding(.leading, 76)
+            .padding([.leading, .trailing])
             .background(Color.lightBackground)
             .ignoresSafeArea()
-            
-            NavigationSplitView(sidebar:{
-                List(objectLibrary.objects, selection: $selectedObjectId) { object in
-                    Text(object.name)
-                        .draggable(object.iconName)
-                }
-            }, detail: {
-                if let selectedObjectId = selectedObjectId {
-                    Text("\(selectedObjectId)")
-                } else {
-                    Image(systemName: "clear")
-                }
-                Spacer()
-            })
-            .navigationSplitViewStyle(.prominentDetail)
+            LibraryTabView() { object in }
         }
         .background(Color.background)
-        .ignoresSafeArea()
     }
 }
+
+
+struct LibraryView_Previews: PreviewProvider {
+    static var previews: some View {
+        LibraryView()
+            .environmentObject(PlannerLibrary())
+    }
+}
+

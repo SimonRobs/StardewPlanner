@@ -13,8 +13,9 @@ class FarmScene: SKScene {
     private var flooringTileMap: FlooringTileMap!
     private var cameraNode: SKCameraNode!
     
-    private var DragMode = false
-    private var FlooringMode = false
+    private var mode = EditorModes.Build
+    
+    private var tempBuilding: BuildingSprite?
     
     override func didMove(to view: SKView) {
         cameraNode = (childNode(withName: "MainCamera") as? SKCameraNode)!
@@ -24,6 +25,9 @@ class FarmScene: SKScene {
         
         flooringTileMap = FlooringTileMap()
         addChild(flooringTileMap)
+        
+        tempBuilding = BuildingSprite(.Barn, with: BuildingSizes[.Barn]!)
+        addChild(tempBuilding!)
         
     }
     
@@ -35,31 +39,65 @@ class FarmScene: SKScene {
     }
     
     override func mouseEntered(with event: NSEvent) {
-        flooringTileMap.mouseEntered(with: event)
+        switch mode {
+        case .Flooring:
+            flooringTileMap.mouseEntered(with: event)
+        default:
+            return
+        }
     }
 
     override func mouseExited(with event: NSEvent) {
-        flooringTileMap.mouseExited(with: event)
+        switch mode {
+        case .Flooring:
+            flooringTileMap.mouseExited(with: event)
+        default:
+            return
+        }
     }
 
     override func mouseMoved(with event: NSEvent) {
-        flooringTileMap.mouseMoved(with: event)
+        switch mode {
+        case .Build:
+            tempBuilding?.position = SnapToTile(event.location(in: self))
+        case .Flooring:
+            flooringTileMap.mouseMoved(with: event)
+        default:
+            return
+        }
     }
     
 //    private var previousLocation: CGPoint = .zero
     
     override func mouseDown(with event: NSEvent) {
-        flooringTileMap.mouseDown(with: event)
-//        let location = event.location(in: self)
-//        previousLocation = event.location(in: self)
+        switch mode {
+        case .Build:
+            tempBuilding?.removeGreenTint()
+            tempBuilding = nil
+            mode = .Flooring
+        case .Flooring:
+            flooringTileMap.mouseDown(with: event)
+        default:
+            return
+        }
     }
     
     override func mouseUp(with event: NSEvent) {
-        flooringTileMap.mouseUp(with: event)
+        switch mode {
+        case .Flooring:
+            flooringTileMap.mouseUp(with: event)
+        default:
+            return
+        }
     }
 
     override func mouseDragged(with event: NSEvent) {
-        flooringTileMap.mouseDragged(with: event)
+        switch mode {
+        case .Flooring:
+            flooringTileMap.mouseDragged(with: event)
+        default:
+            return
+        }
 //        if !DragMode { return }
 //        let location = event.location(in: self)
 //        let deltaY = previousLocation.y - location.y
@@ -91,7 +129,7 @@ class FarmScene: SKScene {
     override func keyDown(with event: NSEvent) {
         print(event.keyCode)
         switch event.keyCode {
-        case 0x31: DragMode = true
+//        case 0x31: mode = .Drag
         case 0x30: flooringTileMap.setFlooringTile(ofType: .Stone)
         default: print("EH")
         }

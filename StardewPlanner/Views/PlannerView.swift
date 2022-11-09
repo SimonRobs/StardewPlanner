@@ -8,13 +8,11 @@
 import SwiftUI
 import SpriteKit
 
-
-
-
 let farmScene = SKScene(fileNamed: "FarmScene")!
 
 struct PlannerView: View {
-    @State private var show = false
+    
+    @State private var isLibraryPresented = true
     
     var body: some View {
         VStack {
@@ -27,7 +25,10 @@ struct PlannerView: View {
         }
         .background(.black)
         .ignoresSafeArea()
-        .popover(isPresented: $show) {
+        .environment(\.isLibraryPresented, $isLibraryPresented)
+        .sheet(isPresented: $isLibraryPresented) {
+            LibraryView()
+                .frame(minWidth: 800, minHeight: 600)
         }
     }
 }

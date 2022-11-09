@@ -10,15 +10,14 @@ import SwiftUI
 struct TitleBarButton: View {
     let systemName: String
     let title: String?
+    let action: ()->Void
     
     @Environment(\.openWindow) private var openWindow
     
     @State private var hovering = false
     
     var body: some View {
-        Button(action: {
-            openWindow(id: "lib")
-        }, label: {
+        Button(action: action, label: {
             Image(systemName: systemName)
                 .font(.title2)
         })
@@ -40,6 +39,6 @@ struct TitleBarButton: View {
 
 struct TitleBarButton_Previews: PreviewProvider {
     static var previews: some View {
-        TitleBarButton(systemName: "cursorarrow.click.2", title: "Button Name")
+        TitleBarButton(systemName: "cursorarrow.click.2", title: "Button Name") { }
     }
 }

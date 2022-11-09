@@ -9,13 +9,24 @@ import SwiftUI
 
 struct TitleBar: View {
     
+    @Environment(\.isLibraryPresented) var isLibraryPresented: Binding<Bool>
+    
     var body: some View {
         HStack(spacing: 0) {
-            TitleBarButton(systemName: "cursorarrow", title:"Select Tool")
-            TitleBarButton(systemName: "square.grid.3x1.below.line.grid.1x2", title:"Objects Library")
+            TitleBarButton(systemName: "cursorarrow", title:"Select Tool") {
+                
+            }
+            TitleBarButton(systemName: "square.grid.3x1.below.line.grid.1x2", title:"Objects Library") {
+                isLibraryPresented.wrappedValue = true
+            }
+            .keyboardShortcut("l", modifiers: [.shift, .command])
             Spacer()
-            TitleBarButton(systemName: "square.and.arrow.up", title:"Export Design")
-            TitleBarButton(systemName: "gear", title:"Settings")
+            TitleBarButton(systemName: "square.and.arrow.up", title:"Export Design") {
+                
+            }
+            TitleBarButton(systemName: "gear", title:"Settings") {
+                
+            }
         }
         .padding(.leading, 76)
         .background(Color.background)

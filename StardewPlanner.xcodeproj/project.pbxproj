@@ -12,6 +12,20 @@
 		F42580472919B619005F1CCC /* LibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580462919B619005F1CCC /* LibraryObject.swift */; };
 		F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580482919B621005F1CCC /* PlannerLibrary.swift */; };
 		F425804B2919B689005F1CCC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804A2919B689005F1CCC /* SettingsView.swift */; };
+		F425804D291B4B5D005F1CCC /* LibrarySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804C291B4B5D005F1CCC /* LibrarySection.swift */; };
+		F425804F291B4C9D005F1CCC /* BuildingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804E291B4C9D005F1CCC /* BuildingController.swift */; };
+		F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258051291B4D3B005F1CCC /* BuildingSizes.swift */; };
+		F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258053291B4DCE005F1CCC /* BuildingSprite.swift */; };
+		F4258056291B4E42005F1CCC /* AllBuildings.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258055291B4E42005F1CCC /* AllBuildings.enum.swift */; };
+		F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258057291B5866005F1CCC /* EditorModes.enum.swift */; };
+		F425805A291B591E005F1CCC /* SnapToTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258059291B591E005F1CCC /* SnapToTile.swift */; };
+		F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425805E291C04C9005F1CCC /* NotificationController.swift */; };
+		F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258060291C04E1005F1CCC /* NotificationAdditions.swift */; };
+		F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */; };
+		F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258066291C16EF005F1CCC /* LibraryTabView.swift */; };
+		F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */; };
+		F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */; };
+		F425806D291C21B3005F1CCC /* LibraryTabViewContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */; };
 		F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */; };
 		F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1429135F0600FB39BC /* PlannerView.swift */; };
 		F4388A1729135F0900FB39BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1629135F0900FB39BC /* Assets.xcassets */; };
@@ -22,7 +36,7 @@
 		F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */; };
 		F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5EC291620C200970C07 /* TileSets.enum.swift */; };
 		F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F02918264B00970C07 /* TileSetController.swift */; };
-		F4E5A5F32918274700970C07 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F22918274700970C07 /* Extensions.swift */; };
+		F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */; };
 		F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */; };
 		F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */; };
 		F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */; };
@@ -37,6 +51,20 @@
 		F42580462919B619005F1CCC /* LibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObject.swift; sourceTree = "<group>"; };
 		F42580482919B621005F1CCC /* PlannerLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerLibrary.swift; sourceTree = "<group>"; };
 		F425804A2919B689005F1CCC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F425804C291B4B5D005F1CCC /* LibrarySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySection.swift; sourceTree = "<group>"; };
+		F425804E291B4C9D005F1CCC /* BuildingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingController.swift; sourceTree = "<group>"; };
+		F4258051291B4D3B005F1CCC /* BuildingSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSizes.swift; sourceTree = "<group>"; };
+		F4258053291B4DCE005F1CCC /* BuildingSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSprite.swift; sourceTree = "<group>"; };
+		F4258055291B4E42005F1CCC /* AllBuildings.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBuildings.enum.swift; sourceTree = "<group>"; };
+		F4258057291B5866005F1CCC /* EditorModes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorModes.enum.swift; sourceTree = "<group>"; };
+		F4258059291B591E005F1CCC /* SnapToTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToTile.swift; sourceTree = "<group>"; };
+		F425805E291C04C9005F1CCC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F4258060291C04E1005F1CCC /* NotificationAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdditions.swift; sourceTree = "<group>"; };
+		F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentAdditions.swift; sourceTree = "<group>"; };
+		F4258066291C16EF005F1CCC /* LibraryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabView.swift; sourceTree = "<group>"; };
+		F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewButton.swift; sourceTree = "<group>"; };
+		F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewContent.swift; sourceTree = "<group>"; };
+		F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewContentItem.swift; sourceTree = "<group>"; };
 		F4388A0F29135F0600FB39BC /* StardewPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StardewPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StardewPlannerApp.swift; sourceTree = "<group>"; };
 		F4388A1429135F0600FB39BC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
@@ -49,7 +77,7 @@
 		F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildableTiles.swift; sourceTree = "<group>"; };
 		F4E5A5EC291620C200970C07 /* TileSets.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSets.enum.swift; sourceTree = "<group>"; };
 		F4E5A5F02918264B00970C07 /* TileSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetController.swift; sourceTree = "<group>"; };
-		F4E5A5F22918274700970C07 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileAdjacencyMaskAdditions.swift; sourceTree = "<group>"; };
 		F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTile.swift; sourceTree = "<group>"; };
 		F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringTileMap.swift; sourceTree = "<group>"; };
 		F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSprite.swift; sourceTree = "<group>"; };
@@ -74,6 +102,10 @@
 			children = (
 				F4388A1429135F0600FB39BC /* PlannerView.swift */,
 				F42580412919B581005F1CCC /* LibraryView.swift */,
+				F4258066291C16EF005F1CCC /* LibraryTabView.swift */,
+				F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */,
+				F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */,
+				F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */,
 				F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */,
 				F4E5A5FE291975B400970C07 /* TitleBar.swift */,
 				F425804A2919B689005F1CCC /* SettingsView.swift */,
@@ -84,6 +116,7 @@
 		F425803F2919B3CA005F1CCC /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				F4258050291B4D26005F1CCC /* Buildings */,
 				F42580432919B5D0005F1CCC /* Utilities */,
 				F4E5A5EB291620A300970C07 /* Tile Sets */,
 				F4E5A5FA29182CDE00970C07 /* Constants.swift */,
@@ -93,6 +126,7 @@
 				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
 				F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */,
 				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
+				F4258057291B5866005F1CCC /* EditorModes.enum.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -101,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				F42580462919B619005F1CCC /* LibraryObject.swift */,
+				F425804C291B4B5D005F1CCC /* LibrarySection.swift */,
 				F42580482919B621005F1CCC /* PlannerLibrary.swift */,
 			);
 			path = Models;
@@ -110,8 +145,28 @@
 			isa = PBXGroup;
 			children = (
 				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
+				F4258059291B591E005F1CCC /* SnapToTile.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F4258050291B4D26005F1CCC /* Buildings */ = {
+			isa = PBXGroup;
+			children = (
+				F425804E291B4C9D005F1CCC /* BuildingController.swift */,
+				F4258051291B4D3B005F1CCC /* BuildingSizes.swift */,
+				F4258055291B4E42005F1CCC /* AllBuildings.enum.swift */,
+				F4258053291B4DCE005F1CCC /* BuildingSprite.swift */,
+			);
+			path = Buildings;
+			sourceTree = "<group>";
+		};
+		F425805D291C04B3005F1CCC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F425805E291C04C9005F1CCC /* NotificationController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		F4388A0629135F0600FB39BC = {
@@ -134,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */,
+				F425805D291C04B3005F1CCC /* Controllers */,
 				F42580402919B46C005F1CCC /* Models */,
 				F425803E2919B3C0005F1CCC /* Views */,
 				F4A1410A29199D96006E762E /* Utilities */,
@@ -156,6 +212,8 @@
 			isa = PBXGroup;
 			children = (
 				F4A1410B29199DA4006E762E /* ColorAdditions.swift */,
+				F4258060291C04E1005F1CCC /* NotificationAdditions.swift */,
+				F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -173,9 +231,9 @@
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {
 			isa = PBXGroup;
 			children = (
-				F4E5A5F22918274700970C07 /* Extensions.swift */,
-				F4E5A5EC291620C200970C07 /* TileSets.enum.swift */,
 				F4E5A5F02918264B00970C07 /* TileSetController.swift */,
+				F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */,
+				F4E5A5EC291620C200970C07 /* TileSets.enum.swift */,
 			);
 			path = "Tile Sets";
 			sourceTree = "<group>";
@@ -251,22 +309,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */,
+				F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */,
 				F42580472919B619005F1CCC /* LibraryObject.swift in Sources */,
 				F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
 				F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */,
+				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
 				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
+				F425804F291B4C9D005F1CCC /* BuildingController.swift in Sources */,
+				F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */,
+				F425804D291B4B5D005F1CCC /* LibrarySection.swift in Sources */,
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
 				F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */,
+				F425806D291C21B3005F1CCC /* LibraryTabViewContentItem.swift in Sources */,
+				F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */,
+				F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
+				F425805A291B591E005F1CCC /* SnapToTile.swift in Sources */,
+				F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */,
+				F4258056291B4E42005F1CCC /* AllBuildings.enum.swift in Sources */,
 				F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */,
+				F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */,
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
-				F4E5A5F32918274700970C07 /* Extensions.swift in Sources */,
+				F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */,
+				F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */,
 				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
 				F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */,
 				F425804B2919B689005F1CCC /* SettingsView.swift in Sources */,

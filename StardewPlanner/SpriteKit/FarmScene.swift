@@ -13,22 +13,22 @@ class FarmScene: SKScene {
     private var flooringTileMap: FlooringTileMap!
     private var cameraNode: SKCameraNode!
     
-    private var mode = EditorModes.Build
+    private var mode = EditorModes.Select
     
-    private var tempBuilding: BuildingSprite?
+    private var buildTool: BuildTool!
     
     override func didMove(to view: SKView) {
+        subscribeObservers()
+        
         cameraNode = (childNode(withName: "MainCamera") as? SKCameraNode)!
         
         farmBackground = BackgroundSprite()
         addChild(farmBackground)
         
-        flooringTileMap = FlooringTileMap()
+        flooringTileMap = FlooringTileMap(on: farmBackground)
         addChild(flooringTileMap)
         
-        tempBuilding = BuildingSprite(.Barn, with: BuildingSizes[.Barn]!)
-        addChild(tempBuilding!)
-        
+        buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
     }
     
     override func didChangeSize(_ oldSize: CGSize) {
@@ -40,6 +40,8 @@ class FarmScene: SKScene {
     
     override func mouseEntered(with event: NSEvent) {
         switch mode {
+        case .Build:
+            buildTool.mouseEntered(with: event)
         case .Flooring:
             flooringTileMap.mouseEntered(with: event)
         default:
@@ -49,6 +51,8 @@ class FarmScene: SKScene {
 
     override func mouseExited(with event: NSEvent) {
         switch mode {
+        case .Build:
+            buildTool.mouseExited(with: event)
         case .Flooring:
             flooringTileMap.mouseExited(with: event)
         default:
@@ -59,7 +63,7 @@ class FarmScene: SKScene {
     override func mouseMoved(with event: NSEvent) {
         switch mode {
         case .Build:
-            tempBuilding?.position = SnapToTile(event.location(in: self))
+            buildTool.mouseMoved(with: event)
         case .Flooring:
             flooringTileMap.mouseMoved(with: event)
         default:
@@ -72,9 +76,7 @@ class FarmScene: SKScene {
     override func mouseDown(with event: NSEvent) {
         switch mode {
         case .Build:
-            tempBuilding?.removeGreenTint()
-            tempBuilding = nil
-            mode = .Flooring
+            buildTool.mouseDown(with: event)
         case .Flooring:
             flooringTileMap.mouseDown(with: event)
         default:
@@ -84,6 +86,8 @@ class FarmScene: SKScene {
     
     override func mouseUp(with event: NSEvent) {
         switch mode {
+        case .Build:
+            buildTool.mouseUp(with: event)
         case .Flooring:
             flooringTileMap.mouseUp(with: event)
         default:
@@ -141,4 +145,18 @@ class FarmScene: SKScene {
 //        default: print("EH")
 //        }
 //    }
+    
+    private func subscribeObservers() {
+        NotificationController.instance.subscribe(observer: self, name: .onObjectSelected, callbackSelector: #selector(handleLibraryObjectSelected), object: nil)
+    }
+    
+    private func unsubscribeObservers() {
+        NotificationController.instance.unsubscribe(observer: self)
+    }
+    
+    @objc private func handleLibraryObjectSelected(_ notification: Notification) {
+        mode = .Build
+        guard let object = notification.object as? LibraryObject else { return }
+        buildTool.addNewObject(object)
+    }
 }

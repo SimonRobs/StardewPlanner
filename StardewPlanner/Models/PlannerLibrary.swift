@@ -8,18 +8,21 @@
 import Foundation
 
 class PlannerLibrary: ObservableObject {
-    var sections: [LibrarySection] = [
-        LibrarySection(name: "Buildings", objects: [
-            LibraryObject(name: "Barn", iconName: "Barn"),
-        ]),
-        LibrarySection(name: "Crops", objects: [
-            LibraryObject(name: "Barn", iconName: "Barn"),
-        ]),
-        LibrarySection(name: "Placeables", objects: [
-            LibraryObject(name: "Barn", iconName: "Barn"),
-        ]),
-        LibrarySection(name: "Trees", objects: [
-            LibraryObject(name: "Barn", iconName: "Barn"),
-        ])
+    var objects: [LibraryObject] = [
+        // Buildings
+        LibraryObject(family: .Buildings, type: .Barn),
+        LibraryObject(family: .Buildings, type: .BigBarn),
+        LibraryObject(family: .Buildings, type: .DeluxeBarn),
+        LibraryObject(family: .Buildings, type: .Coop),
+        LibraryObject(family: .Buildings, type: .BigCoop),
+        LibraryObject(family: .Buildings, type: .DeluxeCoop),
+        LibraryObject(family: .Buildings, type: .SlimeHutch),
+        
+        // Equipment
+        LibraryObject(family: .Equipment, type: .Chest),
+        LibraryObject(family: .Equipment, type: .StoneChest),
+        LibraryObject(family: .Equipment, type: .Sprinkler),
+        LibraryObject(family: .Equipment, type: .QualitySprinkler),
+        LibraryObject(family: .Equipment, type: .IridiumSprinkler),
     ]
 }

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct LibraryObject: Identifiable, Hashable, Codable {
     var id = UUID()
-    var name: String
-    var iconName: String
+    var family: ObjectFamilies
+    var type: ObjectTypes
     
 }
 

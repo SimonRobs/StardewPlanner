@@ -13,25 +13,27 @@ struct LibraryTabView: View  {
     
     @EnvironmentObject() var library: PlannerLibrary
     
-    @State private var selectedSection: LibrarySection?
+    @State private var selectedFamily: ObjectFamilies?
     @State private var isHovered = false
     
     var body: some View {
         VStack {
             HStack(spacing: .zero) {
-                ForEach(library.sections, id: \.name) { section in
-                    LibraryTabViewButton(section.name, isSelected: section == selectedSection) {
-                        selectedSection = section
+                ForEach(ObjectFamilies.allCases, id: \.self) { family in
+                    LibraryTabViewButton(family.rawValue, isSelected: family == selectedFamily) {
+                        selectedFamily = family
                     }
                 }
             }
             .frame(maxWidth: .infinity)
             
-            LibraryTabViewContent(with: selectedSection?.objects ?? [])
+            LibraryTabViewContent(with: library.objects.filter { $0.family == selectedFamily } ) { object in
+                onObjectSelected(object)
+            }
         }
         .background(Color.background)
         .onAppear {
-            selectedSection = library.sections.first
+            selectedFamily = library.objects.first?.family
         }
     }
 }

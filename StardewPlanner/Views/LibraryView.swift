@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LibraryView: View  {
     
-    @EnvironmentObject() var objectLibrary: PlannerLibrary
+    @Environment(\.dismiss) private var dismiss
     
     @State private var selectedTab = 0
     @State private var searchString = ""
@@ -31,7 +31,10 @@ struct LibraryView: View  {
             .padding([.leading, .trailing])
             .background(Color.lightBackground)
             .ignoresSafeArea()
-            LibraryTabView() { object in }
+            LibraryTabView() { object in
+                NotificationController.instance.post(name: .onObjectSelected, object: object)
+                dismiss()
+            }
         }
         .background(Color.background)
     }

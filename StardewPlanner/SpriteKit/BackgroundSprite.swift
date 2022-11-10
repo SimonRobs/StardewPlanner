@@ -10,7 +10,7 @@ import SpriteKit
 class BackgroundSprite: SKSpriteNode {
     
     init() {
-        super.init(texture: SKTexture(imageNamed: "full_background_spring"), color:.clear, size: CGSize(width: 1280, height: 1040))
+        super.init(texture: SKTexture(imageNamed: "Default Spring"), color:.clear, size: BackgroundSize)
         
         name = BackgroundSpriteName
         
@@ -22,7 +22,10 @@ class BackgroundSprite: SKSpriteNode {
                 addChild(t)
             }
         }
-        
+    }
+    
+    func getTile(at location: CGPoint) -> BackgroundTile? {
+        return nodes(at: location).first as? BackgroundTile
     }
     
     required init?(coder aDecoder: NSCoder) {

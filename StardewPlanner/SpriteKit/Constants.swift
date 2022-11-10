@@ -9,6 +9,7 @@ import Foundation
 
 let BUILDING_DEBUG = false
 
+let BackgroundSize = CGSize(width: 1280, height: 1040)
 let BackgroundColumns = 80
 let BackgroundRows = 65
 let TileSize: CGFloat = 16

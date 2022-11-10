@@ -14,9 +14,9 @@ class NotificationController {
     func post(name: Notification.Name, object: Any?) {
         NotificationCenter.default.post(Notification(name: name, object: object))
     }
-
-    func subscribe(name:Notification.Name, object: Any?, using: @escaping @Sendable (Notification) -> Void) {
-        NotificationCenter.default.addObserver(forName: name, object: nil, queue: nil, using: using)
+    
+    func subscribe(observer: Any, name:Notification.Name, callbackSelector: Selector, object: Any?) {
+        NotificationCenter.default.addObserver(observer, selector: callbackSelector, name: name, object: object)
     }
 
     func unsubscribe(observer: Any) {

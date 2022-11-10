@@ -8,10 +8,13 @@
 import SpriteKit
 
 class FlooringTileMap: SKTileMapNode {
+    private var background: BackgroundSprite
+    
     private var selectedFlooringTile: SKSpriteNode!
     private var previousTile: BackgroundTile? = nil
     
-    override init() {
+    init(on background: BackgroundSprite) {
+        self.background = background
         super.init(tileSet: TileSetController.instance.flooringTileSet,
                    columns: BackgroundColumns,
                    rows: BackgroundRows,
@@ -23,11 +26,11 @@ class FlooringTileMap: SKTileMapNode {
     override func mouseEntered(with event: NSEvent) {
         showSelectedSprite()
     }
-
+    
     override func mouseExited(with event: NSEvent) {
         hideSelectedSprite()
     }
-
+    
     override func mouseMoved(with event: NSEvent) {
         guard let scene = scene else { return }
         let location = event.location(in: scene)
@@ -47,7 +50,7 @@ class FlooringTileMap: SKTileMapNode {
         showSelectedSprite()
         moveSelectedSprite(to: location)
     }
-
+    
     override func mouseDragged(with event: NSEvent) {
         guard let scene = scene else { return }
         let location = event.location(in: scene)
@@ -91,12 +94,7 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     private func drawFlooringTile(at location: CGPoint, ignoringPreviousTile: Bool = true) {
-        guard let scene = scene else { return }
-        guard let background = scene.childNode(withName: BackgroundSpriteName) else { return }
-        
-        let candidateNodes = background.nodes(at: location)
-        if candidateNodes.isEmpty { return }
-        guard let targetTile = (candidateNodes[0] as? BackgroundTile) else { return }
+        guard let targetTile = background.getTile(at: location) else { return }
         hideSelectedSprite()
         
         if !ignoringPreviousTile && targetTile == previousTile || !targetTile.buildable { return }
@@ -107,5 +105,4 @@ class FlooringTileMap: SKTileMapNode {
         guard let tileGroup = flooringTileGroups.first(where: {g in g.name == selectedFlooringTile.name}) else { return }
         setTileGroup(tileGroup, forColumn: targetTile.i, row: BackgroundRows - 1 - targetTile.j)
     }
-    
 }

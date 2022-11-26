@@ -144,6 +144,7 @@
 				F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */,
 				F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */,
 				F42580462919B619005F1CCC /* LibraryObject.swift */,
+				F425804C291B4B5D005F1CCC /* LibrarySection.swift */,
 				F42580482919B621005F1CCC /* PlannerLibrary.swift */,
 			);
 			path = Models;

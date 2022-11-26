@@ -23,11 +23,9 @@ class BuildingPlacementTileSprite: SKSpriteNode {
     
     func verifyStatus() {
         guard let parent = parent else { return }
-        let sceneX = parent.position.x + position.x
-        let sceneY = parent.position.y + position.y
-        let i = Int((sceneX + BackgroundSize.width / 2 - TileSize / 2) / TileSize)
-        let j = Int((BackgroundSize.height / 2 - sceneY - TileSize / 2) / TileSize)
-        let isBackgroundBuildable = i < 0 || j < 0 || i >= BackgroundColumns || j >= BackgroundRows  ? false : BackgroundBuildableTiles[i][j]
+        let scenePos = parent.position.add(position)
+        let coords = scenePos.toGridCoordinate()
+        let isBackgroundBuildable = coords.i < 0 || coords.j < 0 || coords.i >= BackgroundColumns || coords.j >= BackgroundRows  ? false : BackgroundBuildableTiles[coords.i][coords.j]
         if buildable && !isBackgroundBuildable {
             buildable = false
         } else if !buildable && isBackgroundBuildable {

@@ -27,6 +27,8 @@
 		F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */; };
 		F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */; };
 		F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */; };
+		F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C696292436E50075E2F1 /* CGPointAdditions.swift */; };
+		F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C6992924373A0075E2F1 /* GridCoordinate.swift */; };
 		F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */; };
 		F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1429135F0600FB39BC /* PlannerView.swift */; };
 		F4388A1729135F0900FB39BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1629135F0900FB39BC /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFamilies.enum.swift; sourceTree = "<group>"; };
 		F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypes.enum.swift; sourceTree = "<group>"; };
 		F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingPlacementTileSprite.swift; sourceTree = "<group>"; };
+		F433C696292436E50075E2F1 /* CGPointAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointAdditions.swift; sourceTree = "<group>"; };
+		F433C6992924373A0075E2F1 /* GridCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinate.swift; sourceTree = "<group>"; };
 		F4388A0F29135F0600FB39BC /* StardewPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StardewPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StardewPlannerApp.swift; sourceTree = "<group>"; };
 		F4388A1429135F0600FB39BC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		F425803F2919B3CA005F1CCC /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				F433C6982924372E0075E2F1 /* Models */,
 				F4258050291B4D26005F1CCC /* Build Tool */,
 				F42580432919B5D0005F1CCC /* Utilities */,
 				F4E5A5EB291620A300970C07 /* Tile Sets */,
@@ -149,6 +154,7 @@
 			children = (
 				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
 				F4258059291B591E005F1CCC /* SnapToTile.swift */,
+				F433C696292436E50075E2F1 /* CGPointAdditions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -170,6 +176,14 @@
 				F425805E291C04C9005F1CCC /* NotificationController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F433C6982924372E0075E2F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F433C6992924373A0075E2F1 /* GridCoordinate.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F4388A0629135F0600FB39BC = {
@@ -321,6 +335,7 @@
 				F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */,
 				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
 				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
+				F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */,
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
@@ -336,6 +351,7 @@
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
 				F425805A291B591E005F1CCC /* SnapToTile.swift in Sources */,
 				F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */,
+				F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */,
 				F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */,
 				F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */,
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,

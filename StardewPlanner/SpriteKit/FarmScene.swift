@@ -13,7 +13,7 @@ class FarmScene: SKScene {
     private var flooringTileMap: FlooringTileMap!
     private var cameraNode: SKCameraNode!
     
-    private var mode = EditorModes.Select
+    private var mode = EditorModes.Flooring
     
     private var buildTool: BuildTool!
     
@@ -27,7 +27,7 @@ class FarmScene: SKScene {
         
         flooringTileMap = FlooringTileMap(on: farmBackground)
         addChild(flooringTileMap)
-        
+
         buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
     }
     

@@ -37,6 +37,7 @@ public class BuildTool {
         guard let selectedBuilding = selectedBuilding else { return }
         let location = SnapToTile(event.location(in: scene))
         selectedBuilding.setPosition(to: location)
+        updateBuildingTiles()
         if selectedBuilding.containsUnbuildableTiles() {
             selectedBuilding.setTint(.Red)
         } else {
@@ -58,5 +59,8 @@ public class BuildTool {
         // TODO: Make sure the object could actually be added before adding a new one
         let location = SnapToTile(event.location(in: scene))
         selectedBuilding?.setPosition(to: location)
+    }
+    
+    private func updateBuildingTiles() {
     }
 }

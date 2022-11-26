@@ -94,7 +94,10 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     private func drawFlooringTile(at location: CGPoint, ignoringPreviousTile: Bool = true) {
-        guard let targetTile = background.getTile(at: location) else { return }
+        var adjustedLocation = location
+        adjustedLocation.x += TileSize / 2
+        adjustedLocation.y -= TileSize / 2
+        guard let targetTile = background.getTile(at: adjustedLocation) else { return }
         hideSelectedSprite()
         
         if !ignoringPreviousTile && targetTile == previousTile || !targetTile.buildable { return }

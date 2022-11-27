@@ -141,7 +141,11 @@ class FarmScene: SKScene {
         print(event.keyCode)
         switch event.keyCode {
 //        case 0x31: mode = .Drag
-        case 0x30: flooringTileMap.setFlooringTile(ofType: .Stone)
+        case 0x30:
+            flooringTileMap.setFlooringTile(ofType: .Stone)
+        case 0x01:
+            buildTool.cleanUp()
+            mode = .Flooring
         default: print("EH")
         }
     }

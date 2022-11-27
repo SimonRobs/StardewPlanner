@@ -26,7 +26,7 @@ public class BuildTool {
     
     func addNewObject(_ object: LibraryObject, at initialPosition: CGPoint? = nil) {
         activeLibraryObject = object
-        if selectedBuilding != nil { selectedBuilding?.removeFromParent() }
+        cleanUp()
         selectedBuilding = BuildingSprite(object.type, with: BuildingSizes[object.type]!)
         if initialPosition != nil { selectedBuilding?.setPosition(initialPosition!) }
         updateBuildingTiles()
@@ -64,6 +64,10 @@ public class BuildTool {
         if activeLibraryObject != nil {
             addNewObject(activeLibraryObject!, at: event.location)
         }
+    }
+    
+    func cleanUp() {
+        if selectedBuilding != nil { selectedBuilding?.removeFromParent() }
     }
     
     private func updateBuildingTiles() {

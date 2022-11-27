@@ -32,6 +32,7 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
+        if selectedFlooringTile.parent == nil { showSelectedSprite() }
         moveSelectedSprite(to: event.location)
     }
     

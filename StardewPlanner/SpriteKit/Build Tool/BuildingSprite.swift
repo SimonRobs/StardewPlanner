@@ -15,11 +15,15 @@ class BuildingSprite: SKSpriteNode {
     
     private let TintColorBlendFactor = 0.8
     
+    private var evenHeight = false
+    private var evenWidth = false
     private var buildingSize: BuildingSize
     private var occupiedTiles: [BuildingPlacementTileSprite] = []
     
     init(_ type: ObjectTypes, with size: BuildingSize) {
         buildingSize = size
+        if (size.rows + size.verticalOverflow).isMultiple(of: 2) { evenHeight = true }
+        if size.columns.isMultiple(of: 2) { evenWidth = true }
         let spriteSize = CGSize(
             width: CGFloat(size.columns) * TileSize,
             height: CGFloat(size.rows) * TileSize + CGFloat(size.verticalOverflow) * TileSize
@@ -29,11 +33,19 @@ class BuildingSprite: SKSpriteNode {
         colorBlendFactor = TintColorBlendFactor
     }
     
-    func setPosition(to location: CGPoint) {
-        position = location
-        occupiedTiles.forEach { tile in
-            tile.verifyStatus()
-        }
+    func setPosition(_ position: CGPoint) {
+        self.position = position
+        self.position = position.add(
+            CGPoint(
+                x: evenWidth ? TileSize / 2 : 0,
+                y: evenHeight ? TileSize / 2 : TileSize
+            )
+        )
+        zPosition = CGFloat(position.toGridCoordinate().j)
+    }
+    
+    func getOccupiedTiles() -> [BuildingPlacementTileSprite] {
+        return occupiedTiles
     }
     
     func showOccupiedTiles() {
@@ -56,10 +68,6 @@ class BuildingSprite: SKSpriteNode {
         return false
     }
     
-    func setOccupiedTileStatus(_ tile: SKSpriteNode, buildable: Bool) {
-        tile.texture = SKTexture(imageNamed: buildable ? "Green Tile" : "Red Tile")
-    }
-    
     func setTint(_ tint: BuildingSprite.Tint) {
         if tint == .Clear { colorBlendFactor = 0}
         else {
@@ -75,12 +83,28 @@ class BuildingSprite: SKSpriteNode {
     private func populateOccupiedTiles() {
         for i in 0..<buildingSize.columns {
             for j in 0..<buildingSize.rows {
-                let tile = BuildingPlacementTileSprite(at: CGPoint(x: i, y: j), verticalOverflow: buildingSize.verticalOverflow, buildingSize: size)
+                let tile = BuildingPlacementTileSprite(
+                    at: getChildTileCoordinates(i, j)
+                )
                 tile.alpha = 0
                 addChild(tile)
+                tile.position = tile.position.add(
+                    CGPoint(
+                        x: evenWidth ? TileSize : TileSize / 2,
+                        y: evenHeight ? TileSize: TileSize * 1.5
+                    )
+                )
                 occupiedTiles.append(tile)
             }
         }
+    }
+    
+    private func getChildTileCoordinates(_ i: Int, _ j: Int) -> GridCoordinate {
+        let center = position.toGridCoordinate()
+        return  GridCoordinate(
+            i: center.i - buildingSize.columns / 2 + i,
+            j: center.j + buildingSize.rows / 2 - j + buildingSize.verticalOverflow
+        )
     }
     
 }

@@ -16,9 +16,9 @@ struct GridCoordinate {
     }
     
     func toLocation() -> CGPoint {
-        fatalError("Not Implemented")
+        return CGPoint(
+            x: CGFloat(i) * TileSize - BackgroundSize.width / 2 + TileSize / 2,
+            y: BackgroundSize.height / 2 - CGFloat(j) * TileSize
+        )
     }
-}
-
-extension GridCoordinate {
 }

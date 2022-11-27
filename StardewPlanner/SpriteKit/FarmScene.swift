@@ -26,6 +26,7 @@ class FarmScene: SKScene {
         addChild(farmBackground)
         
         flooringTileMap = FlooringTileMap(on: farmBackground)
+        print(flooringTileMap.position)
         addChild(flooringTileMap)
 
         buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
@@ -39,33 +40,36 @@ class FarmScene: SKScene {
     }
     
     override func mouseEntered(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Build:
-            buildTool.mouseEntered(with: event)
+            buildTool.mouseEntered(with: mouseEvent)
         case .Flooring:
-            flooringTileMap.mouseEntered(with: event)
+            flooringTileMap.mouseEntered(with: mouseEvent)
         default:
             return
         }
     }
 
     override func mouseExited(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Build:
-            buildTool.mouseExited(with: event)
+            buildTool.mouseExited(with: mouseEvent)
         case .Flooring:
-            flooringTileMap.mouseExited(with: event)
+            flooringTileMap.mouseExited(with: mouseEvent)
         default:
             return
         }
     }
 
     override func mouseMoved(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Build:
-            buildTool.mouseMoved(with: event)
+            buildTool.mouseMoved(with: mouseEvent)
         case .Flooring:
-            flooringTileMap.mouseMoved(with: event)
+            flooringTileMap.mouseMoved(with: mouseEvent)
         default:
             return
         }
@@ -74,31 +78,34 @@ class FarmScene: SKScene {
 //    private var previousLocation: CGPoint = .zero
     
     override func mouseDown(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Build:
-            buildTool.mouseDown(with: event)
+            buildTool.mouseDown(with: mouseEvent)
         case .Flooring:
-            flooringTileMap.mouseDown(with: event)
+            flooringTileMap.mouseDown(with: mouseEvent)
         default:
             return
         }
     }
     
     override func mouseUp(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Build:
-            buildTool.mouseUp(with: event)
+            buildTool.mouseUp(with: mouseEvent)
         case .Flooring:
-            flooringTileMap.mouseUp(with: event)
+            flooringTileMap.mouseUp(with: mouseEvent)
         default:
             return
         }
     }
 
     override func mouseDragged(with event: NSEvent) {
+        let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Flooring:
-            flooringTileMap.mouseDragged(with: event)
+            flooringTileMap.mouseDragged(with: mouseEvent)
         default:
             return
         }

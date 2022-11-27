@@ -23,38 +23,34 @@ class FlooringTileMap: SKTileMapNode {
         setFlooringTile(ofType: .Wood)
     }
     
-    override func mouseEntered(with event: NSEvent) {
+    func mouseEntered(with event: TileMapMouseEvent) {
         showSelectedSprite()
     }
     
-    override func mouseExited(with event: NSEvent) {
+    func mouseExited(with event: TileMapMouseEvent) {
         hideSelectedSprite()
     }
     
-    override func mouseMoved(with event: NSEvent) {
-        guard let scene = scene else { return }
-        let location = event.location(in: scene)
-        moveSelectedSprite(to: location)
+    func mouseMoved(with event: TileMapMouseEvent) {
+        moveSelectedSprite(to: event.location)
     }
     
     
-    override func mouseDown(with event: NSEvent) {
-        guard let scene = scene else { return }
-        let location = event.location(in: scene)
-        drawFlooringTile(at: location, ignoringPreviousTile: false)
+    func mouseDown(with event: TileMapMouseEvent) {
+        drawFlooringTile(at: event.location, ignoringPreviousTile: false)
     }
     
-    override func mouseUp(with event: NSEvent) {
-        guard let scene = scene else { return }
-        let location = event.location(in: scene)
+    func mouseUp(with event: TileMapMouseEvent) {
         showSelectedSprite()
-        moveSelectedSprite(to: location)
+        moveSelectedSprite(to: event.location)
     }
     
-    override func mouseDragged(with event: NSEvent) {
-        guard let scene = scene else { return }
-        let location = event.location(in: scene)
-        drawFlooringTile(at: location)
+    func mouseDragged(with event: TileMapMouseEvent) {
+        drawFlooringTile(at: event.location)
+    }
+    
+    func clearFlooringTile(at coords: GridCoordinate) {
+        setTileGroup(nil, forColumn: coords.i, row: BackgroundRows - 1 - coords.j)
     }
     
     public func setFlooringTile(ofType tileType: TileSets) {
@@ -70,6 +66,7 @@ class FlooringTileMap: SKTileMapNode {
         selectedFlooringTile.name = tileType.rawValue
         selectedFlooringTile.alpha = 0.3
     }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not Implemented")
@@ -87,17 +84,11 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     private func moveSelectedSprite(to location: CGPoint) {
-        var adaptedLocation = location
-        adaptedLocation.y -= TileSize / 2
-        selectedFlooringTile.position = SnapToTile(adaptedLocation)
-        selectedFlooringTile.position.y += TileSize / 2
+        selectedFlooringTile.position = location
     }
     
     private func drawFlooringTile(at location: CGPoint, ignoringPreviousTile: Bool = true) {
-        var adjustedLocation = location
-        adjustedLocation.x += TileSize / 2
-        adjustedLocation.y -= TileSize / 2
-        guard let targetTile = background.getTile(at: adjustedLocation) else { return }
+        guard let targetTile = background.getTile(at: location) else { return }
         hideSelectedSprite()
         
         if !ignoringPreviousTile && targetTile == previousTile || !targetTile.buildable { return }

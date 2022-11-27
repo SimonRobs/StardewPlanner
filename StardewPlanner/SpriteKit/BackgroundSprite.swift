@@ -37,6 +37,10 @@ class BackgroundSprite: SKSpriteNode {
         return allTiles[gridCoordinate.i][gridCoordinate.j]
     }
     
+    func setBuildableStatus(at coords: GridCoordinate, to status: Bool) {
+        allTiles[coords.i][coords.j].buildable = status
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not Implemented")
     }

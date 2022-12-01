@@ -34,6 +34,7 @@
 		F4388A1A29135F0900FB39BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1929135F0900FB39BC /* Preview Assets.xcassets */; };
 		F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */; };
 		F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1410B29199DA4006E762E /* ColorAdditions.swift */; };
+		F4BB2977293943DB00151917 /* FlooringTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB2976293943DB00151917 /* FlooringTool.swift */; };
 		F4C93B182915B65500D121B2 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4C93B172915B65500D121B2 /* FarmScene.sks */; };
 		F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B192915B78F00D121B2 /* FarmScene.swift */; };
 		F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */; };
@@ -78,6 +79,7 @@
 		F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StardewPlanner.entitlements; sourceTree = "<group>"; };
 		F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMapMouseEvent.swift; sourceTree = "<group>"; };
 		F4A1410B29199DA4006E762E /* ColorAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdditions.swift; sourceTree = "<group>"; };
+		F4BB2976293943DB00151917 /* FlooringTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringTool.swift; sourceTree = "<group>"; };
 		F4C93B172915B65500D121B2 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		F4C93B192915B78F00D121B2 /* FarmScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildableTiles.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				F433C6982924372E0075E2F1 /* Models */,
+				F4BB2975293943C600151917 /* Flooring Tool */,
 				F4258050291B4D26005F1CCC /* Build Tool */,
 				F42580432919B5D0005F1CCC /* Utilities */,
 				F4E5A5EB291620A300970C07 /* Tile Sets */,
@@ -245,6 +248,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F4BB2975293943C600151917 /* Flooring Tool */ = {
+			isa = PBXGroup;
+			children = (
+				F4BB2976293943DB00151917 /* FlooringTool.swift */,
+			);
+			path = "Flooring Tool";
+			sourceTree = "<group>";
+		};
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +353,7 @@
 				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
 				F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */,
+				F4BB2977293943DB00151917 /* FlooringTool.swift in Sources */,
 				F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */,
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
 				F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */,

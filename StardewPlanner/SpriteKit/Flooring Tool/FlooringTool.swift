@@ -10,6 +10,7 @@ import SpriteKit
 public class FlooringTool {
     
     private var selectedFlooringTile: SKSpriteNode!
+    private var brushRadius: CGFloat = 2
     
     private var tileMap: FlooringTileMap
     private var scene: SKScene
@@ -47,9 +48,18 @@ public class FlooringTool {
         moveSelectedSprite(to: event.location)
     }
     
-    
     func mouseDown(with event: TileMapMouseEvent) {
-        tileMap.setFlooringTile(selectedFlooringTile, at: event.location, ignoringPreviousTile: false)
+        var allLocations: [CGPoint] = []
+        
+        for xOffset in stride(from: -TileSize * brushRadius, through: TileSize * brushRadius, by: TileSize) {
+            for yOffset in stride(from: -TileSize * brushRadius, through: TileSize * brushRadius, by: TileSize) {
+                allLocations.append(CGPoint(x: event.location.x + xOffset, y: event.location.y + yOffset))
+            }
+        }
+        
+        for location in allLocations {
+            tileMap.setFlooringTile(selectedFlooringTile, at: location, ignoringPreviousTile: false)
+        }
     }
     
     func mouseUp(with event: TileMapMouseEvent) {
@@ -58,10 +68,18 @@ public class FlooringTool {
     }
     
     func mouseDragged(with event: TileMapMouseEvent) {
-        tileMap.setFlooringTile(selectedFlooringTile, at: event.location)
+        var allLocations: [CGPoint] = []
+        
+        for xOffset in stride(from: -TileSize * brushRadius, through: TileSize * brushRadius, by: TileSize) {
+            for yOffset in stride(from: -TileSize * brushRadius, through: TileSize * brushRadius, by: TileSize) {
+                allLocations.append(CGPoint(x: event.location.x + xOffset, y: event.location.y + yOffset))
+            }
+        }
+        
+        for location in allLocations {
+            tileMap.setFlooringTile(selectedFlooringTile, at: location)
+        }
     }
-    
-    
     
     private func showSelectedSprite() {
         if(selectedFlooringTile.scene != nil) { return }

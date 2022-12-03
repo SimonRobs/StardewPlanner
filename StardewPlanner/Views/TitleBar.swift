@@ -12,10 +12,11 @@ struct TitleBar: View {
     @Environment(\.isLibraryPresented) var isLibraryPresented: Binding<Bool>
     
     var body: some View {
-        HStack(spacing: 0) {
+        VStack(spacing: 0) {
             TitleBarButton(systemName: "cursorarrow", title:"Select Tool") {
                 
             }
+            .padding(.top, 1)
             TitleBarButton(systemName: "square.grid.3x1.below.line.grid.1x2", title:"Objects Library") {
                 isLibraryPresented.wrappedValue = true
             }
@@ -28,7 +29,8 @@ struct TitleBar: View {
                 
             }
         }
-        .padding(.leading, 76)
+        .frame(maxWidth: 68)
+        .padding(.top, 28)
         .background(Color.background)
     }
 }

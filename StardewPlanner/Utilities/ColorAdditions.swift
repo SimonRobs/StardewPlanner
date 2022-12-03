@@ -16,8 +16,16 @@ extension Color {
         Color("color.background.light")
     }
     
+    static var lighterBackground: Color {
+        Color("color.background.lighter")
+    }
+    
     static var accentColor: Color {
         Color("color.accent")
+    }
+    
+    static var border: Color {
+        Color("color.border")
     }
 
 

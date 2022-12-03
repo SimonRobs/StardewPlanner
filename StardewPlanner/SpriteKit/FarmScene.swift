@@ -15,7 +15,7 @@ class FarmScene: SKScene {
     
     private var mode = EditorModes.Flooring
     
-    private var flooringTool: FlooringTool!
+    private var flooringController: FlooringModeController!
     private var buildTool: BuildTool!
     
     override func didMove(to view: SKView) {
@@ -30,7 +30,7 @@ class FarmScene: SKScene {
         addChild(flooringTileMap)
 
         buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
-        flooringTool = FlooringTool(in: self, tileMap: flooringTileMap)
+        flooringController = FlooringModeController(in: self, tileMap: flooringTileMap)
     }
     
     override func didChangeSize(_ oldSize: CGSize) {
@@ -46,7 +46,7 @@ class FarmScene: SKScene {
         case .Build:
             buildTool.mouseEntered(with: mouseEvent)
         case .Flooring:
-            flooringTool.mouseEntered(with: mouseEvent)
+            flooringController.mouseEntered(with: mouseEvent)
         default:
             return
         }
@@ -58,7 +58,7 @@ class FarmScene: SKScene {
         case .Build:
             buildTool.mouseExited(with: mouseEvent)
         case .Flooring:
-            flooringTool.mouseExited(with: mouseEvent)
+            flooringController.mouseExited(with: mouseEvent)
         default:
             return
         }
@@ -70,7 +70,7 @@ class FarmScene: SKScene {
         case .Build:
             buildTool.mouseMoved(with: mouseEvent)
         case .Flooring:
-            flooringTool.mouseMoved(with: mouseEvent)
+            flooringController.mouseMoved(with: mouseEvent)
         default:
             return
         }
@@ -84,7 +84,7 @@ class FarmScene: SKScene {
         case .Build:
             buildTool.mouseDown(with: mouseEvent)
         case .Flooring:
-            flooringTool.mouseDown(with: mouseEvent)
+            flooringController.mouseDown(with: mouseEvent)
         default:
             return
         }
@@ -96,7 +96,7 @@ class FarmScene: SKScene {
         case .Build:
             buildTool.mouseUp(with: mouseEvent)
         case .Flooring:
-            flooringTool.mouseUp(with: mouseEvent)
+            flooringController.mouseUp(with: mouseEvent)
         default:
             return
         }
@@ -106,7 +106,7 @@ class FarmScene: SKScene {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
         switch mode {
         case .Flooring:
-            flooringTool.mouseDragged(with: mouseEvent)
+            flooringController.mouseDragged(with: mouseEvent)
         default:
             return
         }
@@ -142,8 +142,6 @@ class FarmScene: SKScene {
         print(event.keyCode)
         switch event.keyCode {
 //        case 0x31: mode = .Drag
-        case 0x30:
-            flooringTool.setFlooringTile(ofType: .Stone)
         case 0x01:
             buildTool.cleanUp()
             mode = .Flooring

@@ -12,11 +12,12 @@ let farmScene = SKScene(fileNamed: "FarmScene")!
 
 struct PlannerView: View {
     
-    @State private var isLibraryPresented = true
+    @State private var isLibraryPresented = false
     
     var body: some View {
-        VStack {
+        HStack(spacing: 0) {
             TitleBar()
+            OptionsPanel()
             ZStack {
                 SpriteView(scene: farmScene)
                     .background(VisualEffectView().ignoresSafeArea())

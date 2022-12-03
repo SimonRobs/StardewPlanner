@@ -11,11 +11,14 @@ import SwiftUI
 struct StardewPlannerApp: App {
     
     @StateObject var objectLibrary = PlannerLibrary()
+    @StateObject var flooringToolsStore = FlooringToolsStore()
     
     var body: some Scene {
         WindowGroup {
             PlannerView()
                 .environmentObject(objectLibrary)
+                .environmentObject(flooringToolsStore)
+                .preferredColorScheme(.dark)
         }
         .windowStyle(.hiddenTitleBar)
         Settings {

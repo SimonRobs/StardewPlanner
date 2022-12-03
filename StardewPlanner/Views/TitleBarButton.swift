@@ -20,6 +20,7 @@ struct TitleBarButton: View {
         Button(action: action, label: {
             Image(systemName: systemName)
                 .font(.title2)
+                .frame(maxWidth: .infinity)
         })
         .help(title ?? "")
         .buttonStyle(.borderless)

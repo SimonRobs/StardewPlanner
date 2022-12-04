@@ -25,7 +25,7 @@ class FlooringTileMap: SKTileMapNode {
         setTileGroup(nil, forColumn: coords.i, row: BackgroundRows - 1 - coords.j)
     }
     
-    func setFlooringTile(_ tile: SKSpriteNode, at location: CGPoint, ignoringPreviousTile: Bool = true) {
+    func setFlooringTile(toTileSet tileSet: TileSets, at location: CGPoint, ignoringPreviousTile: Bool = true) {
         guard let targetTile = background.getTile(at: location) else { return }
         
         if !ignoringPreviousTile && targetTile == previousTile || !targetTile.buildable { return }
@@ -33,7 +33,7 @@ class FlooringTileMap: SKTileMapNode {
         previousTile = targetTile
         
         let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
-        guard let tileGroup = flooringTileGroups.first(where: {g in g.name == tile.name}) else { return }
+        guard let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet.rawValue}) else { return }
         setTileGroup(tileGroup, forColumn: targetTile.i, row: BackgroundRows - 1 - targetTile.j)
     }
     

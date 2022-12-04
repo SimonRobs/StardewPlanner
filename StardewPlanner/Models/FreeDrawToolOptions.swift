@@ -14,6 +14,9 @@ struct FreeDrawToolOptions {
         case Round = "circle"
     }
     
+    static let MinBrushSize: CGFloat = 1
+    static let MaxBrushSize: CGFloat = 9
+    
     var size: CGFloat
     var shape: BrushShapes
     

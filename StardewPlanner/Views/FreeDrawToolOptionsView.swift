@@ -11,8 +11,8 @@ struct FreeDrawToolOptionsView: View {
     
     @EnvironmentObject() var toolsStore: FlooringToolsStore
     
-    let minSize: CGFloat = 0
-    let maxSize: CGFloat = 4
+    let minSize = FreeDrawToolOptions.MinBrushSize
+    let maxSize = FreeDrawToolOptions.MaxBrushSize
     let sizeStep: CGFloat = 1
     
     var body: some View {
@@ -20,12 +20,13 @@ struct FreeDrawToolOptionsView: View {
             Slider(
                 value: $toolsStore.freeDrawToolOptions.size,
                 in: minSize...maxSize,
-                step: sizeStep, label: {
+                step: sizeStep,
+                label: {
                     Text("Brush Radius").padding(.trailing)
                 }, minimumValueLabel: {
-                    Text("1")
+                    Text("\(Int(minSize))")
                 }, maximumValueLabel: {
-                    Text("5")
+                    Text("\(Int(maxSize))")
                 })
             .padding(.bottom)
             

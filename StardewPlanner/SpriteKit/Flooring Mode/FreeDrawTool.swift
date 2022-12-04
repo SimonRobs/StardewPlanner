@@ -9,7 +9,9 @@ import SpriteKit
 
 public class FreeDrawTool: FlooringToolBase {
     
-    private var selectedFlooringTile: SKSpriteNode!
+    private var overlayTileMap: SKTileMapNode!
+    private var selectedTileSet: TileSets = .Wood
+    
     private var drawOptions = FreeDrawToolOptions()
     
     private var tileMap: FlooringTileMap
@@ -30,102 +32,108 @@ public class FreeDrawTool: FlooringToolBase {
     init(in scene: SKScene, tileMap: FlooringTileMap) {
         self.scene = scene
         self.tileMap = tileMap
-        setFlooringTile(ofType: .Wood)
+        
+        overlayTileMap = SKTileMapNode(
+            tileSet: TileSetController.instance.flooringTileSet,
+            columns: Int(FreeDrawToolOptions.MaxBrushSize),
+            rows: Int(FreeDrawToolOptions.MaxBrushSize),
+            tileSize: CGSize(width: TileSize, height: TileSize)
+        )
+        overlayTileMap.alpha = 0.3
+        resetOverlay(to: selectedTileSet)
         
         NotificationController.instance.subscribe(observer: self, name: .onFlooringToolPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
         NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
     }
     
     func activate() {
-        showSelectedSprite()
+        showOverlay()
     }
     
     func deactivate() {
-        hideSelectedSprite()
+        hideOverlay()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
-        showSelectedSprite()
+        showOverlay()
     }
     
     func mouseExited(with event: TileMapMouseEvent) {
-        hideSelectedSprite()
+        hideOverlay()
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
-        if selectedFlooringTile.parent == nil { showSelectedSprite() }
+        if overlayTileMap.parent == nil { showOverlay() }
         moveSelectedSprite(to: event.location)
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        var allLocations: [CGPoint] = []
-        
-        for xOffset in stride(from: -TileSize * brushSize, through: TileSize * brushSize, by: TileSize) {
-            for yOffset in stride(from: -TileSize * brushSize, through: TileSize * brushSize, by: TileSize) {
-                allLocations.append(CGPoint(x: event.location.x + xOffset, y: event.location.y + yOffset))
-            }
-        }
-        
-        for location in allLocations {
-            tileMap.setFlooringTile(selectedFlooringTile, at: location, ignoringPreviousTile: false)
-        }
+        hideOverlay()
+        drawTiles(at: event.location)
     }
     
     func mouseUp(with event: TileMapMouseEvent) {
-        showSelectedSprite()
+        showOverlay()
         moveSelectedSprite(to: event.location)
     }
     
     func mouseDragged(with event: TileMapMouseEvent) {
+        drawTiles(at: event.location)
+    }
+    
+    private func showOverlay() {
+        if(overlayTileMap.scene != nil) { return }
+        scene.addChild(overlayTileMap)
+    }
+    
+    private func hideOverlay() {
+        if(overlayTileMap.scene == nil) { return }
+        overlayTileMap.removeFromParent()
+    }
+    
+    private func moveSelectedSprite(to location: CGPoint) {
+        overlayTileMap.position = location
+    }
+    
+    @objc private func handleTileChanged(_ notification: Notification) {
+        guard let tileSet = notification.object as? TileSets else { return }
+        selectedTileSet = tileSet
+        resetOverlay(to: tileSet)
+    }
+    
+    private func drawTiles(at location: CGPoint) {
         var allLocations: [CGPoint] = []
-        
-        for xOffset in stride(from: -TileSize * brushSize, through: TileSize * brushSize, by: TileSize) {
-            for yOffset in stride(from: -TileSize * brushSize, through: TileSize * brushSize, by: TileSize) {
-                allLocations.append(CGPoint(x: event.location.x + xOffset, y: event.location.y + yOffset))
+        let radius = CGFloat(Int(brushSize / 2))
+        for xOffset in stride(from: -TileSize * radius, through: TileSize * radius, by: TileSize) {
+            for yOffset in stride(from: -TileSize * radius, through: TileSize * radius, by: TileSize) {
+                allLocations.append(CGPoint(x: location.x + xOffset, y: location.y + yOffset))
             }
         }
         
         for location in allLocations {
-            tileMap.setFlooringTile(selectedFlooringTile, at: location)
+            tileMap.setFlooringTile(toTileSet: selectedTileSet, at: location, ignoringPreviousTile: false)
         }
     }
     
-    private func showSelectedSprite() {
-        if(selectedFlooringTile.scene != nil) { return }
-        scene.addChild(selectedFlooringTile)
-    }
-    
-    private func hideSelectedSprite() {
-        if(selectedFlooringTile.scene == nil) { return }
-        selectedFlooringTile.removeFromParent()
-    }
-    
-    private func moveSelectedSprite(to location: CGPoint) {
-        selectedFlooringTile.position = location
-    }
-    
-    @objc private func handleTileChanged(_ notification: Notification) {
-        guard let tileType = notification.object as? TileSets else { return }
-        setFlooringTile(ofType: tileType)
-    }
-    
-    
-    private func setFlooringTile(ofType tileType: TileSets) {
-        let textureName = "\(tileType.rawValue) Center Solo"
+    private func resetOverlay(to tileSet: TileSets) {
         
-        if selectedFlooringTile == nil {
-            selectedFlooringTile = SKSpriteNode(imageNamed: textureName)
-        } else {
-            selectedFlooringTile.texture = SKTexture(imageNamed: textureName)
+        overlayTileMap.fill(with: nil)
+        
+        let center = Int(FreeDrawToolOptions.MaxBrushSize) / 2
+        let radius = Int(brushSize / 2)
+        
+        let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
+        guard let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet.rawValue}) else { return }
+        for column in (center - radius)...(center + radius) {
+            for row in (center - radius)...(center + radius) {
+                overlayTileMap.setTileGroup(tileGroup, forColumn: column, row: row)
+            }
         }
-        
-        selectedFlooringTile.size = CGSize(width: TileSize, height: TileSize)
-        selectedFlooringTile.name = tileType.rawValue
-        selectedFlooringTile.alpha = 0.3
     }
     
     @objc private func handleOptionsChanged(_ notification: Notification) {
         guard let options = notification.object as? FreeDrawToolOptions else { return }
         drawOptions = options
+        resetOverlay(to: selectedTileSet)
     }
 }

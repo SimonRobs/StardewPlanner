@@ -13,8 +13,16 @@ class FlooringToolFactory {
         switch type {
         case .FreeDraw:
             return FreeDrawTool(in: scene, tileMap: tileMap)
-        default:
-            fatalError("Tool Not Implemented")
+        case .Eraser:
+            return EraserTool(in: scene, tileMap: tileMap)
+        case .Bucket:
+            return BucketTool(in: scene, tileMap: tileMap)
+        case .Eyedropper:
+            return EyedropperTool(in: scene, tileMap: tileMap)
+        case .Shape:
+            return ShapeTool(in: scene, tileMap: tileMap)
+        case .Line:
+            return LineTool(in: scene, tileMap: tileMap)
         }
     }
 }

@@ -54,6 +54,7 @@ public class FlooringModeController {
     }
     
     private func setSelectedTool(ofType type: FlooringTools) {
+        if selectedTool?.type == type { return }
         if tools[type] == nil {
             tools[type] = FlooringToolFactory.createTool(ofType: type, in: scene, tileMap: tileMap)
         }

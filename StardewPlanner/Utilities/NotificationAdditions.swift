@@ -22,6 +22,21 @@ extension Notification.Name {
     // Free Draw Tool
     static let onFreeDrawToolOptionsChanged = Notification.Name("Event::FreeDrawTool::OptionsChanged")
     
+    // Eraser Tool
+    static let onEraserToolOptionsChanged = Notification.Name("Event::EraserTool::OptionsChanged")
+    
+    // Bucket Tool
+    static let onBucketToolOptionsChanged = Notification.Name("Event::BucketTool::OptionsChanged")
+    
+    // Eyedropper Tool
+    static let onEyedropperToolOptionsChanged = Notification.Name("Event::EyedropperTool::OptionsChanged")
+    
+    // Shape Tool
+    static let onShapeToolOptionsChanged = Notification.Name("Event::ShapeTool::OptionsChanged")
+    
+    // Line Tool
+    static let onLineToolOptionsChanged = Notification.Name("Event::LineTool::OptionsChanged")
+    
     
     // MARK: - Construction Mode Events
     static let onObjectSelected = Notification.Name("Event::ConstructionMode::onObjectSelected")

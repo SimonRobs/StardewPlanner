@@ -49,7 +49,6 @@
 		F4BB2999293C008400151917 /* FlooringTilePickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */; };
 		F4BB299E293C017600151917 /* DarkButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB299D293C017600151917 /* DarkButtonStyle.swift */; };
 		F4BB29A2293C075C00151917 /* OptionsPanelToolSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */; };
-		F4BB29A4293C099000151917 /* DarkDoubleOutlinedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB29A3293C099000151917 /* DarkDoubleOutlinedButtonStyle.swift */; };
 		F4C93B182915B65500D121B2 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4C93B172915B65500D121B2 /* FarmScene.sks */; };
 		F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B192915B78F00D121B2 /* FarmScene.swift */; };
 		F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */; };
@@ -62,6 +61,21 @@
 		F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FA29182CDE00970C07 /* Constants.swift */; };
 		F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */; };
 		F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FE291975B400970C07 /* TitleBar.swift */; };
+		F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662802940444F00D7CA79 /* EraserTool.swift */; };
+		F4F662832940445800D7CA79 /* BucketTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662822940445800D7CA79 /* BucketTool.swift */; };
+		F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662842940446400D7CA79 /* EyedropperTool.swift */; };
+		F4F662872940446D00D7CA79 /* ShapeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662862940446D00D7CA79 /* ShapeTool.swift */; };
+		F4F662892940447400D7CA79 /* LineTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662882940447400D7CA79 /* LineTool.swift */; };
+		F4F6628B2940455500D7CA79 /* EraserToolOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6628A2940455500D7CA79 /* EraserToolOptions.swift */; };
+		F4F6628D2940455E00D7CA79 /* BucketToolOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6628C2940455E00D7CA79 /* BucketToolOptions.swift */; };
+		F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6628E2940456900D7CA79 /* EyedropperToolOptions.swift */; };
+		F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662902940457600D7CA79 /* ShapeToolOptions.swift */; };
+		F4F662932940457C00D7CA79 /* LineToolOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662922940457C00D7CA79 /* LineToolOptions.swift */; };
+		F4F662992940489900D7CA79 /* EyedropperToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662982940489900D7CA79 /* EyedropperToolOptionsView.swift */; };
+		F4F6629B294048A200D7CA79 /* EraserToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6629A294048A200D7CA79 /* EraserToolOptionsView.swift */; };
+		F4F6629D294048AD00D7CA79 /* BucketToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6629C294048AD00D7CA79 /* BucketToolOptionsView.swift */; };
+		F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */; };
+		F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -109,7 +123,6 @@
 		F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringTilePickerButton.swift; sourceTree = "<group>"; };
 		F4BB299D293C017600151917 /* DarkButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkButtonStyle.swift; sourceTree = "<group>"; };
 		F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsPanelToolSelect.swift; sourceTree = "<group>"; };
-		F4BB29A3293C099000151917 /* DarkDoubleOutlinedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkDoubleOutlinedButtonStyle.swift; sourceTree = "<group>"; };
 		F4C93B172915B65500D121B2 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		F4C93B192915B78F00D121B2 /* FarmScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildableTiles.swift; sourceTree = "<group>"; };
@@ -122,6 +135,21 @@
 		F4E5A5FA29182CDE00970C07 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarButton.swift; sourceTree = "<group>"; };
 		F4E5A5FE291975B400970C07 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		F4F662802940444F00D7CA79 /* EraserTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserTool.swift; sourceTree = "<group>"; };
+		F4F662822940445800D7CA79 /* BucketTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketTool.swift; sourceTree = "<group>"; };
+		F4F662842940446400D7CA79 /* EyedropperTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyedropperTool.swift; sourceTree = "<group>"; };
+		F4F662862940446D00D7CA79 /* ShapeTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeTool.swift; sourceTree = "<group>"; };
+		F4F662882940447400D7CA79 /* LineTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTool.swift; sourceTree = "<group>"; };
+		F4F6628A2940455500D7CA79 /* EraserToolOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserToolOptions.swift; sourceTree = "<group>"; };
+		F4F6628C2940455E00D7CA79 /* BucketToolOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketToolOptions.swift; sourceTree = "<group>"; };
+		F4F6628E2940456900D7CA79 /* EyedropperToolOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyedropperToolOptions.swift; sourceTree = "<group>"; };
+		F4F662902940457600D7CA79 /* ShapeToolOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeToolOptions.swift; sourceTree = "<group>"; };
+		F4F662922940457C00D7CA79 /* LineToolOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineToolOptions.swift; sourceTree = "<group>"; };
+		F4F662982940489900D7CA79 /* EyedropperToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyedropperToolOptionsView.swift; sourceTree = "<group>"; };
+		F4F6629A294048A200D7CA79 /* EraserToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserToolOptionsView.swift; sourceTree = "<group>"; };
+		F4F6629C294048AD00D7CA79 /* BucketToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketToolOptionsView.swift; sourceTree = "<group>"; };
+		F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeToolOptionsView.swift; sourceTree = "<group>"; };
+		F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineToolOptionsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,11 +176,16 @@
 				F4E5A5FE291975B400970C07 /* TitleBar.swift */,
 				F425804A2919B689005F1CCC /* SettingsView.swift */,
 				F4BB297B293A62F800151917 /* OptionsPanel.swift */,
+				F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */,
 				F4BB2981293A6C3000151917 /* OptionsPanelToolSelectButton.swift */,
 				F4BB2991293BEAF400151917 /* FreeDrawToolOptionsView.swift */,
+				F4F6629A294048A200D7CA79 /* EraserToolOptionsView.swift */,
+				F4F662982940489900D7CA79 /* EyedropperToolOptionsView.swift */,
+				F4F6629C294048AD00D7CA79 /* BucketToolOptionsView.swift */,
+				F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */,
+				F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */,
 				F4BB2996293BFEC200151917 /* FlooringTilePicker.swift */,
 				F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */,
-				F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +219,11 @@
 				F42580482919B621005F1CCC /* PlannerLibrary.swift */,
 				F4BB297D293A63B700151917 /* FlooringTools.enum.swift */,
 				F4BB2985293BD39700151917 /* FreeDrawToolOptions.swift */,
+				F4F6628A2940455500D7CA79 /* EraserToolOptions.swift */,
+				F4F6628C2940455E00D7CA79 /* BucketToolOptions.swift */,
+				F4F6628E2940456900D7CA79 /* EyedropperToolOptions.swift */,
+				F4F662902940457600D7CA79 /* ShapeToolOptions.swift */,
+				F4F662922940457C00D7CA79 /* LineToolOptions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -293,9 +331,14 @@
 			isa = PBXGroup;
 			children = (
 				F4BB2976293943DB00151917 /* FlooringModeController.swift */,
-				F4BB2987293BD5D400151917 /* FreeDrawTool.swift */,
 				F4BB298B293BE35800151917 /* FlooringToolBase.protocol.swift */,
 				F4BB298D293BE4CF00151917 /* FlooringToolFactory.swift */,
+				F4BB2987293BD5D400151917 /* FreeDrawTool.swift */,
+				F4F662802940444F00D7CA79 /* EraserTool.swift */,
+				F4F662822940445800D7CA79 /* BucketTool.swift */,
+				F4F662842940446400D7CA79 /* EyedropperTool.swift */,
+				F4F662862940446D00D7CA79 /* ShapeTool.swift */,
+				F4F662882940447400D7CA79 /* LineTool.swift */,
 			);
 			path = "Flooring Mode";
 			sourceTree = "<group>";
@@ -312,7 +355,6 @@
 			isa = PBXGroup;
 			children = (
 				F4BB299D293C017600151917 /* DarkButtonStyle.swift */,
-				F4BB29A3293C099000151917 /* DarkDoubleOutlinedButtonStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -399,29 +441,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */,
+				F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */,
 				F4BB2986293BD39700151917 /* FreeDrawToolOptions.swift in Sources */,
 				F4BB2982293A6C3000151917 /* OptionsPanelToolSelectButton.swift in Sources */,
 				F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */,
 				F42580472919B619005F1CCC /* LibraryObject.swift in Sources */,
 				F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */,
+				F4F6629B294048A200D7CA79 /* EraserToolOptionsView.swift in Sources */,
+				F4F662932940457C00D7CA79 /* LineToolOptions.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
 				F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */,
 				F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */,
 				F4BB2980293A66DC00151917 /* FlooringToolsAdditions.swift in Sources */,
 				F4BB297E293A63B700151917 /* FlooringTools.enum.swift in Sources */,
 				F4BB2992293BEAF400151917 /* FreeDrawToolOptionsView.swift in Sources */,
+				F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */,
 				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
+				F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */,
 				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
 				F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */,
+				F4F6629D294048AD00D7CA79 /* BucketToolOptionsView.swift in Sources */,
 				F4BB29A2293C075C00151917 /* OptionsPanelToolSelect.swift in Sources */,
 				F4BB299E293C017600151917 /* DarkButtonStyle.swift in Sources */,
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
+				F4F662892940447400D7CA79 /* LineTool.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */,
-				F4BB29A4293C099000151917 /* DarkDoubleOutlinedButtonStyle.swift in Sources */,
 				F4BB298E293BE4CF00151917 /* FlooringToolFactory.swift in Sources */,
 				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
+				F4F662872940446D00D7CA79 /* ShapeTool.swift in Sources */,
 				F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */,
 				F4BB298C293BE35800151917 /* FlooringToolBase.protocol.swift in Sources */,
 				F4BB2977293943DB00151917 /* FlooringModeController.swift in Sources */,
@@ -430,12 +479,16 @@
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
 				F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */,
 				F4BB2995293BEECD00151917 /* FlooringToolsStore.swift in Sources */,
+				F4F6628D2940455E00D7CA79 /* BucketToolOptions.swift in Sources */,
+				F4F662832940445800D7CA79 /* BucketTool.swift in Sources */,
 				F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */,
 				F425806D291C21B3005F1CCC /* LibraryTabViewContentItem.swift in Sources */,
 				F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */,
 				F4BB2997293BFEC200151917 /* FlooringTilePicker.swift in Sources */,
 				F4BB2988293BD5D400151917 /* FreeDrawTool.swift in Sources */,
 				F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */,
+				F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */,
+				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
 				F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */,
 				F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */,
@@ -447,7 +500,10 @@
 				F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */,
 				F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */,
 				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
+				F4F662992940489900D7CA79 /* EyedropperToolOptionsView.swift in Sources */,
 				F4BB297C293A62F800151917 /* OptionsPanel.swift in Sources */,
+				F4F6628B2940455500D7CA79 /* EraserToolOptions.swift in Sources */,
+				F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */,
 				F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */,
 				F425804B2919B689005F1CCC /* SettingsView.swift in Sources */,
 			);

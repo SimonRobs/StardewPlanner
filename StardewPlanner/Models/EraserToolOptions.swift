@@ -1,14 +1,13 @@
 //
-//  FreeDrawToolOptions.swift
+//  EraserToolOptions.swift
 //  StardewPlanner
 //
-//  Created by Simon Robatto on 2022-12-03.
+//  Created by Simon Robatto on 2022-12-06.
 //
 
 import Foundation
 
-struct FreeDrawToolOptions {
-    
+struct EraserToolOptions {
     enum BrushShapes: String, CaseIterable {
         case Square = "square"
         case Round = "circle"
@@ -29,5 +28,4 @@ struct FreeDrawToolOptions {
         self.size = size
         self.shape = shape
     }
-    
 }

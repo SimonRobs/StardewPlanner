@@ -9,6 +9,8 @@ import SpriteKit
 
 public class FreeDrawTool: FlooringToolBase {
     
+    var type: FlooringTools { get { return .FreeDraw } }
+    
     private var overlayTileMap: SKTileMapNode!
     private var selectedTileSet: TileSets = .Wood
     
@@ -41,14 +43,10 @@ public class FreeDrawTool: FlooringToolBase {
         )
         overlayTileMap.alpha = 0.3
         resetOverlay(to: selectedTileSet)
-        
-        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
-        NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
+        subscribe()
     }
     
-    func activate() {
-        showOverlay()
-    }
+    func activate() { }
     
     func deactivate() {
         hideOverlay()
@@ -102,6 +100,7 @@ public class FreeDrawTool: FlooringToolBase {
     }
     
     private func drawTiles(at location: CGPoint) {
+        // FIXME: Brush size does not work for even sizes
         var allLocations: [CGPoint] = []
         let radius = CGFloat(Int(brushSize / 2))
         for xOffset in stride(from: -TileSize * radius, through: TileSize * radius, by: TileSize) {
@@ -135,5 +134,15 @@ public class FreeDrawTool: FlooringToolBase {
         guard let options = notification.object as? FreeDrawToolOptions else { return }
         drawOptions = options
         resetOverlay(to: selectedTileSet)
+        // TODO: Implement brush shape change
+    }
+
+    private func subscribe() {
+        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
+    }
+    
+    private func unsubscribe() {
+        NotificationController.instance.unsubscribe(observer: self)
     }
 }

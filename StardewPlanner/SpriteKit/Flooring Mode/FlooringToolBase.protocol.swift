@@ -8,6 +8,9 @@
 import Foundation
 
 protocol FlooringToolBase {
+    
+    var type: FlooringTools { get }
+    
     func deactivate()
     func activate()
     

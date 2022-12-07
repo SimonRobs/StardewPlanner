@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct DarkButtonStyle: ButtonStyle {
-    @State var isSelected: Bool
+    var isSelected: Bool
     @State private var isHovered = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .background(isSelected ? Color.accentColor : isHovered ? Color.lightBackground : Color.background )
+            .background(isSelected ? Color.accentColor : isHovered ? Color.lightBackground : Color.background)
             .foregroundColor(isHovered && !isSelected ? .accentColor : .white)
             .cornerRadius(8)
             .onHover{ hovering in

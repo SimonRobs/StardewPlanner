@@ -35,10 +35,11 @@ public class FreeDrawTool: FlooringToolBase {
         self.scene = scene
         self.tileMap = tileMap
         
+        // FIXME: Fix overlay position breaking when even columns are selected... Also, change columns/rows back to +1
         overlayTileMap = SKTileMapNode(
             tileSet: TileSetController.instance.flooringTileSet,
-            columns: Int(FreeDrawToolOptions.MaxBrushSize),
-            rows: Int(FreeDrawToolOptions.MaxBrushSize),
+            columns: Int(FreeDrawToolOptions.MaxBrushSize) + 2,
+            rows: Int(FreeDrawToolOptions.MaxBrushSize) + 2,
             tileSize: CGSize(width: TileSize, height: TileSize)
         )
         overlayTileMap.alpha = 0.3
@@ -118,7 +119,7 @@ public class FreeDrawTool: FlooringToolBase {
         
         overlayTileMap.fill(with: nil)
         
-        let center = Int(FreeDrawToolOptions.MaxBrushSize) / 2
+        let center = overlayTileMap.numberOfColumns / 2
         let radius = Int(brushSize / 2)
         
         let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups

@@ -11,7 +11,7 @@ public class EraserTool: FlooringToolBase {
     
     var type: FlooringTools { get { return .Eraser } }
     
-    private var borderSprite: SKSpriteNode!
+    private var overlayTileMap: SKTileMapNode!
     
     private var drawOptions = EraserToolOptions()
     
@@ -40,9 +40,8 @@ public class EraserTool: FlooringToolBase {
         self.scene = scene
         self.tileMap = tileMap
         
-        // TODO: Find a better way to implement the eraser border
-        borderSprite = SKSpriteNode(imageNamed: "Eraser Border Square")
-        borderSprite.size = borderSize
+        createOverlayTilemap()
+        resetOverlay()
         
         subscribe()
     }
@@ -62,8 +61,8 @@ public class EraserTool: FlooringToolBase {
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
-        if borderSprite.parent == nil { showOverlay() }
-        moveBorderSprite(to: event.location)
+        if overlayTileMap.parent == nil { showOverlay() }
+        moveOverlay(to: event.location)
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
@@ -72,26 +71,26 @@ public class EraserTool: FlooringToolBase {
     
     func mouseUp(with event: TileMapMouseEvent) {
         showOverlay()
-        moveBorderSprite(to: event.location)
+        moveOverlay(to: event.location)
     }
     
     func mouseDragged(with event: TileMapMouseEvent) {
-        moveBorderSprite(to: event.location)
+        moveOverlay(to: event.location)
         eraseTiles(at: event.location)
     }
     
     private func showOverlay() {
-        if(borderSprite.scene != nil) { return }
-        scene.addChild(borderSprite)
+        if(overlayTileMap.scene != nil) { return }
+        scene.addChild(overlayTileMap)
     }
     
     private func hideOverlay() {
-        if(borderSprite.scene == nil) { return }
-        borderSprite.removeFromParent()
+        if(overlayTileMap.scene == nil) { return }
+        overlayTileMap.removeFromParent()
     }
     
-    private func moveBorderSprite(to location: CGPoint) {
-        borderSprite.position = location
+    private func moveOverlay(to location: CGPoint) {
+        overlayTileMap.position = location
     }
     
     private func eraseTiles(at location: CGPoint) {
@@ -112,7 +111,7 @@ public class EraserTool: FlooringToolBase {
     @objc private func handleOptionsChanged(_ notification: Notification) {
         guard let options = notification.object as? EraserToolOptions else { return }
         drawOptions = options
-        borderSprite.size = borderSize
+        resetOverlay()
         // TODO: Implement brush shape change
     }
 
@@ -122,5 +121,46 @@ public class EraserTool: FlooringToolBase {
     
     private func unsubscribe() {
         NotificationController.instance.unsubscribe(observer: self)
+    }
+    
+    private func resetOverlay() {
+        
+        overlayTileMap.fill(with: nil)
+        
+        let center = overlayTileMap.numberOfColumns / 2
+        let radius = Int(eraserSize / 2)
+        
+        // If automapping is enabled while filling up the tilemap, it will break
+        // because we do not yet have sprite the definitions for all the sprites
+        overlayTileMap.enableAutomapping = false
+        let tileGroup = overlayTileMap.tileSet.tileGroups[0]
+        for column in (center - radius)...(center + radius) {
+            for row in (center - radius)...(center + radius) {
+                overlayTileMap.setTileGroup(tileGroup, forColumn: column, row: row)
+            }
+        }
+        overlayTileMap.enableAutomapping = true
+    }
+    
+    private func createOverlayTilemap() {
+        var rules: [SKTileGroupRule] = []
+        
+        rules.append(SKTileGroupRule(adjacency: [], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Center Solo"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyAll], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Center"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyUp), .adjacencyLowerLeft,.adjacencyLowerRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Up Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyDown),.adjacencyUpperLeft,.adjacencyUpperRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Down Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyLeft),.adjacencyUpperRight,.adjacencyLowerRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Left Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyRight),.adjacencyUpperLeft,.adjacencyLowerLeft], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Right Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyDown,.adjacencyRight, .adjacencyLowerRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Upper Left Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyUp,.adjacencyRight,.adjacencyUpperRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Lower Left Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyUp,.adjacencyLeft,.adjacencyUpperLeft], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Lower Right Edge"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyLeft,.adjacencyDown, .adjacencyLowerLeft], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Eraser Upper Right Edge"))]))
+        
+        overlayTileMap = SKTileMapNode(
+            tileSet: SKTileSet(tileGroups: [SKTileGroup(rules: rules)]),
+            columns: Int(EraserToolOptions.MaxBrushSize) + 2,
+            rows: Int(EraserToolOptions.MaxBrushSize) + 2,
+            tileSize: CGSize(width: TileSize, height: TileSize)
+        )
     }
 }

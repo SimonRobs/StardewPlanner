@@ -139,7 +139,7 @@ public class FreeDrawTool: FlooringToolBase {
     }
 
     private func subscribe() {
-        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
         NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
     }
     

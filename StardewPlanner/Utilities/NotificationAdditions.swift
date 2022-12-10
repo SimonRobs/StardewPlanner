@@ -16,8 +16,8 @@ extension Notification.Name {
     static let onFlooringModeToolChanged = Notification.Name("Event::FlooringMode::ToolChanged")
     
     // All Tools
-    static let onFlooringToolPrimaryTileChanged = Notification.Name("Event::FlooringTool::PrimaryTileChanged")
-    static let onFlooringToolSecondaryTileChanged = Notification.Name("Event::FlooringTool::SecondaryTileChanged")
+    static let onPrimaryTileChanged = Notification.Name("Event::FlooringMode::PrimaryTileChanged")
+    static let onSecondaryTileChanged = Notification.Name("Event::FlooringMode::SecondaryTileChanged")
     
     // Free Draw Tool
     static let onFreeDrawToolOptionsChanged = Notification.Name("Event::FreeDrawTool::OptionsChanged")

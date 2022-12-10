@@ -19,13 +19,13 @@ class FlooringToolsStore: ObservableObject {
     
     @Published var selectedPrimaryTile: TileSets = .Wood {
         didSet {
-            NotificationController.instance.post(name: .onFlooringToolPrimaryTileChanged, object: selectedPrimaryTile)
+            NotificationController.instance.post(name: .onPrimaryTileChanged, object: selectedPrimaryTile)
         }
     }
     
-    @Published var selectedSecondaryTile: TileSets = .Wood {
+    @Published var selectedSecondaryTile: TileSets = .Empty {
         didSet {
-            NotificationController.instance.post(name: .onFlooringToolSecondaryTileChanged, object: selectedSecondaryTile)
+            NotificationController.instance.post(name: .onSecondaryTileChanged, object: selectedSecondaryTile)
         }
     }
     

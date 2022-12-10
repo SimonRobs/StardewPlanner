@@ -33,6 +33,7 @@
 		F4388A1729135F0900FB39BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1629135F0900FB39BC /* Assets.xcassets */; };
 		F4388A1A29135F0900FB39BC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4388A1929135F0900FB39BC /* Preview Assets.xcassets */; };
 		F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */; };
+		F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */; };
 		F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1410B29199DA4006E762E /* ColorAdditions.swift */; };
 		F4BB2977293943DB00151917 /* FlooringModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB2976293943DB00151917 /* FlooringModeController.swift */; };
 		F4BB297C293A62F800151917 /* OptionsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BB297B293A62F800151917 /* OptionsPanel.swift */; };
@@ -107,6 +108,7 @@
 		F4388A1929135F0900FB39BC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StardewPlanner.entitlements; sourceTree = "<group>"; };
 		F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMapMouseEvent.swift; sourceTree = "<group>"; };
+		F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinateAdditions.swift; sourceTree = "<group>"; };
 		F4A1410B29199DA4006E762E /* ColorAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdditions.swift; sourceTree = "<group>"; };
 		F4BB2976293943DB00151917 /* FlooringModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringModeController.swift; sourceTree = "<group>"; };
 		F4BB297B293A62F800151917 /* OptionsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsPanel.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
 				F433C696292436E50075E2F1 /* CGPointAdditions.swift */,
+				F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
 				F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */,
 				F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */,
+				F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */,
 				F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */,
 				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
 				F4F662992940489900D7CA79 /* EyedropperToolOptionsView.swift in Sources */,

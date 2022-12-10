@@ -14,7 +14,7 @@ class TileSetController {
     public let flooringTileSet: SKTileSet
     
     private init() {
-        flooringTileSet = SKTileSet(tileGroups: TileSets.allCases.map {tileDef in
+        flooringTileSet = SKTileSet(tileGroups: TileSets.allCases.filter({$0 != .Empty}).map {tileDef in
             TileSetController.MakeTileGroup(named: tileDef.rawValue)
         })
     }

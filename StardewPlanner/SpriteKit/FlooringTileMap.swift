@@ -26,19 +26,38 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     func setFlooringTile(toTileSet tileSet: TileSets?, at location: CGPoint, ignoringPreviousTile: Bool = true) {
+        if tileSet == .Empty { return }
+        
         guard let targetTile = background.getTile(at: location) else { return }
         
         if !ignoringPreviousTile && targetTile == previousTile || !targetTile.buildable { return }
         if ignoringPreviousTile && !targetTile.buildable { return }
         previousTile = targetTile
         
+        setFlooringTile(toTileSet: tileSet, forColumn: targetTile.i, row: targetTile.j)
+    }
+    
+    
+    func setFlooringTile(toTileSet tileSet: TileSets?, forColumn column: Int, row: Int) {
+        if tileSet == .Empty { return }
+        if background.getTile(at: GridCoordinate(i: column, j: row))?.buildable == false { return }
+        
         let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
         let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet?.rawValue})
-        setTileGroup(tileGroup, forColumn: targetTile.i, row: BackgroundRows - 1 - targetTile.j)
+        super.setTileGroup(tileGroup, forColumn: column, row: BackgroundRows - 1 - row)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("Not Implemented")
     }
+    
+    override func setTileGroup(_ tileGroup: SKTileGroup, andTileDefinition tileDefinition: SKTileDefinition, forColumn column: Int, row: Int) {
+        fatalError("Attempting to call illegal method... Please call setFlooringTile instead")
+    }
+    
+    override func setTileGroup(_ tileGroup: SKTileGroup?, forColumn column: Int, row: Int) {
+        fatalError("Attempting to call illegal method... Please call setFlooringTile instead")
+    }
+    
 
 }

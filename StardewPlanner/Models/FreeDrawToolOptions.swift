@@ -15,7 +15,7 @@ struct FreeDrawToolOptions {
     }
     
     static let MinBrushSize: CGFloat = 1
-    static let MaxBrushSize: CGFloat = 9
+    static let MaxBrushSize: CGFloat = 5
     
     var size: CGFloat
     var shape: BrushShapes

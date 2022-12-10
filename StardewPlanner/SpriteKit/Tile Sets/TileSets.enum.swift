@@ -8,6 +8,7 @@
 import SpriteKit
 
 enum TileSets: String, CaseIterable {
+    case Empty = "Empty"
     case Wood = "Wood"
     case Stone = "Stone"
 }

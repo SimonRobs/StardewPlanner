@@ -8,8 +8,8 @@
 import Foundation
 
 struct GridCoordinate {
-    let i: Int
-    let j: Int
+    let i: Int // Column == X
+    let j: Int // Row == Y
     
     func isOutOfBounds() -> Bool {
         return (i < 0 || i >= BackgroundColumns || j < 0 || j >= BackgroundRows)

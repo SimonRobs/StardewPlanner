@@ -13,6 +13,8 @@ public class BucketTool: FlooringToolBase {
     
     private var drawOptions = BucketToolOptions()
     
+    private var newTileSet: TileSets? = .Wood
+    
     private var tileMap: FlooringTileMap
     private var scene: SKScene
     
@@ -31,7 +33,11 @@ public class BucketTool: FlooringToolBase {
     
     func mouseMoved(with event: TileMapMouseEvent) { }
     
-    func mouseDown(with event: TileMapMouseEvent) { }
+    func mouseDown(with event: TileMapMouseEvent) {
+        let coordinates = event.location.toGridCoordinate()
+        let oldTileSet = tileMap.getFlooringTileSet(atColumn: coordinates.i, row: coordinates.j)
+        doFloodFill(atColumn: coordinates.i, row: coordinates.j, oldTileSet: oldTileSet)
+    }
     
     func mouseUp(with event: TileMapMouseEvent) { }
     
@@ -40,4 +46,55 @@ public class BucketTool: FlooringToolBase {
     private func subscribe() { }
     
     private func unsubscribe() { }
+    
+    // Adapted from https://lodev.org/cgtutor/floodfill.html#Recursive_Scanline_Floodfill_Algorithm `floodFillScanlineStack` algorithm
+    private func doFloodFill(atColumn column: Int, row: Int, oldTileSet: TileSets?) {
+        
+        if oldTileSet == newTileSet { return }
+        
+        var targetColumn: Int = column
+        var spanAbove: Bool, spanBelow: Bool
+        
+        var stack: [GridCoordinate] = []
+        stack.append(GridCoordinate(i: column, j: row))
+        
+        while !stack.isEmpty {
+            let currentCoords = stack.popLast()!
+            
+            targetColumn = currentCoords.i
+            while (targetColumn >= 0 &&
+            tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
+            {
+                targetColumn -= 1
+            }
+            targetColumn += 1
+            spanAbove = false
+            spanBelow = false
+            while (targetColumn < BackgroundColumns &&
+                   tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
+            {
+                tileMap.setFlooringTile(toTileSet: newTileSet, forColumn: targetColumn, row: currentCoords.j)
+                if (!spanAbove && currentCoords.j > 0 &&
+                    tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j - 1) == oldTileSet &&
+                    tileMap.isBuildable(atColumn: targetColumn, row: currentCoords.j - 1)) {
+                    stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j - 1))
+                    spanAbove = true
+                } else if (spanAbove && currentCoords.j > 0 &&
+                           tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j - 1) != oldTileSet) {
+                    spanAbove = false
+                }
+                
+                if (!spanBelow && currentCoords.j < BackgroundRows - 1 &&
+                    tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j + 1) == oldTileSet &&
+                    tileMap.isBuildable(atColumn: targetColumn, row: currentCoords.j + 1)) {
+                    stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j + 1))
+                    spanBelow = true
+                } else if (spanBelow && currentCoords.j < BackgroundRows - 1 &&
+                           tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j + 1) != oldTileSet) {
+                    spanBelow = false
+                }
+                targetColumn += 1
+            }
+        }
+    }
 }

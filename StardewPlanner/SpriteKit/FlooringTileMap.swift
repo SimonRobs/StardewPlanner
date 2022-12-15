@@ -21,6 +21,18 @@ class FlooringTileMap: SKTileMapNode {
         )
     }
     
+    func isBuildable(atColumn column: Int, row: Int) -> Bool {
+        return background.getTile(atColumn: column, row: row)?.buildable ?? false
+    }
+    
+    func getFlooringTileSet(atColumn column: Int, row: Int) -> TileSets? {
+        if let groupName = tileGroup(atColumn: column, row: BackgroundRows - 1 - row)?.name {
+            return TileSets(rawValue:groupName)
+        } else {
+            return nil
+        }
+    }
+    
     func clearFlooringTile(at coords: GridCoordinate) {
         setTileGroup(nil, forColumn: coords.i, row: BackgroundRows - 1 - coords.j)
     }

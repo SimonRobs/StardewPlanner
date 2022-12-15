@@ -37,6 +37,11 @@ class BackgroundSprite: SKSpriteNode {
         return allTiles[gridCoordinate.i][gridCoordinate.j]
     }
     
+    func getTile(atColumn column: Int, row: Int) -> BackgroundTile? {
+        if column < 0 || column >= BackgroundColumns || row < 0 || row >= BackgroundRows { return nil }
+        return allTiles[column][row]
+    }
+    
     func setBuildableStatus(at coords: GridCoordinate, to status: Bool) {
         allTiles[coords.i][coords.j].buildable = status
     }

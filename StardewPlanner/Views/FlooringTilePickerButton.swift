@@ -10,23 +10,30 @@ import SwiftUI
 struct FlooringTilePickerButton: View {
     
     @Binding var tile: TileSets
+    @State private var isHovered = false
     
     var body: some View {
         Menu {
             ForEach(TileSets.allCases, id:\.self) { type in
                 Button(action: { tile = type }) {
-                    Image("\(type.rawValue) Center Solo")
-                        .frame(minWidth: 48, minHeight: 48)
+                    HStack {
+                        Image("\(type.rawValue) Center Solo")
+                        Text(type.rawValue)
+                    }
                 }
             }
         } label: {
             Button(action: {}) {
                 Image("\(tile.rawValue) Center Solo")
-                    .frame(minWidth: 48, minHeight: 48)
             }
-            .buttonStyle(DarkButtonStyle(isSelected: false))
         }
         .menuStyle(.borderlessButton)
+        .padding()
+        .background(isHovered ? Color.lightBackground : Color.background)
+        .cornerRadius(8)
+        .onHover{ hovering in
+            isHovered = hovering
+        }
     }
 }
 

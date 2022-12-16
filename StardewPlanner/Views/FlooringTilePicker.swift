@@ -16,8 +16,12 @@ struct FlooringTilePicker: View {
     var body: some View {
         HStack {
             FlooringTilePickerButton(tile: $toolsStore.selectedPrimaryTile)
-            Divider()
-                .frame(height: 32)
+            Button(action: swapSelectedTiles) {
+                Image(systemName: "arrow.left.and.right")
+                    .padding()
+            }
+            .buttonStyle(DarkButtonStyle(isSelected: false))
+            .contentShape(Rectangle())
             FlooringTilePickerButton(tile: $toolsStore.selectedSecondaryTile)
         }
         .padding(8)
@@ -27,10 +31,9 @@ struct FlooringTilePicker: View {
     }
     
     private func swapSelectedTiles() {
-        // TODO: Implement primary/secondary swapping with this button
-//        Button(action: swapSelectedTiles) {
-//            Image(systemName: "arrow.left.arrow.right")
-//        }
+        let oldPrimaryTile = toolsStore.selectedPrimaryTile
+        toolsStore.selectedPrimaryTile = toolsStore.selectedSecondaryTile
+        toolsStore.selectedSecondaryTile = oldPrimaryTile
     }
 }
 

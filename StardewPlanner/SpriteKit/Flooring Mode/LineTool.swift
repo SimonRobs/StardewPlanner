@@ -10,8 +10,7 @@ import SpriteKit
 public class LineTool: FlooringToolBase {
     
     var type: FlooringTools { get { return .Line } }
-    
-    private var overlayTileMap: SKTileMapNode!
+
     private var selectedTileSet: TileSets = .Wood
     
     private var drawOptions = LineToolOptions()
@@ -38,29 +37,19 @@ public class LineTool: FlooringToolBase {
         self.scene = scene
         self.tileMap = tileMap
         
-        overlayTileMap = SKTileMapNode(
-            tileSet: TileSetController.instance.flooringTileSet,
-            columns: BackgroundColumns,
-            rows: BackgroundRows,
-            tileSize: CGSize(width: TileSize, height: TileSize)
-        )
-        overlayTileMap.alpha = 0.3
-        scene.addChild(overlayTileMap)
         subscribe()
     }
     
     func activate() { }
     
     func deactivate() {
-        overlayTileMap.removeFromParent()
+        tileMap.overlay.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
-        showOverlay()
     }
     
     func mouseExited(with event: TileMapMouseEvent) {
-        hideOverlay()
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
@@ -83,21 +72,8 @@ public class LineTool: FlooringToolBase {
         updateOverlay()
     }
     
-    private func showOverlay() {
-        // TODO: Show Overlay
-    }
-    
-    private func hideOverlay() {
-        // TODO: Hide Overlay
-    }
-    
     private func moveSelectedSprite(to location: CGPoint) {
         // TODO: Update overlay tiles positions
-    }
-    
-    @objc private func handleStrokeTileChanged(_ notification: Notification) {
-        guard let tileSet = notification.object as? TileSets else { return }
-        selectedTileSet = tileSet
     }
     
     private func drawTiles() {
@@ -108,12 +84,10 @@ public class LineTool: FlooringToolBase {
     
     private func updateOverlay() {
         
-        overlayTileMap.fill(with: nil)
-        
-        let tileGroup = TileSetController.instance.flooringTileSet.tileGroups.first(where: {$0.name == selectedTileSet.rawValue})
+        tileMap.overlay.clear()
         
         for tileCoords in getTilesToDraw() {
-            overlayTileMap.setTileGroup(tileGroup, forColumn: tileCoords.i, row:  BackgroundRows - tileCoords.j - 1)
+            tileMap.overlay.setFlooringTile(toTileSet: selectedTileSet, at: tileCoords)
         }
     }
     
@@ -166,6 +140,11 @@ public class LineTool: FlooringToolBase {
         drawOptions = options
         updateOverlay()
         // TODO: Implement line cap change
+    }
+    
+    @objc private func handleStrokeTileChanged(_ notification: Notification) {
+        guard let tileSet = notification.object as? TileSets else { return }
+        selectedTileSet = tileSet
     }
 
     private func subscribe() {

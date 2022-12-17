@@ -32,7 +32,7 @@ struct FreeDrawToolOptionsView: View {
             
             
             Picker(selection: $toolsStore.freeDrawToolOptions.shape, content: {
-                ForEach(FreeDrawToolOptions.BrushShapes.allCases, id: \.self) { shape in
+                ForEach(BrushShapes.allCases, id: \.self) { shape in
                     Image(systemName: shape.rawValue)
                         .padding()
                 }

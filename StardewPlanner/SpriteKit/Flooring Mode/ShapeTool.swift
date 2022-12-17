@@ -12,8 +12,7 @@ public class ShapeTool: FlooringToolBase {
     var type: FlooringTools { get { return .Shape } }
     
     private var drawOptions = ShapeToolOptions()
-    
-    private var overlayTileMap: SKTileMapNode!
+
     private var fillTileSet: TileSets = .Wood
     private var strokeTileSet: TileSets = .Empty
     
@@ -59,26 +58,13 @@ public class ShapeTool: FlooringToolBase {
         self.scene = scene
         self.tileMap = tileMap
         
-        overlayTileMap = SKTileMapNode(
-            tileSet: TileSetController.instance.flooringTileSet,
-            columns: BackgroundColumns,
-            rows: BackgroundRows,
-            tileSize: CGSize(width: TileSize, height: TileSize)
-        )
-        overlayTileMap.alpha = 0.3
-        scene.addChild(overlayTileMap)
-        
-        clearOverlay()
-        
         subscribe()
     }
     
-    func activate() {
-        clearOverlay()
-    }
+    func activate() { }
     
     func deactivate() {
-        clearOverlay()
+        tileMap.overlay.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
@@ -86,7 +72,7 @@ public class ShapeTool: FlooringToolBase {
     }
     
     func mouseExited(with event: TileMapMouseEvent) {
-        clearOverlay()
+        tileMap.overlay.clear()
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
@@ -99,7 +85,7 @@ public class ShapeTool: FlooringToolBase {
     
     func mouseUp(with event: TileMapMouseEvent) {
         drawShape()
-        clearOverlay()
+        tileMap.overlay.clear()
         startCoordinates = nil
         endCoordinates = nil
     }
@@ -137,26 +123,21 @@ public class ShapeTool: FlooringToolBase {
     }
     
     private func moveOverlayTile(to location: CGPoint) {
-        clearOverlay()
+        tileMap.overlay.clear()
         let positionInGrid = location.toGridCoordinate()
-        let tileGroup = TileSetController.instance.flooringTileSet.tileGroups.first(where: {$0.name == strokeTileSet.rawValue || $0.name == fillTileSet.rawValue})
-        overlayTileMap.setTileGroup(tileGroup, forColumn: positionInGrid.i, row: BackgroundRows - positionInGrid.j - 1)
+        let tileSet = strokeTileSet == .Empty ? fillTileSet : strokeTileSet
+        tileMap.overlay.setFlooringTile(toTileSet: tileSet, at: positionInGrid)
     }
     
     private func updateOverlay() {
-        clearOverlay()
+        tileMap.overlay.clear()
         guard let topLeftCorner = topLeftCorner, let bottomRightCorner = bottomRightCorner else { return }
         
         for col in topLeftCorner.i ... bottomRightCorner.i {
             for row in bottomRightCorner.j ... topLeftCorner.j {
-                let tileGroup = TileSetController.instance.flooringTileSet.tileGroups.first(where: {$0.name == getTileSet(atColumn: col, row: row)?.rawValue})
-                overlayTileMap.setTileGroup(tileGroup, forColumn: col, row:  BackgroundRows - row - 1)
+                tileMap.overlay.setFlooringTile(toTileSet: getTileSet(atColumn: col, row: row), forColumn: col, row: row)
             }
         }
-    }
-    
-    private func clearOverlay() {
-        overlayTileMap.fill(with: nil)
     }
     
     @objc private func handleFillTileChanged(_ notification: Notification) {

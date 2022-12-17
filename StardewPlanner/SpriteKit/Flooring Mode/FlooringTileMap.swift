@@ -12,6 +12,8 @@ class FlooringTileMap: SKTileMapNode {
     
     private var previousTile: BackgroundTile? = nil
     
+    let overlay = FlooringTileMapOverlay()
+    
     init(on background: BackgroundSprite) {
         self.background = background
         super.init(tileSet: TileSetController.instance.flooringTileSet,
@@ -19,6 +21,7 @@ class FlooringTileMap: SKTileMapNode {
                    rows: BackgroundRows,
                    tileSize: CGSize(width: TileSize, height: TileSize)
         )
+        addChild(overlay)
     }
     
     func isBuildable(atColumn column: Int, row: Int) -> Bool {
@@ -34,7 +37,7 @@ class FlooringTileMap: SKTileMapNode {
     }
     
     func clearFlooringTile(at coords: GridCoordinate) {
-        setTileGroup(nil, forColumn: coords.i, row: BackgroundRows - 1 - coords.j)
+        super.setTileGroup(nil, forColumn: coords.i, row: BackgroundRows - 1 - coords.j)
     }
     
     func setFlooringTile(toTileSet tileSet: TileSets?, at location: CGPoint, ignoringPreviousTile: Bool = true) {

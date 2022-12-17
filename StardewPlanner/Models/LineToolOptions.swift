@@ -9,10 +9,7 @@ import Foundation
 
 struct LineToolOptions {
     
-    enum LineCaps: String, CaseIterable {
-        case Square = "square"
-        case Circle = "circle"
-    }
+    typealias LineCaps = BrushShapes
     
     static let MinStrokeWidth: CGFloat = 1
     static let MaxStrokeWidth: CGFloat = 5

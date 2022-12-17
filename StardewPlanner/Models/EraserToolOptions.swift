@@ -7,12 +7,7 @@
 
 import Foundation
 
-struct EraserToolOptions {
-    enum BrushShapes: String, CaseIterable {
-        case Square = "square"
-        case Round = "circle"
-    }
-    
+struct EraserToolOptions {    
     static let MinBrushSize: CGFloat = 1
     static let MaxBrushSize: CGFloat = 5
     

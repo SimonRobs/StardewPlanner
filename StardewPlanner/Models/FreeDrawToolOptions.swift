@@ -9,11 +9,6 @@ import Foundation
 
 struct FreeDrawToolOptions {
     
-    enum BrushShapes: String, CaseIterable {
-        case Square = "square"
-        case Round = "circle"
-    }
-    
     static let MinBrushSize: CGFloat = 1
     static let MaxBrushSize: CGFloat = 5
     

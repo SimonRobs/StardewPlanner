@@ -31,7 +31,7 @@ struct EraserToolOptionsView: View {
             
             
             Picker(selection: $toolsStore.eraserToolOptions.shape, content: {
-                ForEach(EraserToolOptions.BrushShapes.allCases, id: \.self) { shape in
+                ForEach(BrushShapes.allCases, id: \.self) { shape in
                     Image(systemName: shape.rawValue)
                         .padding()
                 }

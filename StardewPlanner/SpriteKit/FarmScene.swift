@@ -18,6 +18,8 @@ class FarmScene: SKScene {
     private var flooringController: FlooringModeController!
     private var buildTool: BuildTool!
     
+    private var previousMouseLocation: CGPoint?
+    
     override func didMove(to view: SKView) {
         subscribeObservers()
         
@@ -66,6 +68,7 @@ class FarmScene: SKScene {
 
     override func mouseMoved(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
+        if !shouldPropagateMovementEvent(mouseEvent) { return }
         switch mode {
         case .Build:
             buildTool.mouseMoved(with: mouseEvent)
@@ -75,8 +78,6 @@ class FarmScene: SKScene {
             return
         }
     }
-    
-//    private var previousLocation: CGPoint = .zero
     
     override func mouseDown(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
@@ -104,6 +105,7 @@ class FarmScene: SKScene {
 
     override func mouseDragged(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
+        if !shouldPropagateMovementEvent(mouseEvent) { return }
         switch mode {
         case .Flooring:
             flooringController.mouseDragged(with: mouseEvent)
@@ -168,5 +170,13 @@ class FarmScene: SKScene {
         mode = .Build
         guard let object = notification.object as? LibraryObject else { return }
         buildTool.addNewObject(object)
+    }
+    
+    /// Only share mouse moved or dragged event if we hovered over a different tile.
+    /// Otherwise we send thousands of useless events.
+    private func shouldPropagateMovementEvent(_ event: TileMapMouseEvent) -> Bool {
+        if event.location.toGridCoordinate() == previousMouseLocation?.toGridCoordinate() { return false }
+        previousMouseLocation = event.location
+        return true
     }
 }

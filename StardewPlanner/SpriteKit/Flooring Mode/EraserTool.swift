@@ -69,7 +69,7 @@ public class EraserTool: FlooringToolBase {
                                                             ofSize: eraserSize,
                                                             centerAt: location.toGridCoordinate())
         {
-            tileMap.overlay.setFlooringTile(toTileSet: CustomTileSets.Eraser, at: gridCoord)
+            tileMap.overlay.setFlooringTile(toTileSet: .Eraser, at: gridCoord)
         }
         tileMap.overlay.enableAutomapping = true
     }

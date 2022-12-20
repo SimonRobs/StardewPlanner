@@ -7,4 +7,4 @@
 
 import Foundation
 
-struct BucketToolOptions { }
+struct BucketToolOptions { /* No options for now */ }

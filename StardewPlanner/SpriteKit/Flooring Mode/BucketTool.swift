@@ -21,6 +21,8 @@ public class BucketTool: FlooringToolBase {
     init(in scene: SKScene, tileMap: FlooringTileMap) {
         self.scene = scene
         self.tileMap = tileMap
+        
+        subscribe()
     }
     
     func activate() { }
@@ -42,10 +44,6 @@ public class BucketTool: FlooringToolBase {
     func mouseUp(with event: TileMapMouseEvent) { }
     
     func mouseDragged(with event: TileMapMouseEvent) { }
-    
-    private func subscribe() { }
-    
-    private func unsubscribe() { }
     
     // Adapted from https://lodev.org/cgtutor/floodfill.html#Recursive_Scanline_Floodfill_Algorithm `floodFillScanlineStack` algorithm
     private func doFloodFill(atColumn column: Int, row: Int, oldTileSet: TileSets?) {
@@ -96,5 +94,24 @@ public class BucketTool: FlooringToolBase {
                 targetColumn += 1
             }
         }
+    }
+    
+    @objc private func handleOptionsChanged(_ notification: Notification) {
+        guard let options = notification.object as? BucketToolOptions else { return }
+        drawOptions = options
+    }
+    
+    @objc private func handlePrimaryTileChanged(_ notification: Notification) {
+        guard let tileSet = notification.object as? TileSets else { return }
+        newTileSet = tileSet
+    }
+
+    private func subscribe() {
+        NotificationController.instance.subscribe(observer: self, name: .onPrimaryTileChanged, callbackSelector: #selector(handlePrimaryTileChanged), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
+    }
+    
+    private func unsubscribe() {
+        NotificationController.instance.unsubscribe(observer: self)
     }
 }

@@ -28,7 +28,18 @@ class BrushShapeCreator {
     }
     
     private static func GetCircleTiles(ofSize size: CGFloat, centerAt center: GridCoordinate) -> [GridCoordinate] {
-        // TODO: To Implement
-        return []
+        if size == 1 { return [center] }
+        var tiles: [GridCoordinate] = []
+        let radius = Int(ceil(size))
+        
+        for columnOffset in -radius...radius {
+            for rowOffset in -radius...radius {
+                if columnOffset * columnOffset + rowOffset * rowOffset <= radius * radius + 1 {
+                    tiles.append(GridCoordinate(i: center.i + columnOffset, j: center.j + rowOffset))
+                }
+            }
+        }
+        
+        return tiles
     }
 }

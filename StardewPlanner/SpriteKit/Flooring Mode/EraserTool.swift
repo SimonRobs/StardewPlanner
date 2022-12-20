@@ -35,9 +35,12 @@ public class EraserTool: FlooringToolBase {
         subscribe()
     }
     
-    func activate() {  }
+    func activate() {
+        tileMap.overlay.alpha = 1
+    }
     
     func deactivate() {
+        tileMap.overlay.alpha = FlooringTileMapOverlay.DefaultAlpha
         tileMap.overlay.clear()
     }
     
@@ -50,7 +53,6 @@ public class EraserTool: FlooringToolBase {
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        tileMap.overlay.clear()
         eraseTiles(at: event.location)
     }
     
@@ -59,7 +61,8 @@ public class EraserTool: FlooringToolBase {
     }
     
     func mouseDragged(with event: TileMapMouseEvent) {
-        eraseTiles(at: event.location)
+        moveOverlay(to: event.location)
+        eraseTiles(at: event.location) 
     }
     
     private func moveOverlay(to location: CGPoint) {

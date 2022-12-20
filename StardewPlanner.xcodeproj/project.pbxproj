@@ -81,6 +81,8 @@
 		F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */; };
 		F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */; };
 		F4FA0DA1294E5D5D004F9120 /* CustomTileSets.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0DA0294E5D5D004F9120 /* CustomTileSets.enum.swift */; };
+		F4FA0DA329513E01004F9120 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0DA229513E01004F9120 /* CameraController.swift */; };
+		F4FA0DA529513F7F004F9120 /* UInt16Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0DA429513F7F004F9120 /* UInt16Additions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +162,8 @@
 		F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeToolOptionsView.swift; sourceTree = "<group>"; };
 		F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineToolOptionsView.swift; sourceTree = "<group>"; };
 		F4FA0DA0294E5D5D004F9120 /* CustomTileSets.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTileSets.enum.swift; sourceTree = "<group>"; };
+		F4FA0DA229513E01004F9120 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		F4FA0DA429513F7F004F9120 /* UInt16Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt16Additions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,7 @@
 				F42580432919B5D0005F1CCC /* Utilities */,
 				F4E5A5EB291620A300970C07 /* Tile Sets */,
 				F4E5A5FA29182CDE00970C07 /* Constants.swift */,
+				F4FA0DA229513E01004F9120 /* CameraController.swift */,
 				F4C93B172915B65500D121B2 /* FarmScene.sks */,
 				F4C93B192915B78F00D121B2 /* FarmScene.swift */,
 				F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */,
@@ -244,6 +249,7 @@
 				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
 				F433C696292436E50075E2F1 /* CGPointAdditions.swift */,
 				F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */,
+				F4FA0DA429513F7F004F9120 /* UInt16Additions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -515,12 +521,14 @@
 				F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */,
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
+				F4FA0DA529513F7F004F9120 /* UInt16Additions.swift in Sources */,
 				F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */,
 				F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */,
 				F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */,
 				F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */,
 				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
 				F4F662992940489900D7CA79 /* EyedropperToolOptionsView.swift in Sources */,
+				F4FA0DA329513E01004F9120 /* CameraController.swift in Sources */,
 				F4BB297C293A62F800151917 /* OptionsPanel.swift in Sources */,
 				F4F6628B2940455500D7CA79 /* EraserToolOptions.swift in Sources */,
 				F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */,

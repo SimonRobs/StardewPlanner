@@ -9,13 +9,15 @@ import SpriteKit
 
 class FlooringTileMapOverlay: SKTileMapNode {
 
+    static let DefaultAlpha = 0.3
+    
     override init() {
         super.init(tileSet: TileSetController.instance.flooringTileSet,
                    columns: BackgroundColumns,
                    rows: BackgroundRows,
                    tileSize: CGSize(width: TileSize, height: TileSize)
         )
-        alpha = 0.3
+        alpha = FlooringTileMapOverlay.DefaultAlpha
     }
     
     func clear() {

@@ -11,9 +11,10 @@ class FarmScene: SKScene {
     
     private var farmBackground: BackgroundSprite!
     private var flooringTileMap: FlooringTileMap!
-    private var cameraNode: SKCameraNode!
+    private var cameraController: CameraController!
     
     private var mode = EditorModes.Flooring
+    private var panningCamera = false
     
     private var flooringController: FlooringModeController!
     private var buildTool: BuildTool!
@@ -23,8 +24,6 @@ class FarmScene: SKScene {
     override func didMove(to view: SKView) {
         subscribeObservers()
         
-        cameraNode = (childNode(withName: "MainCamera") as? SKCameraNode)!
-        
         farmBackground = BackgroundSprite()
         addChild(farmBackground)
         
@@ -33,6 +32,8 @@ class FarmScene: SKScene {
 
         buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
         flooringController = FlooringModeController(in: self, tileMap: flooringTileMap)
+        
+        cameraController = CameraController(for: (childNode(withName: "MainCamera") as? SKCameraNode)!)
     }
     
     override func didChangeSize(_ oldSize: CGSize) {
@@ -81,6 +82,10 @@ class FarmScene: SKScene {
     
     override func mouseDown(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
+        if panningCamera {
+            cameraController.beginPan(at: event.location(in: self))
+            return
+        }
         switch mode {
         case .Build:
             buildTool.mouseDown(with: mouseEvent)
@@ -93,6 +98,10 @@ class FarmScene: SKScene {
     
     override func mouseUp(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
+        if panningCamera {
+            cameraController.endPan()
+            return
+        }
         switch mode {
         case .Build:
             buildTool.mouseUp(with: mouseEvent)
@@ -105,6 +114,10 @@ class FarmScene: SKScene {
 
     override func mouseDragged(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
+        if panningCamera {
+            cameraController.pan(to: event.location(in: self))
+            return
+        }
         if !shouldPropagateMovementEvent(mouseEvent) { return }
         switch mode {
         case .Flooring:
@@ -112,51 +125,25 @@ class FarmScene: SKScene {
         default:
             return
         }
-//        if !DragMode { return }
-//        let location = event.location(in: self)
-//        let deltaY = previousLocation.y - location.y
-//        let deltaX = previousLocation.x - location.x
-
-//        cameraNode.position.x += deltaX
-//        if cameraNode.position.x + frame.size.width / 2 * cameraNode.xScale > farmBackground.frame.size.width / 2 {
-//            cameraNode.position.x = farmBackground.frame.size.width / 2 - frame.size.width / 2 * cameraNode.xScale
-//        } else if cameraNode.position.x - frame.size.width / 2 * cameraNode.xScale < -farmBackground.frame.size.width / 2 {
-//            cameraNode.position.x = frame.size.width / 2 * cameraNode.xScale - farmBackground.frame.size.width / 2
-//        }
-//
-//        cameraNode.position.y += deltaY
-//        if cameraNode.position.y + frame.size.height / 2 * cameraNode.yScale > farmBackground.frame.size.height / 2 {
-//            cameraNode.position.y = -frame.size.height / 2 * cameraNode.yScale + farmBackground.frame.size.height / 2
-//        } else if cameraNode.position.y - frame.size.height / 2 * cameraNode.yScale  < -farmBackground.frame.size.height / 2 {
-//            cameraNode.position.y =  frame.size.height / 2 * cameraNode.yScale - farmBackground.frame.size.height / 2
-//        }
     }
 
     override func scrollWheel(with event: NSEvent) {
-        var scale = cameraNode.yScale - event.deltaY
-        if(scale < 0.1) { scale = 0.1 }
-//        else if scale > 1 { scale = 1 }
-        let zoomInAction = SKAction.scale(to: scale, duration: 0.1)
-        cameraNode.run(zoomInAction)
+        cameraController.scale(by: event.deltaY)
     }
-//
+
     override func keyDown(with event: NSEvent) {
-        print(event.keyCode)
         switch event.keyCode {
-//        case 0x31: mode = .Drag
-        case 0x01:
-            buildTool.cleanUp()
-            mode = .Flooring
-        default: print("EH")
+        case .KeySpace: panningCamera = true
+        default: print("Pressed Key: \(event.keyCode)")
         }
     }
-//
-//    override func keyUp(with event: NSEvent) {
-//        switch event.keyCode {
-//        case 0x31: DragMode = false
-//        default: print("EH")
-//        }
-//    }
+
+    override func keyUp(with event: NSEvent) {
+        switch event.keyCode {
+        case .KeySpace: panningCamera = false
+        default: print("Released Key: \(event.keyCode)")
+        }
+    }
     
     private func subscribeObservers() {
         NotificationController.instance.subscribe(observer: self, name: .onObjectSelected, callbackSelector: #selector(handleLibraryObjectSelected), object: nil)

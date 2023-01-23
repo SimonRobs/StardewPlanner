@@ -22,6 +22,8 @@ public class ShapeTool: FlooringToolBase {
     private var startCoordinates: GridCoordinate? = nil
     private var endCoordinates: GridCoordinate? = nil
     
+    private var shapeTileSetList: [TileSets] = []
+    
     private var shape: ShapeToolOptions.Shapes {
         get {
             return drawOptions.shape

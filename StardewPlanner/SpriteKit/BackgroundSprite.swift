@@ -14,7 +14,7 @@ class BackgroundSprite: SKSpriteNode {
     private var backgroundLayout: SKNode
     
     init() {
-        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: .Winter)
+        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: .Spring)
         super.init(texture: nil, color:.clear, size: BackgroundSize)
         
         name = BackgroundSpriteName

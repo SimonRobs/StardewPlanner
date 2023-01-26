@@ -20,6 +20,7 @@ class LayoutBuilder {
         case .failure(let error):
             fatalError(error.localizedDescription)
         }
+        
         let layoutNode = SKNode()
         let tileSize = CGSize(width: layoutData.tilewidth, height: layoutData.tileheight)
         let outdoorTileSet = layoutData.tilesets.first!
@@ -27,7 +28,21 @@ class LayoutBuilder {
         // Create the Tileset for the correct season
         var tileGroups: [SKTileGroup] = []
         for index in 0..<outdoorTileSet.tilecount {
-            tileGroups.append(SKTileGroup(tileDefinition: SKTileDefinition(texture: SKTexture(imageNamed: "\(season) \(index)"))))
+            // Figure out if the tile has an animation
+            let tileAnimation: [LayoutTileAnimation]? = outdoorTileSet.tiles.first(where: { tile in
+                tile.id == index && tile.animation != nil && tile.animation!.count > 0
+            })?.animation
+            
+            var tileDefinition: SKTileDefinition
+            if tileAnimation != nil {
+                let textures = tileAnimation!.map({ SKTexture(imageNamed: "\(season) \($0.tileid)") })
+                let duration = CGFloat(tileAnimation![0].duration) / 1000 // The duration in the data is in ms, whereas SK expects it in s
+                tileDefinition = SKTileDefinition(textures: textures, size: tileSize, timePerFrame: duration)
+            } else {
+                tileDefinition = SKTileDefinition(texture: SKTexture(imageNamed: "\(season) \(index)"))
+            }
+            
+            tileGroups.append(SKTileGroup(tileDefinition: tileDefinition))
         }
         let tileset = SKTileSet(tileGroups: tileGroups)
         

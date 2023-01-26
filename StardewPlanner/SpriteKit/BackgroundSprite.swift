@@ -11,10 +11,15 @@ class BackgroundSprite: SKSpriteNode {
     
     private var allTiles: [[BackgroundTile]] = []
     
+    private var backgroundLayout: SKNode
+    
     init() {
-        super.init(texture: SKTexture(imageNamed: "Default Spring"), color:.clear, size: BackgroundSize)
+        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: .Winter)
+        super.init(texture: nil, color:.clear, size: BackgroundSize)
         
         name = BackgroundSpriteName
+        
+        addChild(backgroundLayout)
         
         for i in 0..<BackgroundColumns {
             allTiles.append([])

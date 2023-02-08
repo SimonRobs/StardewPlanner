@@ -45,7 +45,7 @@ struct OptionsPanel: View {
             }
         }
         .frame(width: 256)
-            .background(Color.lightBackground)
+            .background(Color.background)
     }
 }
 

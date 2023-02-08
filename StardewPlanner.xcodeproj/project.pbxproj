@@ -36,6 +36,8 @@
 		F454AEEB294E4F39000A64D7 /* BrushShapeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F454AEEA294E4F39000A64D7 /* BrushShapeCreator.swift */; };
 		F454AEED294E4F95000A64D7 /* BrushShapes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F454AEEC294E4F95000A64D7 /* BrushShapes.enum.swift */; };
 		F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */; };
+		F475CC182993305400BEE8A8 /* DisclosureParentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */; };
+		F475CC1A2993306500BEE8A8 /* DisclosureChildStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */; };
 		F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */; };
 		F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1410B29199DA4006E762E /* ColorAdditions.swift */; };
 		F4A7F49C2981B5C800351461 /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7F49B2981B5C800351461 /* LayoutBuilder.swift */; };
@@ -123,6 +125,8 @@
 		F454AEEA294E4F39000A64D7 /* BrushShapeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushShapeCreator.swift; sourceTree = "<group>"; };
 		F454AEEC294E4F95000A64D7 /* BrushShapes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrushShapes.enum.swift; sourceTree = "<group>"; };
 		F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMapMouseEvent.swift; sourceTree = "<group>"; };
+		F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureParentStyle.swift; sourceTree = "<group>"; };
+		F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureChildStyle.swift; sourceTree = "<group>"; };
 		F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinateAdditions.swift; sourceTree = "<group>"; };
 		F4A1410B29199DA4006E762E /* ColorAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdditions.swift; sourceTree = "<group>"; };
 		F4A7F49B2981B5C800351461 /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
@@ -409,6 +413,8 @@
 			isa = PBXGroup;
 			children = (
 				F4BB299D293C017600151917 /* DarkButtonStyle.swift */,
+				F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */,
+				F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 				F42580472919B619005F1CCC /* LibraryObject.swift in Sources */,
 				F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */,
 				F4F6629B294048A200D7CA79 /* EraserToolOptionsView.swift in Sources */,
+				F475CC182993305400BEE8A8 /* DisclosureParentStyle.swift in Sources */,
 				F4FA0DA1294E5D5D004F9120 /* CustomTileSets.enum.swift in Sources */,
 				F4F662932940457C00D7CA79 /* LineToolOptions.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
@@ -550,6 +557,7 @@
 				F4BB2997293BFEC200151917 /* FlooringTilePicker.swift in Sources */,
 				F4BB2988293BD5D400151917 /* FreeDrawTool.swift in Sources */,
 				F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */,
+				F475CC1A2993306500BEE8A8 /* DisclosureChildStyle.swift in Sources */,
 				F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */,
 				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,

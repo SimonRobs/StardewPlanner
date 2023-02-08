@@ -26,14 +26,9 @@ struct TitleBarButton: View {
         .buttonStyle(.borderless)
         .padding()
         .foregroundColor(hovering ? .accentColor : .white)
-        .background(hovering ? Color.lightBackground : Color.background)
+        .background(hovering ? Color.lighterBackground : Color.lightBackground)
         .onHover { over in
             hovering = over
-            if over {
-                NSCursor.pointingHand.push()
-            } else {
-                NSCursor.pop()
-            }
         }
     }
 }

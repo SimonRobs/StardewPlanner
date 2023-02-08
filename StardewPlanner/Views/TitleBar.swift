@@ -31,7 +31,7 @@ struct TitleBar: View {
         }
         .frame(maxWidth: 68)
         .padding(.top, 28)
-        .background(Color.background)
+        .background(Color.lightBackground)
     }
 }
 

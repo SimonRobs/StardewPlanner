@@ -1,5 +1,5 @@
 //
-//  TitleBarButton.swift
+//  ToolbarButton.swift
 //  StardewPlanner
 //
 //  Created by Simon Robatto on 2022-11-07.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TitleBarButton: View {
+struct ToolbarButton: View {
     let systemName: String
     let title: String?
     let action: ()->Void
@@ -33,8 +33,8 @@ struct TitleBarButton: View {
     }
 }
 
-struct TitleBarButton_Previews: PreviewProvider {
+struct ToolbarButton_Previews: PreviewProvider {
     static var previews: some View {
-        TitleBarButton(systemName: "cursorarrow.click.2", title: "Button Name") { }
+        ToolbarButton(systemName: "cursorarrow.click.2", title: "Button Name") { }
     }
 }

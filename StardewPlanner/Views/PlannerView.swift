@@ -16,37 +16,18 @@ struct PlannerView: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            TitleBar()
+            Toolbar()
             OptionsPanel()
-            ZStack {
+            VStack(spacing: 0) {
+                OptionsToolbar()
                 SpriteView(scene: farmScene)
-                    .background(VisualEffectView().ignoresSafeArea())
-                    .ignoresSafeArea()
             }
         }
-        .background(.black)
-        .ignoresSafeArea()
         .environment(\.isLibraryPresented, $isLibraryPresented)
         .sheet(isPresented: $isLibraryPresented) {
             LibraryView()
                 .frame(minWidth: 800, minHeight: 600)
         }
-    }
-}
-
-struct VisualEffectView: NSViewRepresentable {
-    func makeNSView(context: Context) -> NSVisualEffectView {
-        let view = NSVisualEffectView()
-
-        view.blendingMode = .behindWindow
-        view.state = .active
-        view.material = .hudWindow
-
-        return view
-    }
-
-    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
-        //
     }
 }
 

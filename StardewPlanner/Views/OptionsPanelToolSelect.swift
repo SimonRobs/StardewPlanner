@@ -21,8 +21,7 @@ struct OptionsPanelToolSelect: View {
         .background(Color.background)
         .cornerRadius(8)
         .overlay {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(Color.lighterBackground)
+            RoundedRectangle(cornerRadius: 16).stroke(Color.lighterBackground)
         }
         .padding()
     }

@@ -19,8 +19,8 @@ struct StardewPlannerApp: App {
                 .environmentObject(objectLibrary)
                 .environmentObject(flooringToolsStore)
                 .preferredColorScheme(.dark)
+                .navigationTitle("Untitled*")
         }
-        .windowStyle(.hiddenTitleBar)
         Settings {
             SettingsView()
         }

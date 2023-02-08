@@ -38,6 +38,11 @@
 		F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */; };
 		F475CC182993305400BEE8A8 /* DisclosureParentStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */; };
 		F475CC1A2993306500BEE8A8 /* DisclosureChildStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */; };
+		F475CC1C2993382900BEE8A8 /* ObjectOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC1B2993382900BEE8A8 /* ObjectOptions.swift */; };
+		F475CC1E2993383E00BEE8A8 /* LayerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC1D2993383E00BEE8A8 /* LayerPicker.swift */; };
+		F475CC202993384700BEE8A8 /* SeasonPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC1F2993384700BEE8A8 /* SeasonPicker.swift */; };
+		F475CC222993385200BEE8A8 /* OptionsToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC212993385200BEE8A8 /* OptionsToolbar.swift */; };
+		F475CC262993477400BEE8A8 /* SegmentedIconPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F475CC252993477400BEE8A8 /* SegmentedIconPicker.swift */; };
 		F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */; };
 		F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A1410B29199DA4006E762E /* ColorAdditions.swift */; };
 		F4A7F49C2981B5C800351461 /* LayoutBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A7F49B2981B5C800351461 /* LayoutBuilder.swift */; };
@@ -71,8 +76,8 @@
 		F4E5A5F729182A1000970C07 /* FlooringTileMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */; };
 		F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */; };
 		F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FA29182CDE00970C07 /* Constants.swift */; };
-		F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */; };
-		F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FE291975B400970C07 /* TitleBar.swift */; };
+		F4E5A5FD291975AF00970C07 /* ToolbarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FC291975AF00970C07 /* ToolbarButton.swift */; };
+		F4E5A5FF291975B400970C07 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5FE291975B400970C07 /* Toolbar.swift */; };
 		F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662802940444F00D7CA79 /* EraserTool.swift */; };
 		F4F662832940445800D7CA79 /* BucketTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662822940445800D7CA79 /* BucketTool.swift */; };
 		F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F662842940446400D7CA79 /* EyedropperTool.swift */; };
@@ -127,6 +132,11 @@
 		F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileMapMouseEvent.swift; sourceTree = "<group>"; };
 		F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureParentStyle.swift; sourceTree = "<group>"; };
 		F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisclosureChildStyle.swift; sourceTree = "<group>"; };
+		F475CC1B2993382900BEE8A8 /* ObjectOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectOptions.swift; sourceTree = "<group>"; };
+		F475CC1D2993383E00BEE8A8 /* LayerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayerPicker.swift; sourceTree = "<group>"; };
+		F475CC1F2993384700BEE8A8 /* SeasonPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonPicker.swift; sourceTree = "<group>"; };
+		F475CC212993385200BEE8A8 /* OptionsToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsToolbar.swift; sourceTree = "<group>"; };
+		F475CC252993477400BEE8A8 /* SegmentedIconPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedIconPicker.swift; sourceTree = "<group>"; };
 		F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinateAdditions.swift; sourceTree = "<group>"; };
 		F4A1410B29199DA4006E762E /* ColorAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAdditions.swift; sourceTree = "<group>"; };
 		F4A7F49B2981B5C800351461 /* LayoutBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutBuilder.swift; sourceTree = "<group>"; };
@@ -160,8 +170,8 @@
 		F4E5A5F629182A1000970C07 /* FlooringTileMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringTileMap.swift; sourceTree = "<group>"; };
 		F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSprite.swift; sourceTree = "<group>"; };
 		F4E5A5FA29182CDE00970C07 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBarButton.swift; sourceTree = "<group>"; };
-		F4E5A5FE291975B400970C07 /* TitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleBar.swift; sourceTree = "<group>"; };
+		F4E5A5FC291975AF00970C07 /* ToolbarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarButton.swift; sourceTree = "<group>"; };
+		F4E5A5FE291975B400970C07 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		F4F662802940444F00D7CA79 /* EraserTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraserTool.swift; sourceTree = "<group>"; };
 		F4F662822940445800D7CA79 /* BucketTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketTool.swift; sourceTree = "<group>"; };
 		F4F662842940446400D7CA79 /* EyedropperTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyedropperTool.swift; sourceTree = "<group>"; };
@@ -202,8 +212,8 @@
 				F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */,
 				F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */,
 				F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */,
-				F4E5A5FC291975AF00970C07 /* TitleBarButton.swift */,
-				F4E5A5FE291975B400970C07 /* TitleBar.swift */,
+				F4E5A5FC291975AF00970C07 /* ToolbarButton.swift */,
+				F4E5A5FE291975B400970C07 /* Toolbar.swift */,
 				F425804A2919B689005F1CCC /* SettingsView.swift */,
 				F4BB297B293A62F800151917 /* OptionsPanel.swift */,
 				F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */,
@@ -216,6 +226,11 @@
 				F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */,
 				F4BB2996293BFEC200151917 /* FlooringTilePicker.swift */,
 				F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */,
+				F475CC1B2993382900BEE8A8 /* ObjectOptions.swift */,
+				F475CC1D2993383E00BEE8A8 /* LayerPicker.swift */,
+				F475CC1F2993384700BEE8A8 /* SeasonPicker.swift */,
+				F475CC212993385200BEE8A8 /* OptionsToolbar.swift */,
+				F475CC252993477400BEE8A8 /* SegmentedIconPicker.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -506,6 +521,8 @@
 				F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */,
 				F4BB2986293BD39700151917 /* FreeDrawToolOptions.swift in Sources */,
 				F4BB2982293A6C3000151917 /* OptionsPanelToolSelectButton.swift in Sources */,
+				F475CC1C2993382900BEE8A8 /* ObjectOptions.swift in Sources */,
+				F475CC1E2993383E00BEE8A8 /* LayerPicker.swift in Sources */,
 				F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */,
 				F4A7F4A42981B88800351461 /* LayoutData.swift in Sources */,
 				F42580472919B619005F1CCC /* LibraryObject.swift in Sources */,
@@ -515,7 +532,7 @@
 				F4FA0DA1294E5D5D004F9120 /* CustomTileSets.enum.swift in Sources */,
 				F4F662932940457C00D7CA79 /* LineToolOptions.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
-				F4E5A5FD291975AF00970C07 /* TitleBarButton.swift in Sources */,
+				F4E5A5FD291975AF00970C07 /* ToolbarButton.swift in Sources */,
 				F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */,
 				F4A7F4A22981B74400351461 /* Seasons.enum.swift in Sources */,
 				F4BB2980293A66DC00151917 /* FlooringToolsAdditions.swift in Sources */,
@@ -524,6 +541,7 @@
 				F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */,
 				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
 				F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */,
+				F475CC202993384700BEE8A8 /* SeasonPicker.swift in Sources */,
 				F454AEED294E4F95000A64D7 /* BrushShapes.enum.swift in Sources */,
 				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
 				F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */,
@@ -533,9 +551,10 @@
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4F662892940447400D7CA79 /* LineTool.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
+				F475CC222993385200BEE8A8 /* OptionsToolbar.swift in Sources */,
 				F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */,
 				F4BB298E293BE4CF00151917 /* FlooringToolFactory.swift in Sources */,
-				F4E5A5FF291975B400970C07 /* TitleBar.swift in Sources */,
+				F4E5A5FF291975B400970C07 /* Toolbar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
 				F4F662872940446D00D7CA79 /* ShapeTool.swift in Sources */,
 				F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */,
@@ -561,6 +580,7 @@
 				F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */,
 				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
+				F475CC262993477400BEE8A8 /* SegmentedIconPicker.swift in Sources */,
 				F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */,
 				F454AEEB294E4F39000A64D7 /* BrushShapeCreator.swift in Sources */,
 				F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */,

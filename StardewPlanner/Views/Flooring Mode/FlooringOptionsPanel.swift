@@ -1,13 +1,13 @@
 //
-//  OptionsPanel.swift
+//  FlooringOptionsPanel.swift
 //  StardewPlanner
 //
-//  Created by Simon Robatto on 2022-12-02.
+//  Created by Simon Robatto on 2023-03-07.
 //
 
 import SwiftUI
 
-struct OptionsPanel: View {
+struct FlooringOptionsPanel: View {
     @EnvironmentObject() var toolsStore: FlooringToolsStore
     
     var body: some View {
@@ -44,14 +44,12 @@ struct OptionsPanel: View {
                 Spacer()
             }
         }
-        .frame(width: 256)
-            .background(Color.background)
     }
 }
 
-struct OptionsPanel_Previews: PreviewProvider {
+struct FlooringOptionsPanel_Previews: PreviewProvider {
     static var previews: some View {
-        OptionsPanel()
+        FlooringOptionsPanel()
             .frame(width: 300, height: 1024)
             .environmentObject(FlooringToolsStore())
     }

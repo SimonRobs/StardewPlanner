@@ -10,14 +10,14 @@ import Foundation
 extension Notification.Name {
     
     // MARK: - General Events
-    static let onPlannerModeChanged = Notification.Name("Event::ModeChanged")
+    static let onEditorModeChanged = Notification.Name("Event::EditorModeChanged")
     
-    // MARK: - Flooring Mode Events
-    static let onFlooringModeToolChanged = Notification.Name("Event::FlooringMode::ToolChanged")
+    // MARK: - Flooring Tool Events
+    static let onFlooringToolChanged = Notification.Name("Event::FlooringTool::ToolChanged")
     
     // All Tools
-    static let onPrimaryTileChanged = Notification.Name("Event::FlooringMode::PrimaryTileChanged")
-    static let onSecondaryTileChanged = Notification.Name("Event::FlooringMode::SecondaryTileChanged")
+    static let onPrimaryTileChanged = Notification.Name("Event::FlooringTool::PrimaryTileChanged")
+    static let onSecondaryTileChanged = Notification.Name("Event::FlooringTool::SecondaryTileChanged")
     
     // Free Draw Tool
     static let onFreeDrawToolOptionsChanged = Notification.Name("Event::FreeDrawTool::OptionsChanged")
@@ -38,7 +38,7 @@ extension Notification.Name {
     static let onLineToolOptionsChanged = Notification.Name("Event::LineTool::OptionsChanged")
     
     
-    // MARK: - Construction Mode Events
-    static let onObjectSelected = Notification.Name("Event::ConstructionMode::onObjectSelected")
+    // MARK: - Build Tool Events
+    static let onObjectSelected = Notification.Name("Event::BuildTool::onObjectSelected")
     
 }

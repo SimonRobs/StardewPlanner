@@ -8,25 +8,24 @@
 import SwiftUI
 import SpriteKit
 
-let farmScene = SKScene(fileNamed: "FarmScene")!
-
 struct PlannerView: View {
     
     @State private var isLibraryPresented = false
+    private let farmScene = SKScene(fileNamed: "FarmScene")!
     
     var body: some View {
         HStack(spacing: 0) {
             Toolbar()
             OptionsPanel()
             VStack(spacing: 0) {
-                OptionsToolbar()
+                OptionsToolbar() 
                 SpriteView(scene: farmScene)
             }
         }
         .environment(\.isLibraryPresented, $isLibraryPresented)
         .sheet(isPresented: $isLibraryPresented) {
             LibraryView()
-                .frame(minWidth: 800, minHeight: 600)
+                .frame(idealWidth: 1000, idealHeight: 600)
         }
     }
 }

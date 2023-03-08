@@ -10,7 +10,7 @@
 		F42580422919B581005F1CCC /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580412919B581005F1CCC /* LibraryView.swift */; };
 		F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580442919B5DD005F1CCC /* SKViewAdditions.swift */; };
 		F42580472919B619005F1CCC /* LibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580462919B619005F1CCC /* LibraryObject.swift */; };
-		F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580482919B621005F1CCC /* PlannerLibrary.swift */; };
+		F42580492919B621005F1CCC /* ObjectLibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580482919B621005F1CCC /* ObjectLibraryStore.swift */; };
 		F425804B2919B689005F1CCC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804A2919B689005F1CCC /* SettingsView.swift */; };
 		F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804E291B4C9D005F1CCC /* BuildTool.swift */; };
 		F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258051291B4D3B005F1CCC /* BuildingSizes.swift */; };
@@ -19,11 +19,7 @@
 		F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425805E291C04C9005F1CCC /* NotificationController.swift */; };
 		F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258060291C04E1005F1CCC /* NotificationAdditions.swift */; };
 		F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */; };
-		F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258066291C16EF005F1CCC /* LibraryTabView.swift */; };
-		F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */; };
-		F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */; };
-		F425806D291C21B3005F1CCC /* LibraryTabViewContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */; };
-		F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */; };
+		F4258073291C7977005F1CCC /* ObjectSubCategories.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */; };
 		F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */; };
 		F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */; };
 		F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C696292436E50075E2F1 /* CGPointAdditions.swift */; };
@@ -69,6 +65,17 @@
 		F4C93B182915B65500D121B2 /* FarmScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F4C93B172915B65500D121B2 /* FarmScene.sks */; };
 		F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B192915B78F00D121B2 /* FarmScene.swift */; };
 		F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */; };
+		F4DED2DC29B7F503008BC367 /* GlobalConfigurationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2DB29B7F503008BC367 /* GlobalConfigurationStore.swift */; };
+		F4DED2DE29B7F827008BC367 /* FlooringOptionsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2DD29B7F827008BC367 /* FlooringOptionsPanel.swift */; };
+		F4DED2E029B7F8CB008BC367 /* SelectOptionsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2DF29B7F8CB008BC367 /* SelectOptionsPanel.swift */; };
+		F4DED2E229B7F8DA008BC367 /* FarmingOptionsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2E129B7F8DA008BC367 /* FarmingOptionsPanel.swift */; };
+		F4DED2E429B7F8EC008BC367 /* BuildingOptionsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2E329B7F8EC008BC367 /* BuildingOptionsPanel.swift */; };
+		F4DED2E629B800B3008BC367 /* ObjectCategories.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2E529B800B3008BC367 /* ObjectCategories.enum.swift */; };
+		F4DED2EE29B84156008BC367 /* LibraryNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2ED29B84156008BC367 /* LibraryNavigationView.swift */; };
+		F4DED2F029B841B3008BC367 /* LibraryObjectFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2EF29B841B3008BC367 /* LibraryObjectFilter.swift */; };
+		F4DED2F229B841ED008BC367 /* LibraryNavigationViewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F129B841ED008BC367 /* LibraryNavigationViewSidebar.swift */; };
+		F4DED2F429B841F3008BC367 /* LibraryNavigationViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F329B841F3008BC367 /* LibraryNavigationViewContent.swift */; };
+		F4DED2F629B841F9008BC367 /* LibraryNavigationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F529B841F9008BC367 /* LibraryNavigationViewDetail.swift */; };
 		F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5EC291620C200970C07 /* TileSets.enum.swift */; };
 		F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F02918264B00970C07 /* TileSetController.swift */; };
 		F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */; };
@@ -102,7 +109,7 @@
 		F42580412919B581005F1CCC /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		F42580442919B5DD005F1CCC /* SKViewAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKViewAdditions.swift; sourceTree = "<group>"; };
 		F42580462919B619005F1CCC /* LibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObject.swift; sourceTree = "<group>"; };
-		F42580482919B621005F1CCC /* PlannerLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerLibrary.swift; sourceTree = "<group>"; };
+		F42580482919B621005F1CCC /* ObjectLibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectLibraryStore.swift; sourceTree = "<group>"; };
 		F425804A2919B689005F1CCC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		F425804E291B4C9D005F1CCC /* BuildTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTool.swift; sourceTree = "<group>"; };
 		F4258051291B4D3B005F1CCC /* BuildingSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSizes.swift; sourceTree = "<group>"; };
@@ -111,11 +118,7 @@
 		F425805E291C04C9005F1CCC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		F4258060291C04E1005F1CCC /* NotificationAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdditions.swift; sourceTree = "<group>"; };
 		F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentAdditions.swift; sourceTree = "<group>"; };
-		F4258066291C16EF005F1CCC /* LibraryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabView.swift; sourceTree = "<group>"; };
-		F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewButton.swift; sourceTree = "<group>"; };
-		F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewContent.swift; sourceTree = "<group>"; };
-		F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryTabViewContentItem.swift; sourceTree = "<group>"; };
-		F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectFamilies.enum.swift; sourceTree = "<group>"; };
+		F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSubCategories.enum.swift; sourceTree = "<group>"; };
 		F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypes.enum.swift; sourceTree = "<group>"; };
 		F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingPlacementTileSprite.swift; sourceTree = "<group>"; };
 		F433C696292436E50075E2F1 /* CGPointAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointAdditions.swift; sourceTree = "<group>"; };
@@ -163,6 +166,17 @@
 		F4C93B172915B65500D121B2 /* FarmScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FarmScene.sks; sourceTree = "<group>"; };
 		F4C93B192915B78F00D121B2 /* FarmScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmScene.swift; sourceTree = "<group>"; };
 		F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundBuildableTiles.swift; sourceTree = "<group>"; };
+		F4DED2DB29B7F503008BC367 /* GlobalConfigurationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConfigurationStore.swift; sourceTree = "<group>"; };
+		F4DED2DD29B7F827008BC367 /* FlooringOptionsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlooringOptionsPanel.swift; sourceTree = "<group>"; };
+		F4DED2DF29B7F8CB008BC367 /* SelectOptionsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOptionsPanel.swift; sourceTree = "<group>"; };
+		F4DED2E129B7F8DA008BC367 /* FarmingOptionsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FarmingOptionsPanel.swift; sourceTree = "<group>"; };
+		F4DED2E329B7F8EC008BC367 /* BuildingOptionsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingOptionsPanel.swift; sourceTree = "<group>"; };
+		F4DED2E529B800B3008BC367 /* ObjectCategories.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategories.enum.swift; sourceTree = "<group>"; };
+		F4DED2ED29B84156008BC367 /* LibraryNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationView.swift; sourceTree = "<group>"; };
+		F4DED2EF29B841B3008BC367 /* LibraryObjectFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectFilter.swift; sourceTree = "<group>"; };
+		F4DED2F129B841ED008BC367 /* LibraryNavigationViewSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewSidebar.swift; sourceTree = "<group>"; };
+		F4DED2F329B841F3008BC367 /* LibraryNavigationViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewContent.swift; sourceTree = "<group>"; };
+		F4DED2F529B841F9008BC367 /* LibraryNavigationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewDetail.swift; sourceTree = "<group>"; };
 		F4E5A5EC291620C200970C07 /* TileSets.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSets.enum.swift; sourceTree = "<group>"; };
 		F4E5A5F02918264B00970C07 /* TileSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetController.swift; sourceTree = "<group>"; };
 		F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileAdjacencyMaskAdditions.swift; sourceTree = "<group>"; };
@@ -207,30 +221,12 @@
 			isa = PBXGroup;
 			children = (
 				F4388A1429135F0600FB39BC /* PlannerView.swift */,
-				F42580412919B581005F1CCC /* LibraryView.swift */,
-				F4258066291C16EF005F1CCC /* LibraryTabView.swift */,
-				F425806A291C21A7005F1CCC /* LibraryTabViewContent.swift */,
-				F425806C291C21B3005F1CCC /* LibraryTabViewContentItem.swift */,
-				F4258068291C1D93005F1CCC /* LibraryTabViewButton.swift */,
-				F4E5A5FC291975AF00970C07 /* ToolbarButton.swift */,
-				F4E5A5FE291975B400970C07 /* Toolbar.swift */,
-				F425804A2919B689005F1CCC /* SettingsView.swift */,
-				F4BB297B293A62F800151917 /* OptionsPanel.swift */,
-				F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */,
-				F4BB2981293A6C3000151917 /* OptionsPanelToolSelectButton.swift */,
-				F4BB2991293BEAF400151917 /* FreeDrawToolOptionsView.swift */,
-				F4F6629A294048A200D7CA79 /* EraserToolOptionsView.swift */,
-				F4F662982940489900D7CA79 /* EyedropperToolOptionsView.swift */,
-				F4F6629C294048AD00D7CA79 /* BucketToolOptionsView.swift */,
-				F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */,
-				F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */,
-				F4BB2996293BFEC200151917 /* FlooringTilePicker.swift */,
-				F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */,
-				F475CC1B2993382900BEE8A8 /* ObjectOptions.swift */,
-				F475CC1D2993383E00BEE8A8 /* LayerPicker.swift */,
-				F475CC1F2993384700BEE8A8 /* SeasonPicker.swift */,
-				F475CC212993385200BEE8A8 /* OptionsToolbar.swift */,
-				F475CC252993477400BEE8A8 /* SegmentedIconPicker.swift */,
+				F4DED2E829B84059008BC367 /* Common */,
+				F4DED2EC29B840EF008BC367 /* Select Mode */,
+				F4DED2E929B8406B008BC367 /* Farming Mode */,
+				F4DED2EB29B84085008BC367 /* Flooring Mode */,
+				F4DED2EA29B84078008BC367 /* Build Mode */,
+				F4DED2E729B84029008BC367 /* Object Library */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,7 +247,6 @@
 				F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */,
 				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
 				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
-				F4258057291B5866005F1CCC /* EditorModes.enum.swift */,
 			);
 			path = SpriteKit;
 			sourceTree = "<group>";
@@ -259,11 +254,12 @@
 		F42580402919B46C005F1CCC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F4258072291C7977005F1CCC /* ObjectFamilies.enum.swift */,
-				F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */,
+				F4258057291B5866005F1CCC /* EditorModes.enum.swift */,
 				F4A7F4A12981B74400351461 /* Seasons.enum.swift */,
+				F4DED2E529B800B3008BC367 /* ObjectCategories.enum.swift */,
+				F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */,
+				F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */,
 				F42580462919B619005F1CCC /* LibraryObject.swift */,
-				F42580482919B621005F1CCC /* PlannerLibrary.swift */,
 				F4BB297D293A63B700151917 /* FlooringTools.enum.swift */,
 				F4BB2985293BD39700151917 /* FreeDrawToolOptions.swift */,
 				F4F6628A2940455500D7CA79 /* EraserToolOptions.swift */,
@@ -420,6 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				F4BB2994293BEECD00151917 /* FlooringToolsStore.swift */,
+				F4DED2DB29B7F503008BC367 /* GlobalConfigurationStore.swift */,
+				F42580482919B621005F1CCC /* ObjectLibraryStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -432,6 +430,77 @@
 				F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		F4DED2E729B84029008BC367 /* Object Library */ = {
+			isa = PBXGroup;
+			children = (
+				F42580412919B581005F1CCC /* LibraryView.swift */,
+				F4DED2EF29B841B3008BC367 /* LibraryObjectFilter.swift */,
+				F4DED2ED29B84156008BC367 /* LibraryNavigationView.swift */,
+				F4DED2F129B841ED008BC367 /* LibraryNavigationViewSidebar.swift */,
+				F4DED2F329B841F3008BC367 /* LibraryNavigationViewContent.swift */,
+				F4DED2F529B841F9008BC367 /* LibraryNavigationViewDetail.swift */,
+			);
+			path = "Object Library";
+			sourceTree = "<group>";
+		};
+		F4DED2E829B84059008BC367 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F475CC1B2993382900BEE8A8 /* ObjectOptions.swift */,
+				F475CC1D2993383E00BEE8A8 /* LayerPicker.swift */,
+				F475CC1F2993384700BEE8A8 /* SeasonPicker.swift */,
+				F475CC212993385200BEE8A8 /* OptionsToolbar.swift */,
+				F475CC252993477400BEE8A8 /* SegmentedIconPicker.swift */,
+				F4E5A5FC291975AF00970C07 /* ToolbarButton.swift */,
+				F4E5A5FE291975B400970C07 /* Toolbar.swift */,
+				F425804A2919B689005F1CCC /* SettingsView.swift */,
+				F4BB297B293A62F800151917 /* OptionsPanel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F4DED2E929B8406B008BC367 /* Farming Mode */ = {
+			isa = PBXGroup;
+			children = (
+				F4DED2E129B7F8DA008BC367 /* FarmingOptionsPanel.swift */,
+			);
+			path = "Farming Mode";
+			sourceTree = "<group>";
+		};
+		F4DED2EA29B84078008BC367 /* Build Mode */ = {
+			isa = PBXGroup;
+			children = (
+				F4DED2E329B7F8EC008BC367 /* BuildingOptionsPanel.swift */,
+			);
+			path = "Build Mode";
+			sourceTree = "<group>";
+		};
+		F4DED2EB29B84085008BC367 /* Flooring Mode */ = {
+			isa = PBXGroup;
+			children = (
+				F4DED2DD29B7F827008BC367 /* FlooringOptionsPanel.swift */,
+				F4BB29A1293C075C00151917 /* OptionsPanelToolSelect.swift */,
+				F4BB2981293A6C3000151917 /* OptionsPanelToolSelectButton.swift */,
+				F4BB2991293BEAF400151917 /* FreeDrawToolOptionsView.swift */,
+				F4F6629A294048A200D7CA79 /* EraserToolOptionsView.swift */,
+				F4F662982940489900D7CA79 /* EyedropperToolOptionsView.swift */,
+				F4F6629C294048AD00D7CA79 /* BucketToolOptionsView.swift */,
+				F4F6629E294048B400D7CA79 /* ShapeToolOptionsView.swift */,
+				F4F662A0294048B900D7CA79 /* LineToolOptionsView.swift */,
+				F4BB2996293BFEC200151917 /* FlooringTilePicker.swift */,
+				F4BB2998293C008400151917 /* FlooringTilePickerButton.swift */,
+			);
+			path = "Flooring Mode";
+			sourceTree = "<group>";
+		};
+		F4DED2EC29B840EF008BC367 /* Select Mode */ = {
+			isa = PBXGroup;
+			children = (
+				F4DED2DF29B7F8CB008BC367 /* SelectOptionsPanel.swift */,
+			);
+			path = "Select Mode";
 			sourceTree = "<group>";
 		};
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {
@@ -533,27 +602,34 @@
 				F4F662932940457C00D7CA79 /* LineToolOptions.swift in Sources */,
 				F4E5A5FB29182CDE00970C07 /* Constants.swift in Sources */,
 				F4E5A5FD291975AF00970C07 /* ToolbarButton.swift in Sources */,
-				F4258073291C7977005F1CCC /* ObjectFamilies.enum.swift in Sources */,
+				F4258073291C7977005F1CCC /* ObjectSubCategories.enum.swift in Sources */,
 				F4A7F4A22981B74400351461 /* Seasons.enum.swift in Sources */,
+				F4DED2DE29B7F827008BC367 /* FlooringOptionsPanel.swift in Sources */,
 				F4BB2980293A66DC00151917 /* FlooringToolsAdditions.swift in Sources */,
+				F4DED2DC29B7F503008BC367 /* GlobalConfigurationStore.swift in Sources */,
 				F4BB297E293A63B700151917 /* FlooringTools.enum.swift in Sources */,
 				F4BB2992293BEAF400151917 /* FreeDrawToolOptionsView.swift in Sources */,
 				F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */,
 				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
 				F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */,
+				F4DED2E229B7F8DA008BC367 /* FarmingOptionsPanel.swift in Sources */,
 				F475CC202993384700BEE8A8 /* SeasonPicker.swift in Sources */,
 				F454AEED294E4F95000A64D7 /* BrushShapes.enum.swift in Sources */,
-				F42580492919B621005F1CCC /* PlannerLibrary.swift in Sources */,
+				F42580492919B621005F1CCC /* ObjectLibraryStore.swift in Sources */,
+				F4DED2EE29B84156008BC367 /* LibraryNavigationView.swift in Sources */,
 				F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */,
 				F4F6629D294048AD00D7CA79 /* BucketToolOptionsView.swift in Sources */,
+				F4DED2F629B841F9008BC367 /* LibraryNavigationViewDetail.swift in Sources */,
 				F4BB29A2293C075C00151917 /* OptionsPanelToolSelect.swift in Sources */,
 				F4BB299E293C017600151917 /* DarkButtonStyle.swift in Sources */,
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4F662892940447400D7CA79 /* LineTool.swift in Sources */,
+				F4DED2F229B841ED008BC367 /* LibraryNavigationViewSidebar.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F475CC222993385200BEE8A8 /* OptionsToolbar.swift in Sources */,
 				F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */,
 				F4BB298E293BE4CF00151917 /* FlooringToolFactory.swift in Sources */,
+				F4DED2E029B7F8CB008BC367 /* SelectOptionsPanel.swift in Sources */,
 				F4E5A5FF291975B400970C07 /* Toolbar.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
 				F4F662872940446D00D7CA79 /* ShapeTool.swift in Sources */,
@@ -571,21 +647,18 @@
 				F4F6628D2940455E00D7CA79 /* BucketToolOptions.swift in Sources */,
 				F4F662832940445800D7CA79 /* BucketTool.swift in Sources */,
 				F42580452919B5DD005F1CCC /* SKViewAdditions.swift in Sources */,
-				F425806D291C21B3005F1CCC /* LibraryTabViewContentItem.swift in Sources */,
+				F4DED2E629B800B3008BC367 /* ObjectCategories.enum.swift in Sources */,
 				F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */,
 				F4BB2997293BFEC200151917 /* FlooringTilePicker.swift in Sources */,
 				F4BB2988293BD5D400151917 /* FreeDrawTool.swift in Sources */,
-				F4258069291C1D93005F1CCC /* LibraryTabViewButton.swift in Sources */,
 				F475CC1A2993306500BEE8A8 /* DisclosureChildStyle.swift in Sources */,
 				F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */,
 				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
 				F475CC262993477400BEE8A8 /* SegmentedIconPicker.swift in Sources */,
-				F4258067291C16EF005F1CCC /* LibraryTabView.swift in Sources */,
 				F454AEEB294E4F39000A64D7 /* BrushShapeCreator.swift in Sources */,
 				F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */,
 				F4E5A5F929182B5000970C07 /* BackgroundSprite.swift in Sources */,
-				F425806B291C21A7005F1CCC /* LibraryTabViewContent.swift in Sources */,
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
 				F4FA0DA529513F7F004F9120 /* UInt16Additions.swift in Sources */,
@@ -596,10 +669,13 @@
 				F42580422919B581005F1CCC /* LibraryView.swift in Sources */,
 				F4F662992940489900D7CA79 /* EyedropperToolOptionsView.swift in Sources */,
 				F4FA0DA329513E01004F9120 /* CameraController.swift in Sources */,
+				F4DED2F029B841B3008BC367 /* LibraryObjectFilter.swift in Sources */,
 				F4A7F4A02981B67700351461 /* JSONParseError.swift in Sources */,
 				F4BB297C293A62F800151917 /* OptionsPanel.swift in Sources */,
+				F4DED2E429B7F8EC008BC367 /* BuildingOptionsPanel.swift in Sources */,
 				F4F6628B2940455500D7CA79 /* EraserToolOptions.swift in Sources */,
 				F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */,
+				F4DED2F429B841F3008BC367 /* LibraryNavigationViewContent.swift in Sources */,
 				F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */,
 				F425804B2919B689005F1CCC /* SettingsView.swift in Sources */,
 			);

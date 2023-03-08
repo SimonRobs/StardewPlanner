@@ -9,13 +9,14 @@ import SwiftUI
 
 struct DarkButtonStyle: ButtonStyle {
     var isSelected: Bool
+    var noCornerRadius = false
     @State private var isHovered = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .background(isSelected ? Color.accentColor : isHovered ? Color.lightBackground : Color.background)
             .foregroundColor(isHovered && !isSelected ? .accentColor : .white)
-            .cornerRadius(8)
+            .cornerRadius(noCornerRadius ? 0 : 8)
             .onHover{ hovering in
                 isHovered = hovering
             }

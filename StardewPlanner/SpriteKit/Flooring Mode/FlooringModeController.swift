@@ -19,7 +19,7 @@ public class FlooringModeController {
         self.scene = scene
         self.tileMap = tileMap
         
-        NotificationController.instance.subscribe(observer: self, name: .onFlooringModeToolChanged, callbackSelector: #selector(handleToolSelected), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolChanged, callbackSelector: #selector(handleToolSelected), object: nil)
         
         setSelectedTool(ofType: .FreeDraw)
     }

@@ -13,7 +13,7 @@ class FlooringToolsStore: ObservableObject {
     // MARK: - Shared Flooring Mode Variables
     @Published var selectedToolType: FlooringTools = .FreeDraw {
         didSet {
-            NotificationController.instance.post(name: .onFlooringModeToolChanged, object: selectedToolType)
+            NotificationController.instance.post(name: .onFlooringToolChanged, object: selectedToolType)
         }
     }
     

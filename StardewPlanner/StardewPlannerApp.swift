@@ -10,13 +10,15 @@ import SwiftUI
 @main
 struct StardewPlannerApp: App {
     
-    @StateObject var objectLibrary = PlannerLibrary()
+    @StateObject var objectLibraryStore = ObjectLibraryStore()
+    @StateObject var globalConfigsStore = GlobalConfigurationStore()
     @StateObject var flooringToolsStore = FlooringToolsStore()
     
     var body: some Scene {
         WindowGroup {
             PlannerView()
-                .environmentObject(objectLibrary)
+                .environmentObject(objectLibraryStore)
+                .environmentObject(globalConfigsStore)
                 .environmentObject(flooringToolsStore)
                 .preferredColorScheme(.dark)
                 .navigationTitle("Untitled*")

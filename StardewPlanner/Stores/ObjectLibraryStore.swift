@@ -54,6 +54,7 @@ class ObjectLibraryStore: ObservableObject {
             .Summer: [
                 .Blueberry,
                 .Corn,
+                .CoffeeBean,
                 .Hops,
                 .HotPepper,
                 .Melon,
@@ -73,12 +74,15 @@ class ObjectLibraryStore: ObservableObject {
                 .Artichoke,
                 .Beet,
                 .BokChoy,
+                .Corn,
                 .Cranberries,
                 .Eggplant,
                 .FairyRose,
                 .Grape,
                 .Pumpkin,
+                .Sunflower,
                 .SweetGemBerry,
+                .Wheat,
                 .Yam
             ],
             .Special: [
@@ -104,6 +108,7 @@ class ObjectLibraryStore: ObservableObject {
                 .Greenhouse,
                 .Mill,
                 .Silo,
+                .FishPond,
                 .Well
             ],
             .Housing: [
@@ -113,7 +118,6 @@ class ObjectLibraryStore: ObservableObject {
                 .Coop,
                 .BigCoop,
                 .DeluxeCoop,
-                .FishPond,
                 .SlimeHutch,
                 .Stable,
                 .StoneCabin,
@@ -126,7 +130,7 @@ class ObjectLibraryStore: ObservableObject {
             .Obelisks: [
                 .DesertObelisk,
                 .EarthObelisk,
-                .FarmObelisk,
+//                .FarmObelisk, // Only on Ginger Island.
                 .IslandObelisk,
                 .WaterObelisk,
                 .MiniObelisk

@@ -366,6 +366,7 @@
 		F4A1410D2919B387006E762E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F4DED2F729B8F3B7008BC367 /* Animations */,
 				F4A7F4A52981CA5800351461 /* Layouts Data */,
 				F4388A1629135F0900FB39BC /* Assets.xcassets */,
 				F4388A1B29135F0900FB39BC /* StardewPlanner.entitlements */,
@@ -501,6 +502,13 @@
 				F4DED2DF29B7F8CB008BC367 /* SelectOptionsPanel.swift */,
 			);
 			path = "Select Mode";
+			sourceTree = "<group>";
+		};
+		F4DED2F729B8F3B7008BC367 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {

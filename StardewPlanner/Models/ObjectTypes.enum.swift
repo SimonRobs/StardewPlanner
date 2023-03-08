@@ -99,7 +99,7 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case FarmObelisk = "Farm Obelisk"
     case IslandObelisk = "Island Obelisk"
     case WaterObelisk = "Water Obelisk"
-    case MiniObelisk = "Mini-Obelisk"
+    case MiniObelisk = "Mini Obelisk"
 
     // Special
     case GoldClock = "Gold Clock"

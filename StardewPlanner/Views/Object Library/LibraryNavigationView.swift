@@ -11,18 +11,35 @@ struct LibraryNavigationView: View {
     
     @EnvironmentObject() var objectLibrary: ObjectLibraryStore
     
+    @State private var selectedCategory: ObjectCategories?
+    @State private var selectedSubCategory: ObjectSubCategories?
+    
+    private var subCategories: [ObjectSubCategories] {
+        if selectedCategory == nil { return [] }
+        return objectLibrary.getSubCategories(of: selectedCategory!)
+    }
+    
+    private var objectTypes: [ObjectTypes] {
+        if selectedCategory == nil || selectedSubCategory == nil { return [] }
+        return objectLibrary.getTypes(of: selectedCategory!, and: selectedSubCategory!)
+    }
+    
     var body: some View {
         NavigationSplitView {
-            LibraryNavigationViewSidebar(selectedCategory: $objectLibrary.selectedCategory)
+            LibraryNavigationViewSidebar(selectedCategory: $selectedCategory)
         } content: {
-            if objectLibrary.selectedCategory != nil {
-                LibraryNavigationViewContent(subCategories: objectLibrary.objectsMap[objectLibrary.selectedCategory!]?.map{ $0.key }.sorted(by: {$0.rawValue < $1.rawValue}) ?? [],
-                                             selectedSubCategory: $objectLibrary.selectedSubCategory)
+            if selectedCategory != nil {
+                LibraryNavigationViewContent(
+                    subCategories: subCategories,
+                    selectedSubCategory: $selectedSubCategory
+                )
             }
         } detail: {
-            if objectLibrary.selectedSubCategory != nil {
-                LibraryNavigationViewDetail(types: objectLibrary.objectsMap[objectLibrary.selectedCategory!]?[objectLibrary.selectedSubCategory!]?.sorted(by: {$0.rawValue < $1.rawValue}) ?? [],
-                                            selectedType: $objectLibrary.selectedType)
+            if selectedSubCategory != nil {
+                LibraryNavigationViewDetail(
+                    types: objectTypes,
+                    selectedType: $objectLibrary.selectedType
+                )
             }
         }
     }

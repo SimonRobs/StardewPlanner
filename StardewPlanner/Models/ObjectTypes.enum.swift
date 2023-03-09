@@ -215,3 +215,9 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case Twig = "Twig"
     case Meteorite = "Meteorite"
 }
+
+extension ObjectTypes: Comparable {
+    static func < (lhs: ObjectTypes, rhs: ObjectTypes) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}

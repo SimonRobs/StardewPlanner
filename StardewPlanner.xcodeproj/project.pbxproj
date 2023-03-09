@@ -76,6 +76,10 @@
 		F4DED2F229B841ED008BC367 /* LibraryNavigationViewSidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F129B841ED008BC367 /* LibraryNavigationViewSidebar.swift */; };
 		F4DED2F429B841F3008BC367 /* LibraryNavigationViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F329B841F3008BC367 /* LibraryNavigationViewContent.swift */; };
 		F4DED2F629B841F9008BC367 /* LibraryNavigationViewDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F529B841F9008BC367 /* LibraryNavigationViewDetail.swift */; };
+		F4DED2F929BA6A88008BC367 /* ObjectCategoryDisclosureGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2F829BA6A88008BC367 /* ObjectCategoryDisclosureGroup.swift */; };
+		F4DED2FB29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2FA29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift */; };
+		F4DED2FD29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2FC29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift */; };
+		F4DED2FF29BA7CBE008BC367 /* ListButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED2FE29BA7CBE008BC367 /* ListButtonStyle.swift */; };
 		F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5EC291620C200970C07 /* TileSets.enum.swift */; };
 		F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F02918264B00970C07 /* TileSetController.swift */; };
 		F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */; };
@@ -177,6 +181,10 @@
 		F4DED2F129B841ED008BC367 /* LibraryNavigationViewSidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewSidebar.swift; sourceTree = "<group>"; };
 		F4DED2F329B841F3008BC367 /* LibraryNavigationViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewContent.swift; sourceTree = "<group>"; };
 		F4DED2F529B841F9008BC367 /* LibraryNavigationViewDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavigationViewDetail.swift; sourceTree = "<group>"; };
+		F4DED2F829BA6A88008BC367 /* ObjectCategoryDisclosureGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryDisclosureGroup.swift; sourceTree = "<group>"; };
+		F4DED2FA29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryDisclosureGroupChild.swift; sourceTree = "<group>"; };
+		F4DED2FC29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCategoryDisclosureGroupItem.swift; sourceTree = "<group>"; };
+		F4DED2FE29BA7CBE008BC367 /* ListButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListButtonStyle.swift; sourceTree = "<group>"; };
 		F4E5A5EC291620C200970C07 /* TileSets.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSets.enum.swift; sourceTree = "<group>"; };
 		F4E5A5F02918264B00970C07 /* TileSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetController.swift; sourceTree = "<group>"; };
 		F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileAdjacencyMaskAdditions.swift; sourceTree = "<group>"; };
@@ -427,6 +435,7 @@
 			isa = PBXGroup;
 			children = (
 				F4BB299D293C017600151917 /* DarkButtonStyle.swift */,
+				F4DED2FE29BA7CBE008BC367 /* ListButtonStyle.swift */,
 				F475CC172993305400BEE8A8 /* DisclosureParentStyle.swift */,
 				F475CC192993306500BEE8A8 /* DisclosureChildStyle.swift */,
 			);
@@ -458,6 +467,9 @@
 				F4E5A5FE291975B400970C07 /* Toolbar.swift */,
 				F425804A2919B689005F1CCC /* SettingsView.swift */,
 				F4BB297B293A62F800151917 /* OptionsPanel.swift */,
+				F4DED2F829BA6A88008BC367 /* ObjectCategoryDisclosureGroup.swift */,
+				F4DED2FA29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift */,
+				F4DED2FC29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -596,6 +608,7 @@
 			files = (
 				F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */,
 				F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */,
+				F4DED2FD29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift in Sources */,
 				F4BB2986293BD39700151917 /* FreeDrawToolOptions.swift in Sources */,
 				F4BB2982293A6C3000151917 /* OptionsPanelToolSelectButton.swift in Sources */,
 				F475CC1C2993382900BEE8A8 /* ObjectOptions.swift in Sources */,
@@ -635,6 +648,7 @@
 				F4DED2F229B841ED008BC367 /* LibraryNavigationViewSidebar.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F475CC222993385200BEE8A8 /* OptionsToolbar.swift in Sources */,
+				F4DED2F929BA6A88008BC367 /* ObjectCategoryDisclosureGroup.swift in Sources */,
 				F470502E2932FD7A008FCA0F /* TileMapMouseEvent.swift in Sources */,
 				F4BB298E293BE4CF00151917 /* FlooringToolFactory.swift in Sources */,
 				F4DED2E029B7F8CB008BC367 /* SelectOptionsPanel.swift in Sources */,
@@ -649,6 +663,7 @@
 				F4BB2999293C008400151917 /* FlooringTilePickerButton.swift in Sources */,
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
 				F454AEE8294E4C42000A64D7 /* FlooringTileMapOverlay.swift in Sources */,
+				F4DED2FF29BA7CBE008BC367 /* ListButtonStyle.swift in Sources */,
 				F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */,
 				F4A7F49C2981B5C800351461 /* LayoutBuilder.swift in Sources */,
 				F4BB2995293BEECD00151917 /* FlooringToolsStore.swift in Sources */,
@@ -663,6 +678,7 @@
 				F4F662912940457600D7CA79 /* ShapeToolOptions.swift in Sources */,
 				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
+				F4DED2FB29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift in Sources */,
 				F475CC262993477400BEE8A8 /* SegmentedIconPicker.swift in Sources */,
 				F454AEEB294E4F39000A64D7 /* BrushShapeCreator.swift in Sources */,
 				F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */,

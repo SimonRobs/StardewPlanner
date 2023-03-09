@@ -24,7 +24,6 @@ struct LibraryView: View  {
             
             if searchFilter.count > 0 {
                 LibraryNavigationViewDetail(types: filteredObjectTypes, selectedType: $objectLibrary.selectedType)
-                // TODO: Handle selecting a type from here. We have to find the category and sub-category.
             } else {
                 LibraryNavigationView()
             }

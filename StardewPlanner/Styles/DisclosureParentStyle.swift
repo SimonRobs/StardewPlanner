@@ -36,6 +36,7 @@ struct DisclosureParentStyle: DisclosureGroupStyle {
                 .padding(8)
             }
             .buttonStyle(.borderless)
+            
             if configuration.isExpanded {
                 VStack {
                     configuration.content

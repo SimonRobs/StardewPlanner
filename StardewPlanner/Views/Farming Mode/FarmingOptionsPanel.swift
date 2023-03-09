@@ -26,43 +26,11 @@ struct FarmingOptionsPanel: View {
                 .padding()
             
             ScrollView {
-                DisclosureGroup(ObjectCategories.Crops.rawValue) {
-                    ForEach(libraryStore.objectsMap[.Crops]?.map{ $0.key }.sorted(by: {$0.rawValue < $1.rawValue}) ?? [], id: \.self) { subCategory in
-                        DisclosureGroup(subCategory.rawValue) {
-                            VStack {
-                                ForEach(libraryStore.objectsMap[.Crops]?[subCategory]?.sorted(by: {$0.rawValue < $1.rawValue}) ?? [], id: \.self) { type in
-                                    Button(action: { selectObject(of: type) }) {
-                                        HStack {
-                                            Image(type.rawValue)
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(maxHeight: maxImageHeight)
-                                            Text(type.rawValue)
-                                                .foregroundColor(.white)
-                                                .font(.title3)
-                                                .multilineTextAlignment(.center)
-                                        }
-                                    }
-                                    .buttonStyle(DarkButtonStyle(isSelected: type == libraryStore.selectedType))
-                                }
-                            }
-                            .padding()
-                        }
-                        .disclosureGroupStyle(DisclosureChildStyle())
-                    }
-                }.disclosureGroupStyle(DisclosureParentStyle(iconName: "carrot.fill"))
-                
-                DisclosureGroup(ObjectCategories.Trees.rawValue) {
-                }.disclosureGroupStyle(DisclosureParentStyle(iconName: "tree.fill"))
-                
-                DisclosureGroup(ObjectCategories.FarmingUtilities.rawValue) {
-                }.disclosureGroupStyle(DisclosureParentStyle(iconName: "sprinkler.and.droplets.fill"))
+                ObjectCategoryDisclosureGroup(category: .Crops, iconName: "carrot.fill")
+                ObjectCategoryDisclosureGroup(category: .Trees, iconName: "tree.fill")
+                ObjectCategoryDisclosureGroup(category: .FarmingUtilities, iconName: "sprinkler.and.droplets.fill")
             }
         }
-    }
-    
-    func selectObject(of type: ObjectTypes) {
-        libraryStore.selectedType = type
     }
 }
 

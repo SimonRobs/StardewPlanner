@@ -9,21 +9,19 @@ import Foundation
 
 class ObjectLibraryStore: ObservableObject {
     
-    // TODO: Make category and subcategory read-only and add a method to retrieve the path of the object
-    
-    @Published var selectedCategory: ObjectCategories? = .Crops {
+    @Published var selectedType: ObjectTypes? {
         didSet {
-            selectedSubCategory = nil
+            sendObjectChangedNotification()
         }
     }
     
-    @Published var selectedSubCategory: ObjectSubCategories? = .Spring {
-        didSet {
-            selectedType = nil
-        }
+    func getSubCategories(of category: ObjectCategories) -> [ObjectSubCategories] {
+        return objectsMap[category, default: [:]].map{ $0.key }.sorted()
     }
     
-    @Published var selectedType: ObjectTypes? = .Parsnip
+    func getTypes(of category: ObjectCategories, and subCategory: ObjectSubCategories) -> [ObjectTypes] {
+        return objectsMap[category, default: [:]][subCategory, default: []].sorted()
+    }
     
     func getObjectTypes(containing value: String) -> [ObjectTypes] {
         var matchingTypes: [ObjectTypes] = []
@@ -35,6 +33,27 @@ class ObjectLibraryStore: ObservableObject {
             }
         }
         return matchingTypes
+    }
+    
+    private func sendObjectChangedNotification() {
+        if selectedType == nil { return }
+        
+        var selectedCategory: ObjectCategories?
+        var selectedSubCategory: ObjectSubCategories?
+        for category in objectsMap {
+            for subCategory in category.value {
+                for type in subCategory.value {
+                    if type == selectedType {
+                        selectedCategory = category.key
+                        selectedSubCategory = subCategory.key
+                        break
+                    }
+                }
+            }
+        }
+        let object = LibraryObject(category: selectedCategory!, subCategory: selectedSubCategory!, type: selectedType!)
+        print( selectedCategory!, selectedSubCategory!, selectedType)
+        NotificationController.instance.post(name: .onObjectSelected, object: object)
     }
     
     var objectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [

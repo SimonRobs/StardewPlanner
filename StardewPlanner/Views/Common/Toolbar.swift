@@ -36,7 +36,7 @@ struct Toolbar: View {
             }
             
             Spacer()
-            ToolbarButton(systemName: "square.grid.3x1.below.line.grid.1x2", title:"Library") {
+            ToolbarButton(systemName: "books.vertical.fill", title:"Library") {
                 isLibraryPresented.wrappedValue = true
             }
             .keyboardShortcut("l", modifiers: [.shift, .command])

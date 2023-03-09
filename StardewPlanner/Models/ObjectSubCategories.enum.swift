@@ -43,3 +43,9 @@ enum ObjectSubCategories: String, CaseIterable, Codable {
     case Signs = "Signs"
     case Removable = "Removable"
 }
+
+extension ObjectSubCategories: Comparable {
+    static func < (lhs: ObjectSubCategories, rhs: ObjectSubCategories) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}

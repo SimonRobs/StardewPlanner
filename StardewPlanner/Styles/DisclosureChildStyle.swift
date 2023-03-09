@@ -25,6 +25,7 @@ struct DisclosureChildStyle: DisclosureGroupStyle {
                 .padding(configuration.isExpanded ? [.leading,.top,.trailing] : [.all], 8)
             }
             .buttonStyle(.borderless)
+            
             if configuration.isExpanded {
                 Divider()
                 configuration.content

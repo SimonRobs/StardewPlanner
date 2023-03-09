@@ -15,3 +15,9 @@ enum ObjectCategories: String, CaseIterable, Codable {
     case Equipment = "Equipment"
     case Decoration = "Decoration"
 }
+
+extension ObjectCategories: Comparable {
+    static func < (lhs: ObjectCategories, rhs: ObjectCategories) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}

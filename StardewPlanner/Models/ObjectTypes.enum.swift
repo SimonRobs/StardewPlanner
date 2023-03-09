@@ -142,6 +142,7 @@ enum ObjectTypes: String, CaseIterable, Codable {
 
     // Artisan
     case BeeHouse = "Bee House"
+    case Keg = "Keg"
 
     // ProcessingMachines
     case Cask = "Cask"
@@ -190,16 +191,16 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case BarrelBrazier = "Barrel Brazier"
     case SkullBrazier = "Skull Brazier"
     case MarbleBrazier = "Marble Brazier"
-    case WoodLampPost = "Wood Lamp-post"
-    case IronLampPost = "Iron Lamp-post"
+    case WoodLampPost = "Wood Lamp Post"
+    case IronLampPost = "Iron Lamp Post"
     case JackOLantern = "Jack-O-Lantern"
 
     // Furniture
-    case TubOfFlowers = "Tub o' Flowers"
+    case TubOfFlowers = "Tub-O-Flowers"
     case WickedStatue = "Wicked Statue"
     case FluteBlock = "Flute Block"
     case DrumBlock = "Drum Block"
-    case MiniJukebox = "Mini-Jukebox"
+    case MiniJukebox = "Mini Jukebox"
 
     // Signs
     case WoodSign = "Wood Sign"

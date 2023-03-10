@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct DisclosureChildStyle: DisclosureGroupStyle {
+    
+    @State private var isHovered = false
+    
+    private var backgroundColor: Color {
+        return isHovered ? Color.lighterBackground : Color.lightBackground
+    }
+    
     func makeBody(configuration: Configuration) -> some View {
-        VStack {
+        VStack(spacing: 0) {
             Button {
                 configuration.isExpanded.toggle()
             } label: {
@@ -18,11 +25,15 @@ struct DisclosureChildStyle: DisclosureGroupStyle {
                     Image(systemName: configuration.isExpanded ? "chevron.down" : "chevron.right")
                         .animation(nil, value: configuration.isExpanded)
                     
-                    configuration.label.foregroundColor(.white)
+                    configuration.label.foregroundColor(isHovered ? .accentColor : .white)
                     
                     Spacer()
                 }
-                .padding(configuration.isExpanded ? [.leading,.top,.trailing] : [.all], 8)
+                .padding(8)
+                .background(backgroundColor)
+                .onHover{ hovering in
+                    isHovered = hovering
+                }
             }
             .buttonStyle(.borderless)
             
@@ -31,6 +42,7 @@ struct DisclosureChildStyle: DisclosureGroupStyle {
                 configuration.content
             }
         }
-        .background(Color.lightBackground.clipShape(RoundedRectangle(cornerRadius: 8)))
+        .background(Color.lightBackground)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }

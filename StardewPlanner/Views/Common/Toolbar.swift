@@ -29,7 +29,7 @@ struct Toolbar: View {
     var body: some View {
         VStack(spacing: 0) {
             ForEach(toolbarButtons, id: \.icon) { button in
-                ToolbarButton(systemName: button.icon, title: button.title) {
+                ToolbarButton(systemName: button.icon, title: button.title, mode: button.editorMode) {
                     globalConfigsStore.editorMode = button.editorMode
                 }
                 .keyboardShortcut(button.keyboardShortcut)

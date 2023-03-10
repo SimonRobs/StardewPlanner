@@ -14,11 +14,12 @@ struct ObjectCategoryDisclosureGroup: View {
     let category: ObjectCategories
     let iconName: String
     
+    @State private var isExpanded = false
     @State private var subCategoryKeys: [ObjectSubCategories] = []
     @State private var expandedFlags: Set<ObjectSubCategories> = []
     
     var body: some View {
-        DisclosureGroup(category.rawValue) {
+        DisclosureGroup(category.rawValue, isExpanded: $isExpanded) {
             ForEach(subCategoryKeys, id: \.self) { subCategory in
                 ObjectCategoryDisclosureGroupChild(
                     subCategory: subCategory,
@@ -27,7 +28,8 @@ struct ObjectCategoryDisclosureGroup: View {
                         get: { expandedFlags.contains(subCategory) },
                         set: { isExpanding in
                             expandedFlags.removeAll()
-                            if isExpanding { expandedFlags.insert(subCategory) }
+                            if !isExpanding { return }
+                            expandedFlags.insert(subCategory)
                         }
                     )
                 )
@@ -36,6 +38,13 @@ struct ObjectCategoryDisclosureGroup: View {
         .disclosureGroupStyle(DisclosureParentStyle(iconName: iconName))
         .onAppear {
             subCategoryKeys = libraryStore.getSubCategories(of: category)
+        }
+        .onChange(of: libraryStore.selectedType) { newValue in
+            let selectedObject = libraryStore.selectedObject
+            isExpanded = selectedObject?.category == category
+            if selectedObject?.subCategory == nil { return }
+            expandedFlags.removeAll()
+            expandedFlags.insert(selectedObject!.subCategory)
         }
     }
 }

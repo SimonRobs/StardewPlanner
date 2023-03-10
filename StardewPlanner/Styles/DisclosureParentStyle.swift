@@ -9,7 +9,17 @@ import SwiftUI
 
 struct DisclosureParentStyle: DisclosureGroupStyle {
     
+    @State private var isHovered = false
+    
     private var iconName: String
+    
+    private var backgroundColor: Color {
+        return isHovered ? Color.lightBackground : Color.background
+    }
+    
+    private var foregroundColor: Color {
+        return isHovered ? .accentColor : .white
+    }
     
     init(iconName: String) {
         self.iconName = iconName
@@ -25,15 +35,23 @@ struct DisclosureParentStyle: DisclosureGroupStyle {
                     Image(systemName: configuration.isExpanded ? "chevron.down" : "chevron.right")
                         .animation(nil, value: configuration.isExpanded)
                     
-                    configuration.label.foregroundColor(.white).fontWeight(.bold).font(.title3)
+                    configuration.label
+                        .foregroundColor(foregroundColor)
+                        .fontWeight(.bold)
+                        .font(.title3)
                     
                     Spacer()
                     
                     Image(systemName: iconName)
-                        .foregroundColor(.white)
+                        .foregroundColor(foregroundColor)
                         .font(.title2)
                 }
                 .padding(8)
+                .background(backgroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .onHover{ hovering in
+                    isHovered = hovering
+                }
             }
             .buttonStyle(.borderless)
             
@@ -45,6 +63,7 @@ struct DisclosureParentStyle: DisclosureGroupStyle {
             }
         }
         .padding(4)
-        .background(Color.background.clipShape(RoundedRectangle(cornerRadius: 8)))
+        .background(Color.background)
+        .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }

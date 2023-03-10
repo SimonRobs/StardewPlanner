@@ -15,6 +15,24 @@ class ObjectLibraryStore: ObservableObject {
         }
     }
     
+    var selectedObject: LibraryObject? {
+        if selectedType == nil { return nil }
+        var selectedCategory: ObjectCategories?
+        var selectedSubCategory: ObjectSubCategories?
+        for category in objectsMap {
+            for subCategory in category.value {
+                for type in subCategory.value {
+                    if type == selectedType {
+                        selectedCategory = category.key
+                        selectedSubCategory = subCategory.key
+                        break
+                    }
+                }
+            }
+        }
+        return LibraryObject(category: selectedCategory!, subCategory: selectedSubCategory!, type: selectedType!)
+    }
+    
     func getSubCategories(of category: ObjectCategories) -> [ObjectSubCategories] {
         return objectsMap[category, default: [:]].map{ $0.key }.sorted()
     }
@@ -37,23 +55,7 @@ class ObjectLibraryStore: ObservableObject {
     
     private func sendObjectChangedNotification() {
         if selectedType == nil { return }
-        
-        var selectedCategory: ObjectCategories?
-        var selectedSubCategory: ObjectSubCategories?
-        for category in objectsMap {
-            for subCategory in category.value {
-                for type in subCategory.value {
-                    if type == selectedType {
-                        selectedCategory = category.key
-                        selectedSubCategory = subCategory.key
-                        break
-                    }
-                }
-            }
-        }
-        let object = LibraryObject(category: selectedCategory!, subCategory: selectedSubCategory!, type: selectedType!)
-        print( selectedCategory!, selectedSubCategory!, selectedType)
-        NotificationController.instance.post(name: .onObjectSelected, object: object)
+        NotificationController.instance.post(name: .onObjectSelected, object: selectedObject)
     }
     
     var objectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [

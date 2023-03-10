@@ -38,14 +38,18 @@ struct ObjectCategoryDisclosureGroup: View {
         .disclosureGroupStyle(DisclosureParentStyle(iconName: iconName))
         .onAppear {
             subCategoryKeys = libraryStore.getSubCategories(of: category)
+            updateExpandedStatus()
         }
         .onChange(of: libraryStore.selectedType) { newValue in
-            let selectedObject = libraryStore.selectedObject
-            isExpanded = selectedObject?.category == category
-            if selectedObject?.subCategory == nil { return }
-            expandedFlags.removeAll()
-            expandedFlags.insert(selectedObject!.subCategory)
+            print("Changing")
+            updateExpandedStatus()
         }
+    }
+    
+    private func updateExpandedStatus() {
+        guard let selectedObject = libraryStore.selectedObject else { return }
+        isExpanded = selectedObject.category == category
+        expandedFlags = [selectedObject.subCategory]
     }
 }
 

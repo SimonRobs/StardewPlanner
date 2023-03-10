@@ -18,6 +18,8 @@ struct Toolbar: View {
     
     @Environment(\.isLibraryPresented) var isLibraryPresented: Binding<Bool>
     @EnvironmentObject() var globalConfigsStore: GlobalConfigurationStore
+    @EnvironmentObject() var libraryStore: ObjectLibraryStore
+
     
     private let toolbarButtons: [ToolbarButtonDefinition] = [
         .init(icon: "cursorarrow", title: "Select Tool", editorMode: .Select, keyboardShortcut: "v"),
@@ -46,6 +48,10 @@ struct Toolbar: View {
         }
         .frame(maxWidth: 68)
         .background(Color.lightBackground)
+        .onChange(of: libraryStore.selectedType) { newValue in
+            guard let selectedObject = libraryStore.selectedObject else { return }
+            globalConfigsStore.updateEditorMode(withCategory: selectedObject.category)
+        }
     }
 }
 

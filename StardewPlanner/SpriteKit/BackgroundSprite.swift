@@ -16,9 +16,9 @@ class BackgroundSprite: SKSpriteNode {
     init() {
         backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: .Spring)
         super.init(texture: nil, color:.clear, size: BackgroundSize)
+        subscribeObservers()
         
         name = BackgroundSpriteName
-        
         addChild(backgroundLayout)
         
         for i in 0..<BackgroundColumns {
@@ -31,6 +31,10 @@ class BackgroundSprite: SKSpriteNode {
                 allTiles[i].append(t)
             }
         }
+    }
+    
+    deinit {
+        unsubscribeObservers()
     }
     
     func getTile(at location: CGPoint) -> BackgroundTile? {
@@ -49,6 +53,22 @@ class BackgroundSprite: SKSpriteNode {
     
     func setBuildableStatus(at coords: GridCoordinate, to status: Bool) {
         allTiles[coords.i][coords.j].buildable = status
+    }
+    
+    private func subscribeObservers() {
+        NotificationController.instance.subscribe(observer: self, name: .onSeasonChanged, callbackSelector: #selector(handleSeasonChanged), object: nil)
+    }
+    
+    private func unsubscribeObservers() {
+        NotificationController.instance.unsubscribe(observer: self)
+    }
+    
+    @objc private func handleSeasonChanged(_ notification: Notification) {
+        guard let newSeason = notification.object as? Seasons else { return }
+        // TODO: add loading screen when changing the season. This may need to be done in the Farm Scene directly.
+        backgroundLayout.removeFromParent()
+        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: newSeason)
+        addChild(backgroundLayout)
     }
     
     required init?(coder aDecoder: NSCoder) {

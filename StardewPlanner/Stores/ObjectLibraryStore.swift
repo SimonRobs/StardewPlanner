@@ -10,9 +10,8 @@ import Foundation
 class ObjectLibraryStore: ObservableObject {
     
     @Published var selectedType: ObjectTypes? {
-        didSet {
-            sendObjectChangedNotification()
-        }
+        willSet { if newValue == selectedType { return } }
+        didSet { sendObjectChangedNotification() }
     }
     
     var selectedObject: LibraryObject? {

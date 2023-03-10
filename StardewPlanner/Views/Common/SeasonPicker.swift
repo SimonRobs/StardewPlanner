@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SeasonPicker: View {
     
+    @EnvironmentObject var configsStore: GlobalConfigurationStore
+    
     @State private var selectedSeason: Set<Seasons> = [.Spring]
     
     var body: some View {
@@ -18,11 +20,19 @@ struct SeasonPicker: View {
             selection: $selectedSeason,
             singleSelection: true
         )
+        .onAppear {
+            configsStore.selectedSeason = selectedSeason.first!
+        }
+        .onChange(of: selectedSeason) { newValue in
+            guard let season = newValue.first else { return }
+            configsStore.selectedSeason = season
+        }
     }
 }
 
 struct SeasonPicker_Previews: PreviewProvider {
     static var previews: some View {
         SeasonPicker()
+            .environmentObject(GlobalConfigurationStore())
     }
 }

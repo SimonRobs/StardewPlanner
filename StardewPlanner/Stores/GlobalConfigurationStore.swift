@@ -10,11 +10,24 @@ import SwiftUI
 
 class GlobalConfigurationStore: ObservableObject {
     
-    // MARK: - Shared Flooring Mode Variables
     @Published var editorMode: EditorModes = .Flooring {
         didSet {
             NotificationController.instance.post(name: .onEditorModeChanged, object: editorMode)
         }
     }
-
+    
+    @Published var selectedSeason: Seasons = .Spring {
+        didSet {
+            NotificationController.instance.post(name: .onSeasonChanged, object: selectedSeason)
+        }
+    }
+    
+    func updateEditorMode(withCategory category: ObjectCategories) {
+        switch category {
+        case .Crops, .Trees, .FarmingUtilities:
+            editorMode = .Farming
+        case .Buildings, .Equipment, .Decoration:
+            editorMode = .Build
+        }
+    }
 }

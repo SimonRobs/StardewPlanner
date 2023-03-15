@@ -27,7 +27,7 @@ class GlobalConfigurationStore: ObservableObject {
         case .Crops, .Trees, .FarmingUtilities:
             editorMode = .Farming
         case .Buildings, .Equipment, .Decoration:
-            editorMode = .Build
+            editorMode = .Building
         }
     }
 }

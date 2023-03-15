@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-public class FlooringModeController {
+public class FlooringModeController: Controller {
     
     private var tools: [FlooringTools: FlooringToolBase] = [:]
     private var selectedTool: FlooringToolBase?

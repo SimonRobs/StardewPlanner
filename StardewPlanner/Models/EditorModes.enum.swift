@@ -11,5 +11,5 @@ enum EditorModes {
     case Select
     case Farming
     case Flooring
-    case Build
+    case Building
 }

@@ -25,7 +25,7 @@ struct Toolbar: View {
         .init(icon: "cursorarrow", title: "Select Tool", editorMode: .Select, keyboardShortcut: "v"),
         .init(icon: "carrot.fill", title: "Farming Tool", editorMode: .Farming, keyboardShortcut: "f"),
         .init(icon: "road.lanes", title: "Flooring Tool", editorMode: .Flooring, keyboardShortcut: "p"),
-        .init(icon: "house.fill", title: "Build Tool", editorMode: .Build, keyboardShortcut: "b"),
+        .init(icon: "house.fill", title: "Build Tool", editorMode: .Building, keyboardShortcut: "b"),
     ]
     
     var body: some View {

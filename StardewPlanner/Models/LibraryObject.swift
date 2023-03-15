@@ -12,7 +12,7 @@ struct LibraryObject: Identifiable, Hashable, Codable {
     var category: ObjectCategories
     var subCategory: ObjectSubCategories
     var type: ObjectTypes
-    
+    var metadata: LibraryObjectMetadata?
 }
 
 extension LibraryObject: Transferable {

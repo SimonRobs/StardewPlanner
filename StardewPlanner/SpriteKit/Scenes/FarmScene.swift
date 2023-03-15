@@ -16,8 +16,8 @@ class FarmScene: SKScene {
     private var mode = EditorModes.Flooring
     private var panningCamera = false
     
-    private var flooringController: FlooringModeController!
-    private var buildTool: BuildTool!
+    // Controllers
+    private var controllers: [EditorModes: Controller] = [:]
     
     private var previousMouseLocation: CGPoint?
     
@@ -29,9 +29,10 @@ class FarmScene: SKScene {
         
         flooringTileMap = FlooringTileMap(on: farmBackground)
         addChild(flooringTileMap)
-
-        buildTool = BuildTool(in: self, with: farmBackground, and: flooringTileMap)
-        flooringController = FlooringModeController(in: self, tileMap: flooringTileMap)
+        
+        controllers[.Farming] = FarmingModeController(in: self, tileMap: flooringTileMap)
+        controllers[.Flooring]  = FlooringModeController(in: self, tileMap: flooringTileMap)
+        controllers[.Building]  = BuildingModeController(in: self, tileMap: flooringTileMap)
         
         cameraController = CameraController(for: (childNode(withName: "MainCamera") as? SKCameraNode)!)
     }
@@ -45,39 +46,18 @@ class FarmScene: SKScene {
     
     override func mouseEntered(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
-        switch mode {
-        case .Build:
-            buildTool.mouseEntered(with: mouseEvent)
-        case .Flooring:
-            flooringController.mouseEntered(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseEntered(with: mouseEvent)
     }
 
     override func mouseExited(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
-        switch mode {
-        case .Build:
-            buildTool.mouseExited(with: mouseEvent)
-        case .Flooring:
-            flooringController.mouseExited(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseExited(with: mouseEvent)
     }
 
     override func mouseMoved(with event: NSEvent) {
         let mouseEvent = TileMapMouseEvent(from: event, in: self)
         if !shouldPropagateMovementEvent(mouseEvent) { return }
-        switch mode {
-        case .Build:
-            buildTool.mouseMoved(with: mouseEvent)
-        case .Flooring:
-            flooringController.mouseMoved(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseMoved(with: mouseEvent)
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -86,14 +66,7 @@ class FarmScene: SKScene {
             cameraController.beginPan(at: event.location(in: self))
             return
         }
-        switch mode {
-        case .Build:
-            buildTool.mouseDown(with: mouseEvent)
-        case .Flooring:
-            flooringController.mouseDown(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseDown(with: mouseEvent)
     }
     
     override func mouseUp(with event: NSEvent) {
@@ -102,14 +75,7 @@ class FarmScene: SKScene {
             cameraController.endPan()
             return
         }
-        switch mode {
-        case .Build:
-            buildTool.mouseUp(with: mouseEvent)
-        case .Flooring:
-            flooringController.mouseUp(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseUp(with: mouseEvent)
     }
 
     override func mouseDragged(with event: NSEvent) {
@@ -119,12 +85,7 @@ class FarmScene: SKScene {
             return
         }
         if !shouldPropagateMovementEvent(mouseEvent) { return }
-        switch mode {
-        case .Flooring:
-            flooringController.mouseDragged(with: mouseEvent)
-        default:
-            return
-        }
+        controllers[mode]?.mouseDragged(with: mouseEvent)
     }
 
     override func scrollWheel(with event: NSEvent) {
@@ -146,6 +107,7 @@ class FarmScene: SKScene {
     }
     
     private func subscribeObservers() {
+        NotificationController.instance.subscribe(observer: self, name: .onEditorModeChanged, callbackSelector: #selector(handleEditorModeChanged), object: nil)
         NotificationController.instance.subscribe(observer: self, name: .onObjectSelected, callbackSelector: #selector(handleLibraryObjectSelected), object: nil)
     }
     
@@ -153,10 +115,15 @@ class FarmScene: SKScene {
         NotificationController.instance.unsubscribe(observer: self)
     }
     
+    @objc private func handleEditorModeChanged(_ notification: Notification) {
+        guard let newMode = notification.object as? EditorModes else { return }
+        mode = newMode
+    }
+    
     @objc private func handleLibraryObjectSelected(_ notification: Notification) {
-//        mode = .Build
-//        guard let object = notification.object as? LibraryObject else { return }
-//        buildTool.addNewObject(object)
+        guard let object = notification.object as? LibraryObject else { return }
+        guard let objectController = controllers[mode] as? ObjectPlacer else { return }
+        objectController.setObject(object)
     }
     
     /// Only share mouse moved or dragged event if we hovered over a different tile.

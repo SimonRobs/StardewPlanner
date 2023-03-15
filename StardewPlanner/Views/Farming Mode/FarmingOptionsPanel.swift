@@ -31,7 +31,6 @@ struct FarmingOptionsPanel: View {
                 ObjectCategoryDisclosureGroup(category: .FarmingUtilities, iconName: "sprinkler.and.droplets.fill")
             }
         }
-        .padding()
     }
 }
 

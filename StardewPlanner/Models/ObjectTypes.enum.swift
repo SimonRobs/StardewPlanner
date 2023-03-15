@@ -86,8 +86,14 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case SlimeHutch = "Slime Hutch"
     case Stable = "Stable"
     case StoneCabin = "Stone Cabin"
+    case StoneCabin1 = "Stone Cabin Upgrade 1"
+    case StoneCabin2 = "Stone Cabin Upgrade 2"
     case PlankCabin = "Plank Cabin"
+    case PlankCabin1 = "Plank Cabin Upgrade 1"
+    case PlankCabin2 = "Plank Cabin Upgrade 2"
     case LogCabin = "Log Cabin"
+    case LogCabin1 = "Log Cabin Upgrade 1"
+    case LogCabin2 = "Log Cabin Upgrade 2"
 
     // Storage
     case Shed = "Shed"
@@ -96,7 +102,6 @@ enum ObjectTypes: String, CaseIterable, Codable {
     // Obelisks
     case DesertObelisk = "Desert Obelisk"
     case EarthObelisk = "Earth Obelisk"
-    case FarmObelisk = "Farm Obelisk"
     case IslandObelisk = "Island Obelisk"
     case WaterObelisk = "Water Obelisk"
     case MiniObelisk = "Mini Obelisk"

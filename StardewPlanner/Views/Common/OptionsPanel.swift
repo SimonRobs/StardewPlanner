@@ -17,7 +17,7 @@ struct OptionsPanel: View {
             case .Select: SelectOptionsPanel()
             case .Farming: FarmingOptionsPanel()
             case .Flooring: FlooringOptionsPanel()
-            case .Build: BuildingOptionsPanel()
+            case .Building: BuildingOptionsPanel()
             }
             Spacer()
         }

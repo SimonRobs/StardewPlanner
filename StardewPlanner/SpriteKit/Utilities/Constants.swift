@@ -16,3 +16,7 @@ let TileSize: CGFloat = 16
 
 let BackgroundSpriteName =  "Background"
 let BackgroundTileName   =  "Background Tile"
+
+let ObjectPlacementTileName = "Library Object Placement Tile"
+
+let AnimationsFPS = 8

@@ -57,6 +57,7 @@ class BackgroundSprite: SKSpriteNode {
     
     private func subscribeObservers() {
         NotificationController.instance.subscribe(observer: self, name: .onSeasonChanged, callbackSelector: #selector(handleSeasonChanged), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onObjectPlaced, callbackSelector: #selector(handleObjectPlaced), object: nil)
     }
     
     private func unsubscribeObservers() {
@@ -69,6 +70,13 @@ class BackgroundSprite: SKSpriteNode {
         backgroundLayout.removeFromParent()
         backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: newSeason)
         addChild(backgroundLayout)
+    }
+    
+    @objc private func handleObjectPlaced(_ notification: Notification) {
+        guard let occupiedCoordinates = notification.object as? [GridCoordinate] else { return }
+        for coordinate in occupiedCoordinates {
+            setBuildableStatus(at: coordinate, to: false)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

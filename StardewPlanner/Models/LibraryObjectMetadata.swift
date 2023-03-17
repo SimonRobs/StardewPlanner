@@ -20,6 +20,7 @@ struct LibraryObjectMetadata: Hashable, Codable  {
     var seasonal: Bool?
     var area: LibraryObjectArea?
     var inWaterOnly: Bool?
+    var hasBuildingShadow: Bool?
 }
 
 extension LibraryObjectMetadata {
@@ -29,7 +30,9 @@ extension LibraryObjectMetadata {
 struct LibraryObjectSize: Hashable, Codable {
     var columns: Int = 1
     var rows: Int = 1
-    var verticalOverflow: Int = 2
+    var verticalOverflow: Int = 1
+    
+    static let zero = LibraryObjectSize(columns: 0, rows: 0, verticalOverflow: 0)
 }
 
 struct LibraryObjectSizeExtension: Hashable, Codable {

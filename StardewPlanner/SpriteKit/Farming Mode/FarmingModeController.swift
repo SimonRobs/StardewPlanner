@@ -7,15 +7,14 @@
 
 import SpriteKit
 
-public class FarmingModeController: Controller, ObjectPlacer {
+public class FarmingModeController: Controller, LibraryObjectHandler {
     
     private var tileMap: FlooringTileMap
-    private var scene: SKScene
-    var selectedObject: LibraryObject?
+    private let objectPlacer: LibraryObjectPlacer
     
     init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
         self.tileMap = tileMap
+        objectPlacer = LibraryObjectPlacer(in: scene)
     }
     
     func mouseEntered(with event: TileMapMouseEvent) { }

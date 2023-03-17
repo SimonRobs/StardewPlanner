@@ -12,16 +12,14 @@
 		F42580472919B619005F1CCC /* LibraryObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580462919B619005F1CCC /* LibraryObject.swift */; };
 		F42580492919B621005F1CCC /* ObjectLibraryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42580482919B621005F1CCC /* ObjectLibraryStore.swift */; };
 		F425804B2919B689005F1CCC /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804A2919B689005F1CCC /* SettingsView.swift */; };
-		F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425804E291B4C9D005F1CCC /* BuildTool.swift */; };
-		F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258051291B4D3B005F1CCC /* BuildingSizes.swift */; };
-		F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258053291B4DCE005F1CCC /* BuildingSprite.swift */; };
+		F4258054291B4DCE005F1CCC /* LibraryObjectSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258053291B4DCE005F1CCC /* LibraryObjectSprite.swift */; };
 		F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258057291B5866005F1CCC /* EditorModes.enum.swift */; };
 		F425805F291C04C9005F1CCC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F425805E291C04C9005F1CCC /* NotificationController.swift */; };
 		F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258060291C04E1005F1CCC /* NotificationAdditions.swift */; };
 		F4258065291C0CAB005F1CCC /* EnvironmentAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */; };
 		F4258073291C7977005F1CCC /* ObjectSubCategories.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */; };
 		F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */; };
-		F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */; };
+		F4258077291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258076291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift */; };
 		F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C696292436E50075E2F1 /* CGPointAdditions.swift */; };
 		F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C6992924373A0075E2F1 /* GridCoordinate.swift */; };
 		F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */; };
@@ -87,7 +85,10 @@
 		F4DED31929C15224008BC367 /* LibraryObjectMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED31829C15224008BC367 /* LibraryObjectMetadata.swift */; };
 		F4DED31E29C1594C008BC367 /* ObjectsMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED31D29C1594C008BC367 /* ObjectsMetadata.swift */; };
 		F4DED32029C1688B008BC367 /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED31F29C1688B008BC367 /* Controller.swift */; };
-		F4DED32229C16951008BC367 /* ObjectPlacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED32129C16951008BC367 /* ObjectPlacer.swift */; };
+		F4DED32529C39F84008BC367 /* LibraryObjectBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED32429C39F84008BC367 /* LibraryObjectBuilder.swift */; };
+		F4DED32729C39FFA008BC367 /* LibraryObjectPlacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED32629C39FFA008BC367 /* LibraryObjectPlacer.swift */; };
+		F4DED32929C3A78F008BC367 /* LibraryObjectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED32829C3A78F008BC367 /* LibraryObjectHandler.swift */; };
+		F4DED32B29C3FD9C008BC367 /* SKSpriteNodeAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4DED32A29C3FD9C008BC367 /* SKSpriteNodeAdditions.swift */; };
 		F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5EC291620C200970C07 /* TileSets.enum.swift */; };
 		F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F02918264B00970C07 /* TileSetController.swift */; };
 		F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */; };
@@ -123,16 +124,14 @@
 		F42580462919B619005F1CCC /* LibraryObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObject.swift; sourceTree = "<group>"; };
 		F42580482919B621005F1CCC /* ObjectLibraryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectLibraryStore.swift; sourceTree = "<group>"; };
 		F425804A2919B689005F1CCC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		F425804E291B4C9D005F1CCC /* BuildTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTool.swift; sourceTree = "<group>"; };
-		F4258051291B4D3B005F1CCC /* BuildingSizes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSizes.swift; sourceTree = "<group>"; };
-		F4258053291B4DCE005F1CCC /* BuildingSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingSprite.swift; sourceTree = "<group>"; };
+		F4258053291B4DCE005F1CCC /* LibraryObjectSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectSprite.swift; sourceTree = "<group>"; };
 		F4258057291B5866005F1CCC /* EditorModes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorModes.enum.swift; sourceTree = "<group>"; };
 		F425805E291C04C9005F1CCC /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		F4258060291C04E1005F1CCC /* NotificationAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdditions.swift; sourceTree = "<group>"; };
 		F4258064291C0CAB005F1CCC /* EnvironmentAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentAdditions.swift; sourceTree = "<group>"; };
 		F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSubCategories.enum.swift; sourceTree = "<group>"; };
 		F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypes.enum.swift; sourceTree = "<group>"; };
-		F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingPlacementTileSprite.swift; sourceTree = "<group>"; };
+		F4258076291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectPlacementTileSprite.swift; sourceTree = "<group>"; };
 		F433C696292436E50075E2F1 /* CGPointAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointAdditions.swift; sourceTree = "<group>"; };
 		F433C6992924373A0075E2F1 /* GridCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinate.swift; sourceTree = "<group>"; };
 		F4388A0F29135F0600FB39BC /* StardewPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StardewPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,7 +199,10 @@
 		F4DED31829C15224008BC367 /* LibraryObjectMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectMetadata.swift; sourceTree = "<group>"; };
 		F4DED31D29C1594C008BC367 /* ObjectsMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectsMetadata.swift; sourceTree = "<group>"; };
 		F4DED31F29C1688B008BC367 /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
-		F4DED32129C16951008BC367 /* ObjectPlacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectPlacer.swift; sourceTree = "<group>"; };
+		F4DED32429C39F84008BC367 /* LibraryObjectBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectBuilder.swift; sourceTree = "<group>"; };
+		F4DED32629C39FFA008BC367 /* LibraryObjectPlacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectPlacer.swift; sourceTree = "<group>"; };
+		F4DED32829C3A78F008BC367 /* LibraryObjectHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectHandler.swift; sourceTree = "<group>"; };
+		F4DED32A29C3FD9C008BC367 /* SKSpriteNodeAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNodeAdditions.swift; sourceTree = "<group>"; };
 		F4E5A5EC291620C200970C07 /* TileSets.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSets.enum.swift; sourceTree = "<group>"; };
 		F4E5A5F02918264B00970C07 /* TileSetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileSetController.swift; sourceTree = "<group>"; };
 		F4E5A5F22918274700970C07 /* SKTileAdjacencyMaskAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTileAdjacencyMaskAdditions.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		F425803F2919B3CA005F1CCC /* SpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				F4DED32329C39F73008BC367 /* Library Object Builder */,
 				F4DED30329C0FC26008BC367 /* Farming Mode */,
 				F4DED30029C0FC0D008BC367 /* Building Mode */,
 				F4BB2975293943C600151917 /* Flooring Mode */,
@@ -265,7 +268,6 @@
 				F4DED30629C0FC4E008BC367 /* Common */,
 				F4A7F49A2981B5AB00351461 /* Layouts */,
 				F433C6982924372E0075E2F1 /* Models */,
-				F4258050291B4D26005F1CCC /* Build Tool */,
 				F42580432919B5D0005F1CCC /* Utilities */,
 				F4E5A5EB291620A300970C07 /* Tile Sets */,
 			);
@@ -299,23 +301,13 @@
 			isa = PBXGroup;
 			children = (
 				F42580442919B5DD005F1CCC /* SKViewAdditions.swift */,
+				F4DED32A29C3FD9C008BC367 /* SKSpriteNodeAdditions.swift */,
 				F433C696292436E50075E2F1 /* CGPointAdditions.swift */,
 				F48670532944FB24001CC2E7 /* GridCoordinateAdditions.swift */,
 				F4FA0DA429513F7F004F9120 /* UInt16Additions.swift */,
 				F4E5A5FA29182CDE00970C07 /* Constants.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		F4258050291B4D26005F1CCC /* Build Tool */ = {
-			isa = PBXGroup;
-			children = (
-				F425804E291B4C9D005F1CCC /* BuildTool.swift */,
-				F4258051291B4D3B005F1CCC /* BuildingSizes.swift */,
-				F4258053291B4DCE005F1CCC /* BuildingSprite.swift */,
-				F4258076291CC42F005F1CCC /* BuildingPlacementTileSprite.swift */,
-			);
-			path = "Build Tool";
 			sourceTree = "<group>";
 		};
 		F425805D291C04B3005F1CCC /* Controllers */ = {
@@ -333,7 +325,7 @@
 				F470502D2932FD7A008FCA0F /* TileMapMouseEvent.swift */,
 				F4DED31429C12443008BC367 /* CGPoint3D.swift */,
 				F4DED31F29C1688B008BC367 /* Controller.swift */,
-				F4DED32129C16951008BC367 /* ObjectPlacer.swift */,
+				F4DED32829C3A78F008BC367 /* LibraryObjectHandler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -562,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				F4FA0DA229513E01004F9120 /* CameraController.swift */,
+				F4DED32629C39FFA008BC367 /* LibraryObjectPlacer.swift */,
 				F4E5A5F829182B5000970C07 /* BackgroundSprite.swift */,
 				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
 				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
@@ -585,6 +578,16 @@
 				F4DED31D29C1594C008BC367 /* ObjectsMetadata.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		F4DED32329C39F73008BC367 /* Library Object Builder */ = {
+			isa = PBXGroup;
+			children = (
+				F4DED32429C39F84008BC367 /* LibraryObjectBuilder.swift */,
+				F4258053291B4DCE005F1CCC /* LibraryObjectSprite.swift */,
+				F4258076291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift */,
+			);
+			path = "Library Object Builder";
 			sourceTree = "<group>";
 		};
 		F4E5A5EB291620A300970C07 /* Tile Sets */ = {
@@ -670,7 +673,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4258052291B4D3B005F1CCC /* BuildingSizes.swift in Sources */,
 				F4F6629F294048B400D7CA79 /* ShapeToolOptionsView.swift in Sources */,
 				F4DED2FD29BA6BD5008BC367 /* ObjectCategoryDisclosureGroupItem.swift in Sources */,
 				F4BB2986293BD39700151917 /* FreeDrawToolOptions.swift in Sources */,
@@ -689,7 +691,6 @@
 				F4E5A5FD291975AF00970C07 /* ToolbarButton.swift in Sources */,
 				F4258073291C7977005F1CCC /* ObjectSubCategories.enum.swift in Sources */,
 				F4DED32029C1688B008BC367 /* Controller.swift in Sources */,
-				F4DED32229C16951008BC367 /* ObjectPlacer.swift in Sources */,
 				F4A7F4A22981B74400351461 /* Seasons.enum.swift in Sources */,
 				F4DED2DE29B7F827008BC367 /* FlooringOptionsPanel.swift in Sources */,
 				F4BB2980293A66DC00151917 /* FlooringToolsAdditions.swift in Sources */,
@@ -697,7 +698,7 @@
 				F4BB297E293A63B700151917 /* FlooringTools.enum.swift in Sources */,
 				F4BB2992293BEAF400151917 /* FreeDrawToolOptionsView.swift in Sources */,
 				F4F662812940444F00D7CA79 /* EraserTool.swift in Sources */,
-				F4258054291B4DCE005F1CCC /* BuildingSprite.swift in Sources */,
+				F4258054291B4DCE005F1CCC /* LibraryObjectSprite.swift in Sources */,
 				F4F662A1294048B900D7CA79 /* LineToolOptionsView.swift in Sources */,
 				F4DED2E229B7F8DA008BC367 /* FarmingOptionsPanel.swift in Sources */,
 				F475CC202993384700BEE8A8 /* SeasonPicker.swift in Sources */,
@@ -711,6 +712,7 @@
 				F4BB299E293C017600151917 /* DarkButtonStyle.swift in Sources */,
 				F4388A1529135F0600FB39BC /* PlannerView.swift in Sources */,
 				F4F662892940447400D7CA79 /* LineTool.swift in Sources */,
+				F4DED32529C39F84008BC367 /* LibraryObjectBuilder.swift in Sources */,
 				F4DED2F229B841ED008BC367 /* LibraryNavigationViewSidebar.swift in Sources */,
 				F4E5A5ED291620C200970C07 /* TileSets.enum.swift in Sources */,
 				F475CC222993385200BEE8A8 /* OptionsToolbar.swift in Sources */,
@@ -722,11 +724,11 @@
 				F4DED31529C12443008BC367 /* CGPoint3D.swift in Sources */,
 				F4C93B1A2915B78F00D121B2 /* FarmScene.swift in Sources */,
 				F4F662872940446D00D7CA79 /* ShapeTool.swift in Sources */,
-				F425804F291B4C9D005F1CCC /* BuildTool.swift in Sources */,
 				F4BB298C293BE35800151917 /* FlooringToolBase.protocol.swift in Sources */,
 				F4BB2977293943DB00151917 /* FlooringModeController.swift in Sources */,
 				F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */,
 				F4DED31929C15224008BC367 /* LibraryObjectMetadata.swift in Sources */,
+				F4DED32929C3A78F008BC367 /* LibraryObjectHandler.swift in Sources */,
 				F4A7F49E2981B66C00351461 /* DecodableAdditions.swift in Sources */,
 				F4BB2999293C008400151917 /* FlooringTilePickerButton.swift in Sources */,
 				F4E5A5F5291829EA00970C07 /* BackgroundTile.swift in Sources */,
@@ -747,6 +749,7 @@
 				F4DED30229C0FC23008BC367 /* BuildingModeController.swift in Sources */,
 				F4DED31E29C1594C008BC367 /* ObjectsMetadata.swift in Sources */,
 				F4F6628F2940456900D7CA79 /* EyedropperToolOptions.swift in Sources */,
+				F4DED32729C39FFA008BC367 /* LibraryObjectPlacer.swift in Sources */,
 				F4C93B2F2915CE0600D121B2 /* BackgroundBuildableTiles.swift in Sources */,
 				F4DED2FB29BA6BCF008BC367 /* ObjectCategoryDisclosureGroupChild.swift in Sources */,
 				F475CC262993477400BEE8A8 /* SegmentedIconPicker.swift in Sources */,
@@ -756,7 +759,7 @@
 				F4E5A5F12918264B00970C07 /* TileSetController.swift in Sources */,
 				F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */,
 				F4FA0DA529513F7F004F9120 /* UInt16Additions.swift in Sources */,
-				F4258077291CC42F005F1CCC /* BuildingPlacementTileSprite.swift in Sources */,
+				F4258077291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift in Sources */,
 				F4258058291B5866005F1CCC /* EditorModes.enum.swift in Sources */,
 				F48670542944FB24001CC2E7 /* GridCoordinateAdditions.swift in Sources */,
 				F4E5A5F32918274700970C07 /* SKTileAdjacencyMaskAdditions.swift in Sources */,
@@ -771,6 +774,7 @@
 				F4DED2E429B7F8EC008BC367 /* BuildingOptionsPanel.swift in Sources */,
 				F4F6628B2940455500D7CA79 /* EraserToolOptions.swift in Sources */,
 				F4F662852940446400D7CA79 /* EyedropperTool.swift in Sources */,
+				F4DED32B29C3FD9C008BC367 /* SKSpriteNodeAdditions.swift in Sources */,
 				F4DED2F429B841F3008BC367 /* LibraryNavigationViewContent.swift in Sources */,
 				F4A1410C29199DA4006E762E /* ColorAdditions.swift in Sources */,
 				F425804B2919B689005F1CCC /* SettingsView.swift in Sources */,

@@ -21,7 +21,12 @@ class FlooringTileMap: SKTileMapNode {
                    rows: BackgroundRows,
                    tileSize: CGSize(width: TileSize, height: TileSize)
         )
+        subscribeObservers()
         addChild(overlay)
+    }
+    
+    deinit {
+        unsubscribeObservers()
     }
     
     func isBuildable(atColumn column: Int, row: Int) -> Bool {
@@ -60,6 +65,21 @@ class FlooringTileMap: SKTileMapNode {
         let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
         let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet?.rawValue})
         super.setTileGroup(tileGroup, forColumn: column, row: BackgroundRows - 1 - row)
+    }
+        
+    private func subscribeObservers() {
+        NotificationController.instance.subscribe(observer: self, name: .onObjectPlaced, callbackSelector: #selector(handleObjectPlaced), object: nil)
+    }
+    
+    private func unsubscribeObservers() {
+        NotificationController.instance.unsubscribe(observer: self)
+    }
+
+    @objc private func handleObjectPlaced(_ notification: Notification) {
+        guard let occupiedCoordinates = notification.object as? [GridCoordinate] else { return }
+        for coordinate in occupiedCoordinates {
+            clearFlooringTile(at: coordinate)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -74,28 +74,29 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     // MARK: - Buildings
     // Farming
     .Greenhouse: .init(
-        size: .init(columns:  7, rows:  6, verticalOverflow:  3),
+        size: .init(columns:  7, rows:  6, verticalOverflow:  4),
         sizeExtension:.init(columns: 3,rows: 2, textureName: "GREENHOUSE TILE", offset: .init(x: 0, y: 0)),
-        subtextures: [.init(name: "Greenhouse Shadow", offset: .init(x: 0, y: 0, z: 0 ))],
+        subtextures: [.init(name: "Greenhouse Shadow", offset: .init(x: -0.5, y: -3, z: -1 ))],
         variant: "Greenhouse Broken"
     ),
     .Mill: .init(
-        size: .init(columns:  4, rows:  2, verticalOverflow:  8),
-        subtextures: [.init(name: "Mill Blades", offset: .init(x: 0, y: 0, z: 1 ), animationFrames: 10)]
+        size: .init(columns:  4, rows:  2, verticalOverflow:  6),
+        subtextures: [.init(name: "Mill Blades", offset: .init(x: -0.5, y: 2.96, z: 1 ), animationFrames: 10)],
+        hasBuildingShadow: true
     ),
-    .Silo: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  8)),
-    .Well: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  3)),
+    .Silo: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  5), hasBuildingShadow: true),
+    .Well: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  2), hasBuildingShadow: true),
     
     
     // Housing
-    .Barn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  2), nextUpgrade: .BigBarn),
-    .BigBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  2),previousUpgrade: .Barn, nextUpgrade: .DeluxeBarn),
-    .DeluxeBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  2),previousUpgrade: .BigBarn),
-    .Coop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  3), nextUpgrade: .BigCoop),
-    .BigCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  3),previousUpgrade: .Coop, nextUpgrade: .DeluxeCoop),
-    .DeluxeCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  3),previousUpgrade: .BigCoop),
+    .Barn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3), nextUpgrade: .BigBarn, hasBuildingShadow: true),
+    .BigBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3),previousUpgrade: .Barn, nextUpgrade: .DeluxeBarn, hasBuildingShadow: true),
+    .DeluxeBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3),previousUpgrade: .BigBarn, hasBuildingShadow: true),
+    .Coop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4), nextUpgrade: .BigCoop, hasBuildingShadow: true),
+    .BigCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4),previousUpgrade: .Coop, nextUpgrade: .DeluxeCoop, hasBuildingShadow: true),
+    .DeluxeCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4),previousUpgrade: .BigCoop, hasBuildingShadow: true),
     .FishPond: .init(
-        size: .init(columns:  5, rows:  5, verticalOverflow:  3),
+        size: .init(columns:  5, rows:  5, verticalOverflow:  1),
         subtextures: [
             .init(name: "Fish Pond Base", offset: .init(x: 0, y: 0, z: 0)),
             .init(name: "Fish Pond Netting Style", offset: .init(x: 0, y: 0, z: 1 )),
@@ -103,33 +104,99 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
             .init(name: "Fish Pond Water Reflection", offset: .init(x: 0, y: 0, z: 3)),
             .init(name: "Fish Pond Bucket Full", offset: .init(x: 0, y: 0, z: 4))
         ],
-        noTexture: true),
-    .SlimeHutch: .init(size: .init(columns:  11, rows:  6, verticalOverflow:  3), layoutName: "Slime Hutch"),
-    .Stable: .init(size: .init(columns:  4, rows:  2, verticalOverflow:  4)),
-    .StoneCabin: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), nextUpgrade: .StoneCabin1, layoutName: "Farm"),
-    .StoneCabin1: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .StoneCabin, nextUpgrade: .StoneCabin2, layoutName: "Farm Upgrade 1"),
-    .StoneCabin2: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .StoneCabin1, layoutName: "Farm Upgrade 2"),
-    .PlankCabin: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4),  nextUpgrade: .PlankCabin1, layoutName: "Farm"),
-    .PlankCabin1: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .PlankCabin, nextUpgrade: .PlankCabin2, layoutName: "Farm Upgrade 1"),
-    .PlankCabin2: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .PlankCabin1, layoutName: "Farm Upgrade 2"),
-    .LogCabin: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), nextUpgrade: .LogCabin1, layoutName: "Farm"),
-    .LogCabin1: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .LogCabin, nextUpgrade: .LogCabin2, layoutName: "Farm Upgrade 1"),
-    .LogCabin2: .init(size: .init(columns:  5, rows:  3, verticalOverflow:  4), previousUpgrade: .LogCabin1, layoutName: "Farm Upgrade 2"),
+        noTexture: true,
+        hasBuildingShadow: true),
+    .SlimeHutch: .init(
+        size: .init(columns:  11, rows:  6, verticalOverflow:  3),
+        layoutName: "Slime Hutch",
+        hasBuildingShadow: true
+    ),
+    .Stable: .init(
+        size: .init(columns:  4, rows:  2, verticalOverflow:  4),
+        hasBuildingShadow: true
+    ),
+    .StoneCabin: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        nextUpgrade: .StoneCabin1,
+        layoutName: "Farm",
+        hasBuildingShadow: true
+    ),
+    .StoneCabin1: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .StoneCabin,
+        nextUpgrade: .StoneCabin2,
+        layoutName: "Farm Upgrade 1",
+        hasBuildingShadow: true
+    ),
+    .StoneCabin2: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .StoneCabin1,
+        layoutName: "Farm Upgrade 2",
+        hasBuildingShadow: true
+    ),
+    .PlankCabin: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        nextUpgrade: .PlankCabin1,
+        layoutName: "Farm",
+        hasBuildingShadow: true
+    ),
+    .PlankCabin1: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .PlankCabin,
+        nextUpgrade: .PlankCabin2,
+        layoutName: "Farm Upgrade 1",
+        hasBuildingShadow: true
+    ),
+    .PlankCabin2: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .PlankCabin1,
+        layoutName: "Farm Upgrade 2",
+        hasBuildingShadow: true
+    ),
+    .LogCabin: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        nextUpgrade: .LogCabin1,
+        layoutName: "Farm",
+        hasBuildingShadow: true
+    ),
+    .LogCabin1: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .LogCabin,
+        nextUpgrade: .LogCabin2,
+        layoutName: "Farm Upgrade 1",
+        hasBuildingShadow: true
+    ),
+    .LogCabin2: .init(
+        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
+        previousUpgrade: .LogCabin1,
+        layoutName: "Farm Upgrade 2",
+        hasBuildingShadow: true
+    ),
     
     // Storage
-    .Shed: .init(size: .init(columns:  7, rows:  3, verticalOverflow:  4), nextUpgrade: .BigShed, layoutName: "Shed"),
-    .BigShed: .init(size: .init(columns:  7, rows:  3, verticalOverflow:  4),previousUpgrade: .Shed, layoutName: "Big Shed"),
+    .Shed: .init(
+        size: .init(columns:  7, rows:  3, verticalOverflow:  5),
+        nextUpgrade: .BigShed,
+        layoutName: "Shed",
+        hasBuildingShadow: true
+    ),
+    .BigShed: .init(
+        size: .init(columns:  7, rows:  3, verticalOverflow:  5),
+        previousUpgrade: .Shed,
+        layoutName: "Big Shed",
+        hasBuildingShadow: true
+    ),
     
     // Obelisks
-    .DesertObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  8)),
-    .EarthObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  8)),
-    .IslandObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  8)),
-    .WaterObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  8)),
+    .DesertObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
+    .EarthObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
+    .IslandObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
+    .WaterObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
     .MiniObelisk: .init(),
     
     // Special
-    .GoldClock: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  8)),
-    .JunimoHut: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), seasonal: true),
+    .GoldClock: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), hasBuildingShadow: true),
+    .JunimoHut: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), seasonal: true, hasBuildingShadow: true),
     .MiniShippingBin: .init(),
     
     // MARK: - Trees

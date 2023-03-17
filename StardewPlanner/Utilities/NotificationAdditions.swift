@@ -43,5 +43,7 @@ extension Notification.Name {
     // MARK: - Building Mode Events
     static let onObjectSelected = Notification.Name("Event::BuildTool::onObjectSelected")
     static let onObjectPlaced = Notification.Name("Event::BuildTool::onObjectPlaced")
+    static let onObjectRemoved = Notification.Name("Event::BuildTool::onObjectRemoved")
+    static let onObjectVariantChanged = Notification.Name("Event::BuildTool::onObjectVariantChanged")
     
 }

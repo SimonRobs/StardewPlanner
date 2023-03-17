@@ -18,7 +18,7 @@ struct GridCoordinate {
     func toLocation() -> CGPoint {
         return CGPoint(
             x: CGFloat(i) * TileSize - BackgroundSize.width / 2 + TileSize / 2,
-            y: BackgroundSize.height / 2 - CGFloat(j) * TileSize
+            y: BackgroundSize.height / 2 - CGFloat(j) * TileSize - TileSize / 2
         )
     }
 }

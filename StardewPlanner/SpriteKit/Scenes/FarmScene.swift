@@ -122,7 +122,7 @@ class FarmScene: SKScene {
     
     @objc private func handleLibraryObjectSelected(_ notification: Notification) {
         guard let object = notification.object as? LibraryObject else { return }
-        guard let objectController = controllers[mode] as? ObjectPlacer else { return }
+        guard let objectController = controllers[mode] as? LibraryObjectHandler else { return }
         objectController.setObject(object)
     }
     

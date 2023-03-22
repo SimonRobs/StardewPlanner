@@ -9,7 +9,7 @@ import SpriteKit
 
 public class FarmingModeController: Controller, LibraryObjectHandler {
     
-    private var tileMap: FlooringTileMap
+    private let tileMap: FlooringTileMap
     private let objectPlacer: LibraryObjectPlacer
     
     init(in scene: SKScene, tileMap: FlooringTileMap) {
@@ -17,17 +17,46 @@ public class FarmingModeController: Controller, LibraryObjectHandler {
         objectPlacer = LibraryObjectPlacer(in: scene)
     }
     
-    func mouseEntered(with event: TileMapMouseEvent) { }
+    func activate() {
+        objectPlacer.activate()
+    }
     
-    func mouseExited(with event: TileMapMouseEvent) { }
+    func deactivate() {
+        objectPlacer.deactivate()
+    }
     
-    func mouseMoved(with event: TileMapMouseEvent) { }
+    func mouseEntered(with event: TileMapMouseEvent) {
+        objectPlacer.mouseEntered(with: event)
+    }
     
-    func mouseDown(with event: TileMapMouseEvent) { }
+    func mouseExited(with event: TileMapMouseEvent) {
+        objectPlacer.mouseExited(with: event)
+    }
     
-    func mouseUp(with event: TileMapMouseEvent) { }
+    func mouseMoved(with event: TileMapMouseEvent) {
+        if !tileMap.contains(event.location) { return }
+        objectPlacer.mouseMoved(with: event)
+    }
     
-    func mouseDragged(with event: TileMapMouseEvent) { }
+    func mouseDown(with event: TileMapMouseEvent) {
+        if !tileMap.contains(event.location) { return }
+        objectPlacer.mouseDown(with: event)
+    }
     
-    func setObject(_ object: LibraryObject) { }
+    func mouseUp(with event: TileMapMouseEvent) {
+        if !tileMap.contains(event.location) { return }
+        objectPlacer.mouseUp(with: event)
+    }
+    
+    func mouseDragged(with event: TileMapMouseEvent) {
+        objectPlacer.mouseDragged(with: event)
+    }
+    
+    func setObject(_ object: LibraryObject) {
+        objectPlacer.setObject(object)
+    }
+    
+    func cleanUp() {
+        objectPlacer.cleanUp()
+    }
 }

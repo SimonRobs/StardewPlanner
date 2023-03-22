@@ -49,7 +49,7 @@ class LibraryObjectPlacer {
     func mouseUp(with event: TileMapMouseEvent) {
         if selectedSprite != nil { return }
         if selectedObject != nil {
-            resetSelectedSprite()
+            resetSelectedSprite(at: event.location)
         }
     }
     
@@ -64,14 +64,34 @@ class LibraryObjectPlacer {
         resetSelectedSprite()
     }
     
+    func activate() {
+        toggleObjectsArea(forType: selectedObject?.type)
+    }
+    
+    func deactivate() {
+        cleanUp()
+        toggleObjectsArea(forType: nil)
+    }
+    
     func cleanUp() {
         if selectedSprite != nil { selectedSprite?.removeFromParent() }
     }
     
-    private func resetSelectedSprite() {
+    private func toggleObjectsArea(forType type: ObjectTypes?) {
+        for child in scene.children {
+            guard let objectSprite = child as? LibraryObjectSprite else { continue }
+            if type == objectSprite.type {
+                objectSprite.showArea()
+            } else {
+                objectSprite.hideArea()
+            }
+        }
+    }
+    
+    private func resetSelectedSprite(at location: CGPoint? = nil) {
         if selectedObject == nil { return }
         selectedSprite = LibraryObjectBuilder.buildObject(selectedObject!)
-//        if initialPosition != nil { selectedSprite?.setPosition(initialPosition!) }
+        if location != nil { selectedSprite?.setPosition(location!) }
         updateSelectedSpriteTint()
         scene.addChild(selectedSprite!)
     }

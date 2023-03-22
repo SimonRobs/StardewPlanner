@@ -8,10 +8,12 @@
 import SwiftUI
 import SpriteKit
 
+// TODO: Move this to a SceneStore
+let farmScene = SKScene(fileNamed: "FarmScene")!
+
 struct PlannerView: View {
     
     @State private var isLibraryPresented = false
-    private let farmScene = SKScene(fileNamed: "FarmScene")!
     
     var body: some View {
         HStack(spacing: 0) {

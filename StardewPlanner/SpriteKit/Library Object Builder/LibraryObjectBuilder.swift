@@ -15,6 +15,7 @@ class LibraryObjectBuilder {
         let objectTexture = SKTexture(imageNamed: object.type.rawValue)
         objectTexture.filteringMode = .nearest
         let objectSprite = LibraryObjectSprite(
+            objectType: object.type,
             objectSize: object.metadata?.size ?? LibraryObjectSize.zero,
             texture: objectTexture
         )
@@ -28,6 +29,7 @@ class LibraryObjectBuilder {
         if let seasonal = object.metadata?.seasonal { objectSprite.setSeasonalStatus(isSeasonal: seasonal) }
         if let variant = object.metadata?.variant { objectSprite.setVariant(variant: variant) }
         if let inWaterOnly = object.metadata?.inWaterOnly { objectSprite.isOnlyPlaceableInWater(inWaterOnly: inWaterOnly) }
+        if let objectArea = object.metadata?.area { objectSprite.setArea(to: objectArea) }
         
         return objectSprite
     }

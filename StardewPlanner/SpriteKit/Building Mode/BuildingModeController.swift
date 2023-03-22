@@ -17,6 +17,14 @@ public class BuildingModeController: Controller, LibraryObjectHandler {
         objectPlacer = LibraryObjectPlacer(in: scene)
     }
     
+    func activate() {
+        objectPlacer.activate()
+    }
+    
+    func deactivate() {
+        objectPlacer.deactivate()
+    }
+    
     func mouseEntered(with event: TileMapMouseEvent) {
         objectPlacer.mouseEntered(with: event)
     }

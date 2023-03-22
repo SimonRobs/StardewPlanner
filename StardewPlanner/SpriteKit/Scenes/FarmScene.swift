@@ -38,10 +38,10 @@ class FarmScene: SKScene {
     }
     
     override func didChangeSize(_ oldSize: CGSize) {
-        if view != nil {
-            let trackingArea = NSTrackingArea(rect: view!.frame, options: [.activeAlways, .mouseMoved, .mouseEnteredAndExited], owner: self, userInfo: nil)
-            view!.addTrackingArea(trackingArea)
-        }
+        guard let view = self.view else { return }
+        let trackingArea = NSTrackingArea(rect: view.frame, options: [.activeAlways, .mouseMoved, .mouseEnteredAndExited], owner: self, userInfo: nil)
+        for area in view.trackingAreas { view.removeTrackingArea(area) }
+        view.addTrackingArea(trackingArea)
     }
     
     override func mouseEntered(with event: NSEvent) {
@@ -117,7 +117,9 @@ class FarmScene: SKScene {
     
     @objc private func handleEditorModeChanged(_ notification: Notification) {
         guard let newMode = notification.object as? EditorModes else { return }
+        controllers[mode]?.deactivate()
         mode = newMode
+        controllers[mode]?.activate()
     }
     
     @objc private func handleLibraryObjectSelected(_ notification: Notification) {

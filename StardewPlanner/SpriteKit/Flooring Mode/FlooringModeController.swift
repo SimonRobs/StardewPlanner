@@ -24,6 +24,15 @@ public class FlooringModeController: Controller {
         setSelectedTool(ofType: .FreeDraw)
     }
     
+    func activate() {
+        selectedTool?.activate()
+        
+    }
+    
+    func deactivate() {
+        selectedTool?.deactivate()
+    }
+    
     func mouseEntered(with event: TileMapMouseEvent) {
         selectedTool?.mouseEntered(with: event)
     }

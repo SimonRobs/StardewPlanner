@@ -63,9 +63,9 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     .Grass: .init(),
     
     // Giant Crops
-    .GiantCauliflower: .init(size: .init(columns: 3, rows: 3, verticalOverflow: 0)),
-    .GiantMelon: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  0)),
-    .GiantPumpkin: .init(size: .init(columns:  3, rows:  3, verticalOverflow:  0)),
+    .GiantCauliflower: .init(size: .init(columns: 3, rows: 3, verticalOverflow: 1)),
+    .GiantMelon: .init(size: .init(columns:  3, rows:  3, verticalOverflow: 1)),
+    .GiantPumpkin: .init(size: .init(columns:  3, rows:  3, verticalOverflow: 1)),
     
     // Other Seeds
     .MixedSeeds: .init(),
@@ -231,9 +231,9 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     .Hopper: .init(),
     
     // Sprinklers
-    .Sprinkler: .init(nextUpgrade: .QualitySprinkler, area: .init(radius: 0, shape: .Square)),
-    .QualitySprinkler: .init(previousUpgrade: .Sprinkler, nextUpgrade: .IridiumSprinkler,area: .init(radius: 1, shape: .Square)),
-    .IridiumSprinkler: .init(previousUpgrade: .QualitySprinkler, area: .init(radius: 2, shape: .Square)),
+    .Sprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), nextUpgrade: .QualitySprinkler, area: .init(radius: 1, shape: .Kite)),
+    .QualitySprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), previousUpgrade: .Sprinkler, nextUpgrade: .IridiumSprinkler,area: .init(radius: 1, shape: .Square)),
+    .IridiumSprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), previousUpgrade: .QualitySprinkler, area: .init(radius: 2, shape: .Square)),
     
     // MARK: - Equipment
     // Artisan

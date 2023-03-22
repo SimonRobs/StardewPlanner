@@ -12,6 +12,7 @@ extension Notification.Name {
     // MARK: - General Events
     static let onEditorModeChanged = Notification.Name("Event::EditorModeChanged")
     static let onSeasonChanged = Notification.Name("Event::EditorSeasonChanged")
+    static let onShowObjectRangeChanged = Notification.Name("Event::EditorShowObjectRangeChanged")
     
     
     // MARK: - Flooring Tool Events

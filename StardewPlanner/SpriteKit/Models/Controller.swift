@@ -14,4 +14,7 @@ protocol Controller {
     func mouseDown(with event: TileMapMouseEvent)
     func mouseUp(with event: TileMapMouseEvent)
     func mouseDragged(with event: TileMapMouseEvent)
+    
+    func activate()
+    func deactivate()
 }

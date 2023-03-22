@@ -13,6 +13,10 @@ class LibraryObjectSprite: SKSpriteNode {
         case Red, Green, Clear
     }
     
+    private(set) var type: ObjectTypes
+    
+    private static let PlacementTileName = "LibraryObjectSprite::PlacementTile"
+    
     private let TintColorBlendFactor = 0.8
     
     private var isSeasonal = false //  subscribe to onSeasonChanged, get the current season to begin with
@@ -35,12 +39,13 @@ class LibraryObjectSprite: SKSpriteNode {
         return sizeInGrid.verticalOverflow.isMultiple(of: 2)
     }
     
-    init(objectSize: LibraryObjectSize, texture: SKTexture?) {
+    init(objectType: ObjectTypes, objectSize: LibraryObjectSize, texture: SKTexture?) {
         let size = CGSize(
             width: CGFloat(objectSize.columns) * TileSize,
             height: CGFloat(objectSize.rows) * TileSize + CGFloat(objectSize.verticalOverflow) * TileSize
         )
         sizeInGrid = objectSize
+        type = objectType
         super.init(texture: texture, color: .clear, size: size)
         populateOccupiedTiles()        
         colorBlendFactor = TintColorBlendFactor
@@ -73,6 +78,64 @@ class LibraryObjectSprite: SKSpriteNode {
     func setVariant(variant: String) {
         self.variant = variant
         NotificationController.instance.subscribe(observer: self, name: .onObjectVariantChanged, callbackSelector: #selector(handleVariantChanged), object: nil)
+    }
+    
+    func setArea(to area: LibraryObjectArea) {
+        self.area = area
+        // TODO: Get the shape provider to supply the wanted positions
+        var tilePositions: [CGPoint] = []
+        if area.shape == .Square {
+            for row in -area.radius...area.radius {
+                for column in -area.radius...area.radius {
+                    tilePositions.append(CGPoint(x: column * Int(TileSize), y: row * Int(TileSize)))
+                }
+            }
+        }
+        if area.shape == .Circle {
+            for row in -area.radius...area.radius {
+                for column in -area.radius...area.radius {
+                    let distanceFromCenter = simd_length(simd_quatd(vector: simd_double4(Double(column), Double(row), 0, 0)))
+                    let adjustedRadius: Double = Double(area.radius) + 1
+                    if distanceFromCenter < adjustedRadius {
+                        tilePositions.append(CGPoint(x: column * Int(TileSize), y: row * Int(TileSize)))
+                    }
+                }
+            }
+        }
+        
+        if area.shape == .Kite {
+            for row in -area.radius...area.radius {
+                for column in -area.radius...area.radius {
+                    if abs(column) + abs(row) <= area.radius {
+                        tilePositions.append(CGPoint(x: column * Int(TileSize), y: row * Int(TileSize)))
+                    }
+                }
+            }
+        }
+        
+        for position in tilePositions {
+            let rangeTile = SKSpriteNode(imageNamed: "Green Tile")
+            rangeTile.name = LibraryObjectSprite.PlacementTileName
+            rangeTile.position = position
+            rangeTile.zPosition = -1
+            if hasEvenHeight { rangeTile.position.y -= TileSize / 2 }
+            addChild(rangeTile)
+        }
+        NotificationController.instance.subscribe(observer: self, name: .onShowObjectRangeChanged, callbackSelector: #selector(handleShowRangeChanged), object: nil)
+    }
+    
+    func hideArea() {
+        if area == nil { return }
+        enumerateChildNodes(withName: LibraryObjectSprite.PlacementTileName, using: { child, _  in
+            child.alpha = 0
+        })
+    }
+    
+    func showArea() {
+        if area == nil { return }
+        enumerateChildNodes(withName: LibraryObjectSprite.PlacementTileName, using: { child, _  in
+            child.alpha = 1
+        })
     }
     
     func drawBuildingShadow() {
@@ -151,6 +214,11 @@ class LibraryObjectSprite: SKSpriteNode {
     @objc private func handleSeasonChanged(_ notification: Notification) {
         // TODO: Handle changing the texture to reflect the new season
         //        guard let newSeason = notification.object as? Seasons else { return }
+    }
+    
+    @objc private func handleShowRangeChanged(_ notification: Notification) {
+        // TODO: Handle showing/hiding the range depending on the given value
+        //        guard let isRangeShown = notification.object as? Bool else { return }
     }
     
     private func setSubspritesTint(to tint: LibraryObjectSprite.Tint) {

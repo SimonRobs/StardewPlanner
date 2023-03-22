@@ -41,7 +41,6 @@ struct ObjectCategoryDisclosureGroup: View {
             updateExpandedStatus()
         }
         .onChange(of: libraryStore.selectedType) { newValue in
-            print("Changing")
             updateExpandedStatus()
         }
     }

@@ -60,11 +60,6 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case QiFruit = "Qi Fruit"
     case Grass = "Grass"
 
-    // Giant Crops
-    case GiantCauliflower = "Giant Cauliflower"
-    case GiantMelon = "Giant Melon"
-    case GiantPumpkin = "Giant Pumpkin"
-
     // Other Seeds
     case MixedSeeds = "Mixed Seeds"
     case WildSeeds = "Wild Seeds"
@@ -77,27 +72,16 @@ enum ObjectTypes: String, CaseIterable, Codable {
 
     // Housing
     case Barn = "Barn"
-    case BigBarn = "Big Barn"
-    case DeluxeBarn = "Deluxe Barn"
     case Coop = "Coop"
-    case BigCoop = "Big Coop"
-    case DeluxeCoop = "Deluxe Coop"
     case FishPond = "Fish Pond"
     case SlimeHutch = "Slime Hutch"
     case Stable = "Stable"
     case StoneCabin = "Stone Cabin"
-    case StoneCabin1 = "Stone Cabin Upgrade 1"
-    case StoneCabin2 = "Stone Cabin Upgrade 2"
     case PlankCabin = "Plank Cabin"
-    case PlankCabin1 = "Plank Cabin Upgrade 1"
-    case PlankCabin2 = "Plank Cabin Upgrade 2"
     case LogCabin = "Log Cabin"
-    case LogCabin1 = "Log Cabin Upgrade 1"
-    case LogCabin2 = "Log Cabin Upgrade 2"
 
     // Storage
     case Shed = "Shed"
-    case BigShed = "Big Shed"
 
     // Obelisks
     case DesertObelisk = "Desert Obelisk"
@@ -136,14 +120,11 @@ enum ObjectTypes: String, CaseIterable, Codable {
     case CrabPot = "Crab Pot"
     case GardenPot = "Garden Pot"
     case Scarecrow = "Scarecrow"
-    case DeluxeScarecrow = "Deluxe Scarecrow"
     case FarmComputer = "Farm Computer"
     case Hopper = "Hopper"
 
     // Sprinklers
     case Sprinkler = "Sprinkler"
-    case QualitySprinkler = "Quality Sprinkler"
-    case IridiumSprinkler = "Iridium Sprinkler"
 
     // Artisan
     case BeeHouse = "Bee House"

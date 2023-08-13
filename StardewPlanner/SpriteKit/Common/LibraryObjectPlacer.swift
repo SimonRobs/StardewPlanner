@@ -10,47 +10,60 @@ import SpriteKit
 class LibraryObjectPlacer {
     
     let scene: SKScene
+    let tileMap: FlooringTileMap
     
-    var selectedObject: LibraryObject?
-    var selectedSprite: LibraryObjectSprite?
+    private var placedObjects: [ScenePlaceable]
     
-    init(in scene: SKScene) {
+    private var selectedObjectDef: LibraryObjectDef?
+    private var selectedObject: ScenePlaceable?
+    
+    init(in scene: SKScene, tileMap: FlooringTileMap) {
+        placedObjects = []
         self.scene = scene
+        self.tileMap = tileMap
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
-        if selectedSprite == nil || selectedSprite!.parent != nil { return }
-        scene.addChild(selectedSprite!)
+        if selectedObject == nil || selectedObject!.sprite.parent != nil { return }
+        scene.addChild(selectedObject!.sprite)
     }
     
     func mouseExited(with event: TileMapMouseEvent) {
-        selectedSprite?.removeFromParent()
+        selectedObject?.sprite.removeFromParent()
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
-        guard let selectedSprite = selectedSprite else { return }
-        selectedSprite.setPosition(event.location)
+        guard let selectedObject = selectedObject else { return }
+        selectedObject.setPosition(event.location)
+        
+        selectedObject.getOccupiedTiles().forEach { tile in
+            tile.setBuildable(tileMap.isBuildable(atColumn: tile.gridCoordinates.i, row: tile.gridCoordinates.j))
+        }
+        
         updateSelectedSpriteTint()
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        if selectedSprite == nil || selectedSprite!.containsUnbuildableTiles() { return }
+        guard let selectedObject = selectedObject else { return }
+        
+        if selectedObject.containsUnbuildableTiles() { return }
         
         NotificationController.instance.post(
             name: .onObjectPlaced,
-            object: selectedSprite!.getOccupiedTiles().map{ tile in
-                return selectedSprite!.position.add(tile.position).toGridCoordinate()
+            object: selectedObject.getOccupiedTiles().map{ tile in
+                return selectedObject.sprite.position.add(tile.position).toGridCoordinate()
             })
-
-        selectedSprite!.setTint(.Clear)
-        selectedSprite = nil
+        
+        selectedObject.setTint(.Clear)
+        
+        placedObjects.append(selectedObject)
+        self.selectedObject = nil
     }
     
     func mouseUp(with event: TileMapMouseEvent) {
-        if selectedSprite != nil { return }
-        if selectedObject != nil {
-            resetSelectedSprite(at: event.location)
-        }
+        if selectedObject != nil { return }
+        resetSelectedSprite(at: event.location)
+        scene.addChild(selectedObject!.sprite)
     }
     
     func mouseDragged(with event: TileMapMouseEvent) {
@@ -58,51 +71,51 @@ class LibraryObjectPlacer {
         // For ranged items, place items according to their range but in a square pattern
     }
     
-    func setObject(_ object: LibraryObject) {
-        selectedObject = object
+    func setObject(from definition: LibraryObjectDef) {
         cleanUp()
+        selectedObjectDef = definition
         resetSelectedSprite()
+        toggleObjectsArea(forType: selectedObject!.type)
     }
     
     func activate() {
-        toggleObjectsArea(forType: selectedObject?.type)
     }
     
     func deactivate() {
         cleanUp()
-        toggleObjectsArea(forType: nil)
     }
     
     func cleanUp() {
-        if selectedSprite != nil { selectedSprite?.removeFromParent() }
+        if selectedObject?.sprite.parent != nil { selectedObject?.sprite.removeFromParent() }
+        toggleObjectsArea(forType: nil)
+        selectedObject = nil
     }
     
     private func toggleObjectsArea(forType type: ObjectTypes?) {
-        for child in scene.children {
-            guard let objectSprite = child as? LibraryObjectSprite else { continue }
-            if type == objectSprite.type {
-                objectSprite.showArea()
+        if selectedObject == nil { return }
+        for libraryObject in placedObjects {
+            guard let rangedObject = libraryObject as? RangedDecorator else { continue }
+            if type == rangedObject.type {
+                rangedObject.showArea()
             } else {
-                objectSprite.hideArea()
+                rangedObject.hideArea()
             }
         }
     }
     
     private func resetSelectedSprite(at location: CGPoint? = nil) {
-        if selectedObject == nil { return }
-        selectedSprite = LibraryObjectBuilder.buildObject(selectedObject!)
-        if location != nil { selectedSprite?.setPosition(location!) }
+        if selectedObjectDef == nil { return }
+        selectedObject = LibraryObjectBuilder.buildObject(from: selectedObjectDef!)
+        if location != nil { selectedObject!.setPosition(location!) }
         updateSelectedSpriteTint()
-        scene.addChild(selectedSprite!)
     }
     
     private func updateSelectedSpriteTint() {
-        guard let selectedSprite = selectedSprite else { return }
-        if selectedSprite.containsUnbuildableTiles() {
-            selectedSprite.setTint(.Red)
+        guard let selectedObject = selectedObject else { return }
+        if selectedObject.containsUnbuildableTiles() {
+            selectedObject.setTint(.Red)
         } else {
-            selectedSprite.setTint(.Green)
+            selectedObject.setTint(.Green)
         }
-        
     }
 }

@@ -11,10 +11,12 @@ public class FarmingModeController: Controller, LibraryObjectHandler {
     
     private let tileMap: FlooringTileMap
     private let objectPlacer: LibraryObjectPlacer
+    private let tilledDirtTileSet: SKTileSet
     
     init(in scene: SKScene, tileMap: FlooringTileMap) {
         self.tileMap = tileMap
-        objectPlacer = LibraryObjectPlacer(in: scene)
+        tilledDirtTileSet = TileSetController.MakeTileSet(from: TilledDirtTileSets.allCases.map({$0.rawValue}))
+        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap)
     }
     
     func activate() {
@@ -52,8 +54,8 @@ public class FarmingModeController: Controller, LibraryObjectHandler {
         objectPlacer.mouseDragged(with: event)
     }
     
-    func setObject(_ object: LibraryObject) {
-        objectPlacer.setObject(object)
+    func setObject(from definition: LibraryObjectDef) {
+        objectPlacer.setObject(from: definition)
     }
     
     func cleanUp() {

@@ -123,9 +123,9 @@ class FarmScene: SKScene {
     }
     
     @objc private func handleLibraryObjectSelected(_ notification: Notification) {
-        guard let object = notification.object as? LibraryObject else { return }
+        guard let objectDef = notification.object as? LibraryObjectDef else { return }
         guard let objectController = controllers[mode] as? LibraryObjectHandler else { return }
-        objectController.setObject(object)
+        objectController.setObject(from: objectDef)
     }
     
     /// Only share mouse moved or dragged event if we hovered over a different tile.

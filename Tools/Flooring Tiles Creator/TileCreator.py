@@ -8,22 +8,26 @@ INSET_OFFSET = TILE_SIZE - INSET_SIZE
 def create_tiles(for_winter = False):
 
     TILE_TYPES = [
-        f"{'Winter ' if for_winter else ''}Wood Floor",
-        f"{'Winter ' if for_winter else ''}Stone Floor",
-        f"{'Winter ' if for_winter else ''}Weathered Floor",
-        f"{'Winter ' if for_winter else ''}Crystal Floor",
-        f"{'Winter ' if for_winter else ''}Straw Floor",
-        f"{'Winter ' if for_winter else ''}Gravel Path",
-        f"{'Winter ' if for_winter else ''}Wood Path",
-        f"{'Winter ' if for_winter else ''}Crystal Path",
-        f"{'Winter ' if for_winter else ''}Cobblestone Path",
-        f"{'Winter ' if for_winter else ''}Stepping Stone Path",
-        f"{'Winter ' if for_winter else ''}Brick Floor",
-        f"{'Winter ' if for_winter else ''}Rustic Plank Floor",
-        f"{'Winter ' if for_winter else ''}Stone Walkway Floor",
+        "Tilled Dirt",
+        "Tilled Dirt Watered",
+        "Tilled Dirt Water Mask",
+        # f"{'Winter ' if for_winter else ''}Wood Floor",
+        # f"{'Winter ' if for_winter else ''}Stone Floor",
+        # f"{'Winter ' if for_winter else ''}Weathered Floor",
+        # f"{'Winter ' if for_winter else ''}Crystal Floor",
+        # f"{'Winter ' if for_winter else ''}Straw Floor",
+        # f"{'Winter ' if for_winter else ''}Gravel Path",
+        # f"{'Winter ' if for_winter else ''}Wood Path",
+        # f"{'Winter ' if for_winter else ''}Crystal Path",
+        # f"{'Winter ' if for_winter else ''}Cobblestone Path",
+        # f"{'Winter ' if for_winter else ''}Stepping Stone Path",
+        # f"{'Winter ' if for_winter else ''}Brick Floor",
+        # f"{'Winter ' if for_winter else ''}Rustic Plank Floor",
+        # f"{'Winter ' if for_winter else ''}Stone Walkway Floor",
     ]
 
-    flooring_tile_map = pygame.image.load(f"flooring{'_winter' if for_winter else ''}.png")
+    # flooring_tile_map = pygame.image.load(f"flooring{'_winter' if for_winter else ''}.png")
+    flooring_tile_map = pygame.image.load("hoeDirt.png")
     tile_map_width, tile_map_height = flooring_tile_map.get_size()
     tileset = []
     for tile_x in range(tile_map_width//TILE_SIZE):

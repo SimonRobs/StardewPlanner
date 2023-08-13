@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LibraryObjectHandler {
-    func setObject(_ object: LibraryObject)
+    func setObject(from definition: LibraryObjectDef)
 }

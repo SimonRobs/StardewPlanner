@@ -25,8 +25,8 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
         ],
         .Summer: [
             .Blueberry,
-            .Corn,
             .CoffeeBean,
+            .Corn,
             .Hops,
             .HotPepper,
             .Melon,
@@ -65,15 +65,10 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
             .QiFruit,
             .Grass
         ],
-        .Giant: [
-            .GiantCauliflower,
-            .GiantMelon,
-            .GiantPumpkin
-        ],
         .Seeds: [
             .MixedSeeds,
             .WildSeeds
-        ]
+        ],
     ],
     .Buildings: [
         .Farming: [
@@ -85,30 +80,20 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
         ],
         .Housing: [
             .Barn,
-            .BigBarn,
-            .DeluxeBarn,
             .Coop,
-            .BigCoop,
-            .DeluxeCoop,
             .SlimeHutch,
             .Stable,
             .StoneCabin,
-            .StoneCabin1,
-            .StoneCabin2,
             .PlankCabin,
-            .PlankCabin1,
-            .PlankCabin2,
             .LogCabin,
-            .LogCabin1,
-            .LogCabin2
         ],
         .Storage: [
             .Shed,
-            .BigShed],
+        ],
         .Obelisks: [
             .DesertObelisk,
             .EarthObelisk,
-//                .FarmObelisk, // Only on Ginger Island.
+            //                .FarmObelisk, // Only on Ginger Island.
             .IslandObelisk,
             .WaterObelisk,
             .MiniObelisk
@@ -147,14 +132,11 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
             .CrabPot,
             .GardenPot,
             .Scarecrow,
-            .DeluxeScarecrow,
             .FarmComputer,
             .Hopper
         ],
         .Sprinklers: [
             .Sprinkler,
-            .QualitySprinkler,
-            .IridiumSprinkler
         ],
     ],
     .Equipment: [

@@ -18,7 +18,15 @@ class TileSetController {
             TileSetController.MakeTileGroup(named: tileDef.rawValue)
         }
         tileGroups.append(TileSetController.MakeEraserTileGroup())
+        tileGroups.append(contentsOf: TileSetController.MakeTileSet(from: TilledDirtTileSets.allCases.map({$0.rawValue})).tileGroups)
         flooringTileSet = SKTileSet(tileGroups: tileGroups)
+    }
+    
+    public static func MakeTileSet(from names: [String]) -> SKTileSet {
+        let tileGroups = names.map {name in
+            TileSetController.MakeTileGroup(named: name)
+        }
+        return SKTileSet(tileGroups: tileGroups)
     }
     
     private static func MakeTileGroupRules(for name: String) -> [SKTileGroupRule] {

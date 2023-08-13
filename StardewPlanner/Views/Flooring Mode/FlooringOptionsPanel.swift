@@ -17,7 +17,7 @@ struct FlooringOptionsPanel: View {
                 .foregroundColor(.white)
                 .padding(.top)
             
-            OptionsPanelToolSelect()
+            FlooringToolSelect()
             
             Divider()
             

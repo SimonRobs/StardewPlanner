@@ -25,6 +25,8 @@ struct FarmingOptionsPanel: View {
             TextField("Search", text: .constant(""))
                 .padding()
             
+            Divider()
+            
             ScrollView {
                 ObjectCategoryDisclosureGroup(category: .Crops, iconName: "carrot.fill")
                 ObjectCategoryDisclosureGroup(category: .Trees, iconName: "tree.fill")

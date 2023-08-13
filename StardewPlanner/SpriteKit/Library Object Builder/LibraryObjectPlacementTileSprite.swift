@@ -9,6 +9,8 @@ import SpriteKit
 
 class LibraryObjectPlacementTileSprite: SKSpriteNode {
     
+    private(set) var gridCoordinates: GridCoordinate
+    
     private var buildable = true {
         didSet {
             texture = dynamicTexture
@@ -22,12 +24,17 @@ class LibraryObjectPlacementTileSprite: SKSpriteNode {
     }
     
     init(at coords: GridCoordinate) {
+        gridCoordinates = coords
         super.init(texture: nil, color:.clear, size: CGSize(width: TileSize, height: TileSize))
         position = coords.toLocation()
         texture = dynamicTexture
         name = ObjectPlacementTileName
     }
-
+    
+    func updateCoordinates(to coords: GridCoordinate) {
+        gridCoordinates = coords
+    }
+    
     func isBuidable() -> Bool {
         return buildable
     }

@@ -57,6 +57,11 @@ class FlooringTileMap: SKTileMapNode {
         setFlooringTile(toTileSet: tileSet, forColumn: targetTile.i, row: targetTile.j)
     }
     
+    func setFlooringTile(toTileSet tileSet: TilledDirtTileSets, forColumn column: Int, row: Int) {
+        let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
+        let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet.rawValue})
+        super.setTileGroup(tileGroup, forColumn: column, row: BackgroundRows - 1 - row)
+    }
     
     func setFlooringTile(toTileSet tileSet: TileSets?, forColumn column: Int, row: Int) {
         if tileSet == .Empty { return }

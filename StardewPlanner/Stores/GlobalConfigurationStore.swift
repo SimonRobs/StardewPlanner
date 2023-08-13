@@ -25,9 +25,9 @@ class GlobalConfigurationStore: ObservableObject {
     func updateEditorMode(withCategory category: ObjectCategories) {
         switch category {
         case .Crops, .Trees, .FarmingUtilities:
-            editorMode = .Farming
+            if editorMode != .Farming { editorMode = .Farming }
         case .Buildings, .Equipment, .Decoration:
-            editorMode = .Building
+            if editorMode != .Building { editorMode = .Building }
         }
     }
 }

@@ -14,7 +14,7 @@ public class BuildingModeController: Controller, LibraryObjectHandler {
     
     init(in scene: SKScene, tileMap: FlooringTileMap) {
         self.tileMap = tileMap
-        objectPlacer = LibraryObjectPlacer(in: scene)
+        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap)
     }
     
     func activate() {
@@ -52,8 +52,8 @@ public class BuildingModeController: Controller, LibraryObjectHandler {
         objectPlacer.mouseDragged(with: event)
     }
     
-    func setObject(_ object: LibraryObject) {
-        objectPlacer.setObject(object)
+    func setObject(from definition: LibraryObjectDef) {
+        objectPlacer.setObject(from: definition)
     }
     
     func cleanUp() {

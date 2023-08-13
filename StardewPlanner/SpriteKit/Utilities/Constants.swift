@@ -19,4 +19,6 @@ let BackgroundTileName   =  "Background Tile"
 
 let ObjectPlacementTileName = "Library Object Placement Tile"
 
+let RangeOverlayTilesZPosition: CGFloat = 100
+
 let AnimationsFPS = 8

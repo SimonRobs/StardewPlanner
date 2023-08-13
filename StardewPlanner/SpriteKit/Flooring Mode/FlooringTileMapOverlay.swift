@@ -41,6 +41,12 @@ class FlooringTileMapOverlay: SKTileMapNode {
         setTileGroup(tileSetName: tileSet?.rawValue, forColumn: column, row: row)
     }
     
+    func setFlooringTile(toTileSet tileSet: TilledDirtTileSets, forColumn column: Int, row: Int) {
+        let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
+        let tileGroup = flooringTileGroups.first(where: {g in g.name == tileSet.rawValue})
+        super.setTileGroup(tileGroup, forColumn: column, row: BackgroundRows - 1 - row)
+    }
+    
     private func setTileGroup(tileSetName name: String?, forColumn column: Int, row: Int) {
         let flooringTileGroups = TileSetController.instance.flooringTileSet.tileGroups
         let tileGroup = flooringTileGroups.first(where: {g in g.name == name})

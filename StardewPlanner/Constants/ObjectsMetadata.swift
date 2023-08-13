@@ -11,48 +11,48 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Crops
     // Spring Crops
-    .BlueJazz: .init(tints: ["237FFF", "2896FF", "5E79FF", "6D83FF", "70CFFF", "BFE4FF"]),
-    .Cauliflower: .init(),
-    .CoffeeBean: .init(),
-    .Garlic: .init(),
-    .GreenBean: .init(),
-    .Kale: .init(),
-    .Parsnip: .init(),
-    .Potato: .init(),
-    .Rhubarb: .init(),
-    .Strawberry: .init(),
-    .Tulip: .init(tints: ["DFBFFF", "FF5000", "FF9EC1", "FFBAFF", "FFF600"]),
-    .UnmilledRice: .init(),
+    .BlueJazz: .init(seasonal: true, seasons: [.Spring], tints: ["237FFF", "2896FF", "5E79FF", "6D83FF", "70CFFF", "BFE4FF"]),
+    .Cauliflower: .init(seasonal: true, seasons: [.Spring], canBeGiant: true),
+    .CoffeeBean: .init(seasonal: true, seasons: [.Spring, .Summer]),
+    .Garlic: .init(seasonal: true, seasons: [.Spring]),
+    .GreenBean: .init(seasonal: true, seasons: [.Spring]),
+    .Kale: .init(seasonal: true, seasons: [.Spring]),
+    .Parsnip: .init(seasonal: true, seasons: [.Spring]),
+    .Potato: .init(seasonal: true, seasons: [.Spring]),
+    .Rhubarb: .init(seasonal: true, seasons: [.Spring]),
+    .Strawberry: .init(seasonal: true, seasons: [.Spring]),
+    .Tulip: .init(seasonal: true, seasons: [.Spring], tints: ["DFBFFF", "FF5000", "FF9EC1", "FFBAFF", "FFF600"]),
+    .UnmilledRice: .init(seasonal: true, seasons: [.Spring]),
     
     // Summer Crops
-    .Blueberry: .init(),
-    .Corn: .init(),
-    .Hops: .init(),
-    .HotPepper: .init(),
-    .Melon: .init(),
-    .Poppy: .init(tints: ["FEFEFE", "FF0000", "FFAA00"]),
-    .Radish: .init(),
-    .RedCabbage: .init(),
-    .Starfruit: .init(),
-    .SummerSpangle: .init(tints: ["00D0FF", "63FFD2", "CE5BFF", "FF00EE", "FF907A", "FFD400"]),
-    .Sunflower: .init(),
-    .Tomato: .init(),
-    .Wheat: .init(),
-    .Pineapple: .init(),
-    .TaroRoot: .init(),
+    .Blueberry: .init(seasonal: true, seasons: [.Summer]),
+    .Corn: .init(seasonal: true, seasons: [.Summer, .Fall]),
+    .Hops: .init(seasonal: true, seasons: [.Summer]),
+    .HotPepper: .init(seasonal: true, seasons: [.Summer]),
+    .Melon: .init(seasonal: true, seasons: [.Summer], canBeGiant: true),
+    .Poppy: .init(seasonal: true, seasons: [.Summer], tints: ["FEFEFE", "FF0000", "FFAA00"]),
+    .Radish: .init(seasonal: true, seasons: [.Summer]),
+    .RedCabbage: .init(seasonal: true, seasons: [.Summer]),
+    .Starfruit: .init(seasonal: true, seasons: [.Summer]),
+    .SummerSpangle: .init(seasonal: true, seasons: [.Summer], tints: ["00D0FF", "63FFD2", "CE5BFF", "FF00EE", "FF907A", "FFD400"]),
+    .Sunflower: .init(seasonal: true, seasons: [.Summer, .Fall]),
+    .Tomato: .init(seasonal: true, seasons: [.Summer]),
+    .Wheat: .init(seasonal: true, seasons: [.Summer, .Fall]),
+    .Pineapple: .init(seasonal: true, seasons: [.Summer]),
+    .TaroRoot: .init(seasonal: true, seasons: [.Summer]),
     
     // Fall Crops
-    .Amaranth: .init(),
-    .Artichoke: .init(),
-    .Beet: .init(),
-    .BokChoy: .init(),
-    .Cranberries: .init(),
-    .Eggplant: .init(),
-    .FairyRose: .init(tints: ["47E3FF", "7789FF", "8C77FF", "BB00FF", "CDB2FF", "FF7F90"]),
-    .Grape: .init(),
-    .Pumpkin: .init(),
-    .SweetGemBerry: .init(),
-    .Yam: .init(),
+    .Amaranth: .init(seasonal: true, seasons: [.Fall]),
+    .Artichoke: .init(seasonal: true, seasons: [.Fall]),
+    .Beet: .init(seasonal: true, seasons: [.Fall]),
+    .BokChoy: .init(seasonal: true, seasons: [.Fall]),
+    .Cranberries: .init(seasonal: true, seasons: [.Fall]),
+    .Eggplant: .init(seasonal: true, seasons: [.Fall]),
+    .FairyRose: .init(seasonal: true, seasons: [.Fall], tints: ["47E3FF", "7789FF", "8C77FF", "BB00FF", "CDB2FF", "FF7F90"]),
+    .Grape: .init(seasonal: true, seasons: [.Fall]),
+    .Pumpkin: .init(seasonal: true, seasons: [.Fall], canBeGiant: true),
+    .SweetGemBerry: .init(seasonal: true, seasons: [.Fall]),
+    .Yam: .init(seasonal: true, seasons: [.Fall]),
     
     // Special Crops
     .AncientFruit: .init(),
@@ -60,15 +60,10 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     .Fiber: .init(),
     .TeaBush: .init(),
     .QiFruit: .init(),
-    .Grass: .init(),
+    .Grass: .init(seasonal: true),
     
-    // Giant Crops
-    .GiantCauliflower: .init(size: .init(columns: 3, rows: 3, verticalOverflow: 1)),
-    .GiantMelon: .init(size: .init(columns:  3, rows:  3, verticalOverflow: 1)),
-    .GiantPumpkin: .init(size: .init(columns:  3, rows:  3, verticalOverflow: 1)),
-    
-    // Other Seeds
-    .MixedSeeds: .init(),
+    // Other Seeds Crops
+    .MixedSeeds: .init(seasonal: true, seasons: [.Spring, .Summer, .Fall]),
     .WildSeeds: .init(),
     
     // MARK: - Buildings
@@ -77,7 +72,8 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
         size: .init(columns:  7, rows:  6, verticalOverflow:  4),
         sizeExtension:.init(columns: 3,rows: 2, textureName: "GREENHOUSE TILE", offset: .init(x: 0, y: 0)),
         subtextures: [.init(name: "Greenhouse Shadow", offset: .init(x: -0.5, y: -3, z: -1 ))],
-        variant: "Greenhouse Broken"
+        alternativeTextures: ["Greenhouse Broken"],
+        maxPlaceable: 1
     ),
     .Mill: .init(
         size: .init(columns:  4, rows:  2, verticalOverflow:  6),
@@ -89,12 +85,24 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     
     // Housing
-    .Barn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3), nextUpgrade: .BigBarn, hasBuildingShadow: true),
-    .BigBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3),previousUpgrade: .Barn, nextUpgrade: .DeluxeBarn, hasBuildingShadow: true),
-    .DeluxeBarn: .init(size: .init(columns:  7, rows:  4, verticalOverflow:  3),previousUpgrade: .BigBarn, hasBuildingShadow: true),
-    .Coop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4), nextUpgrade: .BigCoop, hasBuildingShadow: true),
-    .BigCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4),previousUpgrade: .Coop, nextUpgrade: .DeluxeCoop, hasBuildingShadow: true),
-    .DeluxeCoop: .init(size: .init(columns:  6, rows:  3, verticalOverflow:  4),previousUpgrade: .BigCoop, hasBuildingShadow: true),
+    .Barn: .init(
+        size: .init(columns:  7, rows:  4, verticalOverflow:  3),
+        upgrades: [
+            .init(name: "Big Barn", newMetadata: .init(layoutName: "Big Barn")),
+            .init(name: "Deluxe Barn", newMetadata: .init(layoutName: "Deluxe Barn")),
+        ],
+        layoutName: "Barn",
+        hasBuildingShadow: true
+    ),
+    .Coop: .init(
+        size: .init(columns:  6, rows:  3, verticalOverflow:  4),
+        upgrades: [
+            .init(name: "Big Coop", newMetadata: .init(layoutName: "Big Coop")),
+            .init(name: "Deluxe Coop", newMetadata: .init(layoutName: "Deluxe Coop")),
+        ],
+        layoutName: "Coop",
+        hasBuildingShadow: true
+    ),
     .FishPond: .init(
         size: .init(columns:  5, rows:  5, verticalOverflow:  1),
         subtextures: [
@@ -117,86 +125,52 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     ),
     .StoneCabin: .init(
         size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        nextUpgrade: .StoneCabin1,
+        upgrades: [
+            .init(name: "Stone Cabin Upgrade 1", newMetadata: .init(layoutName: "Farm Upgrade 1")),
+            .init(name: "Stone Cabin Upgrade 2", newMetadata: .init(layoutName: "Farm Upgrade 2")),
+        ],
         layoutName: "Farm",
-        hasBuildingShadow: true
-    ),
-    .StoneCabin1: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .StoneCabin,
-        nextUpgrade: .StoneCabin2,
-        layoutName: "Farm Upgrade 1",
-        hasBuildingShadow: true
-    ),
-    .StoneCabin2: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .StoneCabin1,
-        layoutName: "Farm Upgrade 2",
         hasBuildingShadow: true
     ),
     .PlankCabin: .init(
         size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        nextUpgrade: .PlankCabin1,
+        upgrades: [
+            .init(name: "Plank Cabin Upgrade 1", newMetadata: .init(layoutName: "Farm Upgrade 1")),
+            .init(name: "Plank Cabin Upgrade 2", newMetadata: .init(layoutName: "Farm Upgrade 2")),
+        ],
         layoutName: "Farm",
-        hasBuildingShadow: true
-    ),
-    .PlankCabin1: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .PlankCabin,
-        nextUpgrade: .PlankCabin2,
-        layoutName: "Farm Upgrade 1",
-        hasBuildingShadow: true
-    ),
-    .PlankCabin2: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .PlankCabin1,
-        layoutName: "Farm Upgrade 2",
         hasBuildingShadow: true
     ),
     .LogCabin: .init(
         size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        nextUpgrade: .LogCabin1,
+        upgrades: [
+            .init(name: "Log Cabin Upgrade 1", newMetadata: .init(layoutName: "Farm Upgrade 1")),
+            .init(name: "Log Cabin Upgrade 2", newMetadata: .init(layoutName: "Farm Upgrade 2")),
+        ],
         layoutName: "Farm",
-        hasBuildingShadow: true
-    ),
-    .LogCabin1: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .LogCabin,
-        nextUpgrade: .LogCabin2,
-        layoutName: "Farm Upgrade 1",
-        hasBuildingShadow: true
-    ),
-    .LogCabin2: .init(
-        size: .init(columns:  5, rows:  3, verticalOverflow:  4),
-        previousUpgrade: .LogCabin1,
-        layoutName: "Farm Upgrade 2",
         hasBuildingShadow: true
     ),
     
     // Storage
     .Shed: .init(
         size: .init(columns:  7, rows:  3, verticalOverflow:  5),
-        nextUpgrade: .BigShed,
+        upgrades: [
+            .init(name: "Big Shed", newMetadata: .init(layoutName: "Big Shed")),
+        ],
         layoutName: "Shed",
-        hasBuildingShadow: true
-    ),
-    .BigShed: .init(
-        size: .init(columns:  7, rows:  3, verticalOverflow:  5),
-        previousUpgrade: .Shed,
-        layoutName: "Big Shed",
         hasBuildingShadow: true
     ),
     
     // Obelisks
-    .DesertObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
-    .EarthObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
-    .IslandObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
-    .WaterObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true),
-    .MiniObelisk: .init(),
+    .DesertObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true, maxPlaceable: 1),
+    .EarthObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true, maxPlaceable: 1),
+    .IslandObelisk: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true, maxPlaceable: 1),
+    .WaterObelisk:  .init(size: .init(columns:  3, rows:  2, verticalOverflow:  6), hasBuildingShadow: true, maxPlaceable: 1),
+    .MiniObelisk: .init(maxPlaceable: 2),
     
     // Special
     .GoldClock: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), hasBuildingShadow: true),
-    .JunimoHut: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), seasonal: true, hasBuildingShadow: true),
+    .JunimoHut: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), hasBuildingShadow: true, seasonal: true),
     .MiniShippingBin: .init(),
     
     // MARK: - Trees
@@ -225,15 +199,24 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     // Miscellaneous
     .CrabPot: .init(inWaterOnly: true),
     .GardenPot: .init(),
-    .Scarecrow: .init(area: .init(radius: 8, shape: .Circle)),
-    .DeluxeScarecrow: .init(area: .init(radius: 16, shape: .Circle)),
+    .Scarecrow: .init(
+        upgrades: [
+            .init(name: "Deluxe Scarecrow", newMetadata: .init(area: .init(radius: 16, shape: .Circle)))
+        ],
+        area: .init(radius: 8, shape: .Circle)
+    ),
     .FarmComputer: .init(),
     .Hopper: .init(),
     
     // Sprinklers
-    .Sprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), nextUpgrade: .QualitySprinkler, area: .init(radius: 1, shape: .Kite)),
-    .QualitySprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), previousUpgrade: .Sprinkler, nextUpgrade: .IridiumSprinkler,area: .init(radius: 1, shape: .Square)),
-    .IridiumSprinkler: .init(size: .init(columns: 1, rows: 1, verticalOverflow: 0), previousUpgrade: .QualitySprinkler, area: .init(radius: 2, shape: .Square)),
+    .Sprinkler: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0),
+        upgrades: [
+            .init(name: "Quality Sprinkler", newMetadata: .init(area: .init(radius: 1, shape: .Square))),
+            .init(name: "Iridium Sprinkler", newMetadata: .init(area: .init(radius: 2, shape: .Square))),
+        ],
+        area: .init(radius: 1, shape: .Kite)
+    ),
     
     // MARK: - Equipment
     // Artisan

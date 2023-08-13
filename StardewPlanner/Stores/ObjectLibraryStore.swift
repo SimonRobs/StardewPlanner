@@ -14,7 +14,7 @@ class ObjectLibraryStore: ObservableObject {
         didSet { sendObjectChangedNotification() }
     }
     
-    var selectedObject: LibraryObject? {
+    var selectedObject: LibraryObjectDef? {
         if selectedType == nil { return nil }
         var selectedCategory: ObjectCategories?
         var selectedSubCategory: ObjectSubCategories?
@@ -30,7 +30,7 @@ class ObjectLibraryStore: ObservableObject {
             }
         }
         guard let metadata = ObjectsMetadata[selectedType!] else { return nil }
-        return LibraryObject(
+        return LibraryObjectDef(
             category: selectedCategory!,
             subCategory: selectedSubCategory!,
             type: selectedType!,

@@ -21,6 +21,8 @@ class LibraryObject: ScenePlaceable {
     
     private(set) var sizeInGrid: LibraryObjectSize
     
+    private(set) var modifiers: [ModifierTypes: LibraryObjectModifier]
+    
     private let TintColorBlendFactor = 0.8
     
     private var occupiedTiles: [LibraryObjectPlacementTileSprite] = []
@@ -43,8 +45,21 @@ class LibraryObject: ScenePlaceable {
         let objectTexture = SKTexture(imageNamed: type.rawValue)
         objectTexture.filteringMode = .nearest
         sprite = SKSpriteNode(texture: objectTexture, color: .clear, size: size.toSceneSize())
+        modifiers = [:]
         populateOccupiedTiles()
         sprite.colorBlendFactor = TintColorBlendFactor
+    }
+    
+    func addModifier(ofType type: ModifierTypes, _ modifier: LibraryObjectModifier) {
+        modifiers[type] = modifier
+    }
+    
+    func hasModifier(ofType type: ModifierTypes) ->  Bool {
+        return modifiers.keys.contains(type)
+    }
+    
+    func getModifier(ofType type: ModifierTypes) -> LibraryObjectModifier? {
+        return modifiers[type]
     }
     
     func setSubsprites(subsprites: [(SKSpriteNode, CGPoint3D)]) {

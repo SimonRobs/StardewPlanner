@@ -13,10 +13,10 @@ public class FarmingModeController: Controller, LibraryObjectHandler {
     private let objectPlacer: LibraryObjectPlacer
     private let tilledDirtTileSet: SKTileSet
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
+    init(in scene: SKScene, tileMap: FlooringTileMap, overlayTileMap: RangeOverlayTileMap) {
         self.tileMap = tileMap
         tilledDirtTileSet = TileSetController.MakeTileSet(from: TilledDirtTileSets.allCases.map({$0.rawValue}))
-        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap)
+        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap, overlayTileMap: overlayTileMap)
     }
     
     func activate() {

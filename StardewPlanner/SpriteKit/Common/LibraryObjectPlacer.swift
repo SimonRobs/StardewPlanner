@@ -11,16 +11,18 @@ class LibraryObjectPlacer {
     
     let scene: SKScene
     let tileMap: FlooringTileMap
+    let overlayTileMap: RangeOverlayTileMap
     
     private var placedObjects: [ScenePlaceable]
     
     private var selectedObjectDef: LibraryObjectDef?
     private var selectedObject: ScenePlaceable?
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
+    init(in scene: SKScene, tileMap: FlooringTileMap, overlayTileMap: RangeOverlayTileMap) {
         placedObjects = []
         self.scene = scene
         self.tileMap = tileMap
+        self.overlayTileMap = overlayTileMap
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
@@ -94,18 +96,19 @@ class LibraryObjectPlacer {
     private func toggleObjectsArea(forType type: ObjectTypes?) {
         if selectedObject == nil { return }
         for libraryObject in placedObjects {
-            guard let rangedObject = libraryObject as? RangedDecorator else { continue }
-            if type == rangedObject.type {
-                rangedObject.showArea()
+            if(!libraryObject.hasModifier(ofType: .Ranged)) { continue }
+            guard let rangedModifier = libraryObject.getModifier(ofType: .Ranged) as? RangedModifier else { continue }
+            if type == libraryObject.type {
+                rangedModifier.showArea()
             } else {
-                rangedObject.hideArea()
+                rangedModifier.hideArea()
             }
         }
     }
     
     private func resetSelectedSprite(at location: CGPoint? = nil) {
         if selectedObjectDef == nil { return }
-        selectedObject = LibraryObjectBuilder.buildObject(from: selectedObjectDef!)
+        selectedObject = LibraryObjectBuilder.buildObject(from: selectedObjectDef!, overlayTileMap: overlayTileMap)
         if location != nil { selectedObject!.setPosition(location!) }
         updateSelectedSpriteTint()
     }

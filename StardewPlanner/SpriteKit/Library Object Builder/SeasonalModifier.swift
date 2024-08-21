@@ -1,5 +1,5 @@
 //
-//  SeasonalDecorator.swift
+//  SeasonalModifier.swift
 //  StardewPlanner
 //
 //  Created by Simon Robatto on 2023-08-13.
@@ -7,10 +7,12 @@
 
 import Foundation
 
-class SeasonalDecorator: LibraryObjectDecorator {
+class SeasonalModifier: LibraryObjectModifier {
+    var type: ModifierTypes = .ComposedTexture
+    var object: any ScenePlaceable
     
-    override init(_ object: ScenePlaceable) {
-        super.init(object)
+    init(_ object: ScenePlaceable) {
+        self.object = object
         // TODO: Get active seasonal status and choose the right seasonal texture
         NotificationController.instance.subscribe(observer: self, name: .onSeasonChanged, callbackSelector: #selector(handleSeasonChanged), object: nil)
     }

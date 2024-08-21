@@ -12,9 +12,9 @@ public class BuildingModeController: Controller, LibraryObjectHandler {
     private let tileMap: FlooringTileMap
     private let objectPlacer: LibraryObjectPlacer
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
+    init(in scene: SKScene, tileMap: FlooringTileMap, overlayTileMap: RangeOverlayTileMap) {
         self.tileMap = tileMap
-        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap)
+        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap, overlayTileMap: overlayTileMap)
     }
     
     func activate() {

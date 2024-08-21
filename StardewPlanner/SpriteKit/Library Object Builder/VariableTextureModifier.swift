@@ -1,5 +1,5 @@
 //
-//  VariableTextureDecorator.swift
+//  VariableTextureModifier.swift
 //  StardewPlanner
 //
 //  Created by Simon Robatto on 2023-08-13.
@@ -7,10 +7,12 @@
 
 import Foundation
 
-class VariableTextureDecorator: LibraryObjectDecorator {
-    
-    override init(_ object: ScenePlaceable) {
-        super.init(object)
+class VariableTextureModifier: LibraryObjectModifier {
+    var type: ModifierTypes = .ComposedTexture
+    var object: any ScenePlaceable
+
+    init(_ object: ScenePlaceable) {
+        self.object = object
         NotificationController.instance.subscribe(observer: self, name: .onObjectVariantChanged, callbackSelector: #selector(handleVariantChanged), object: nil)
     }
     

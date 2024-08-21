@@ -11,6 +11,7 @@ class FarmScene: SKScene {
     
     private var farmBackground: BackgroundSprite!
     private var flooringTileMap: FlooringTileMap!
+    private var rangeOverlayTileMap: RangeOverlayTileMap!
     private var cameraController: CameraController!
     
     private var mode = EditorModes.Flooring
@@ -30,9 +31,13 @@ class FarmScene: SKScene {
         flooringTileMap = FlooringTileMap(on: farmBackground)
         addChild(flooringTileMap)
         
-        controllers[.Farming] = FarmingModeController(in: self, tileMap: flooringTileMap)
+        rangeOverlayTileMap = RangeOverlayTileMap()
+        rangeOverlayTileMap.zPosition = RangeOverlayTilesZPosition
+        addChild(rangeOverlayTileMap)
+        
+        controllers[.Farming] = FarmingModeController(in: self, tileMap: flooringTileMap, overlayTileMap: rangeOverlayTileMap)
         controllers[.Flooring]  = FlooringModeController(in: self, tileMap: flooringTileMap)
-        controllers[.Building]  = BuildingModeController(in: self, tileMap: flooringTileMap)
+        controllers[.Building]  = BuildingModeController(in: self, tileMap: flooringTileMap, overlayTileMap: rangeOverlayTileMap)
         
         cameraController = CameraController(for: (childNode(withName: "MainCamera") as? SKCameraNode)!)
     }

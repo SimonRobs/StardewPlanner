@@ -16,6 +16,10 @@ protocol ScenePlaceable {
     var hasEvenHeight: Bool{ get }
     var hasEvenOverflow: Bool{ get }
     
+    func addModifier(ofType type: ModifierTypes, _ modifier: LibraryObjectModifier)
+    func hasModifier(ofType type: ModifierTypes) ->  Bool
+    func getModifier(ofType type: ModifierTypes) -> LibraryObjectModifier?
+    
     func setSubsprites(subsprites: [(SKSpriteNode, CGPoint3D)])
     func setPosition(_ newPosition: CGPoint)
     func getOccupiedTiles() -> [LibraryObjectPlacementTileSprite]

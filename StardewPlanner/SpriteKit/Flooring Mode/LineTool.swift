@@ -15,8 +15,8 @@ public class LineTool: FlooringToolBase {
     
     private var drawOptions = LineToolOptions()
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
     private var lineStart: GridCoordinate?
     private var lineEnd: GridCoordinate?
@@ -33,9 +33,9 @@ public class LineTool: FlooringToolBase {
         }
     }
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
+    init() {
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         
         subscribe()
     }
@@ -43,7 +43,7 @@ public class LineTool: FlooringToolBase {
     func activate() { }
     
     func deactivate() {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
@@ -78,16 +78,16 @@ public class LineTool: FlooringToolBase {
     
     private func drawTiles() {
         for tileCoords in getTilesToDraw() {
-            tileMap.setFlooringTile(toTileSet: selectedTileSet, forColumn: tileCoords.i, row: tileCoords.j)
+            flooringLayer.setTile(toTileSet: selectedTileSet, forColumn: tileCoords.i, row: tileCoords.j)
         }
     }
     
     private func updateOverlay() {
         
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
         
         for tileCoords in getTilesToDraw() {
-            tileMap.overlay.setFlooringTile(toTileSet: selectedTileSet, at: tileCoords)
+            flooringOverlayLayer.setTile(toTileSet: selectedTileSet, at: tileCoords)
         }
     }
     

@@ -22,6 +22,12 @@ class GlobalConfigurationStore: ObservableObject {
         }
     }
     
+    @Published var shownLayers: Set<ToggleableLayers> = [.BuildableOverflow, .Foreground] {
+        didSet {
+            NotificationController.instance.post(name: .onShownLayersChanged, object: shownLayers)
+        }
+    }
+    
     func updateEditorMode(withCategory category: ObjectCategories) {
         switch category {
         case .Crops, .Trees, .FarmingUtilities:

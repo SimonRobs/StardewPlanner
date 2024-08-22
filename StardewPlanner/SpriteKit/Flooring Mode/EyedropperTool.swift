@@ -13,12 +13,14 @@ public class EyedropperTool: FlooringToolBase {
     
     private var drawOptions = EyedropperToolOptions()
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
+    init() {
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
+        
+        subscribe()
     }
     
     func activate() { }
@@ -37,7 +39,17 @@ public class EyedropperTool: FlooringToolBase {
     
     func mouseDragged(with event: TileMapMouseEvent) { }
     
-    private func subscribe() { }
     
-    private func unsubscribe() { }
+    @objc private func handleOptionsChanged(_ notification: Notification) {
+        guard let options = notification.object as? EyedropperToolOptions else { return }
+        drawOptions = options
+    }
+    
+    private func subscribe() {
+        NotificationController.instance.subscribe(observer: self, name: .onEyedropperToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
+    }
+    
+    private func unsubscribe() {
+        NotificationController.instance.unsubscribe(observer: self)
+    }
 }

@@ -12,12 +12,13 @@ public class ShapeTool: FlooringToolBase {
     var type: FlooringTools { get { return .Shape } }
     
     private var drawOptions = ShapeToolOptions()
-
+    
     private var fillTileSet: TileSets = .Wood
     private var strokeTileSet: TileSets = .Empty
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let backgroundLayer: BackgroundLayer
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
     private var startCoordinates: GridCoordinate? = nil
     private var endCoordinates: GridCoordinate? = nil
@@ -56,9 +57,10 @@ public class ShapeTool: FlooringToolBase {
     }
     
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
+    init() {
+        backgroundLayer = LayersManager.instance.getLayer(ofType: .Background) as! BackgroundLayer
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         
         subscribe()
     }
@@ -66,7 +68,7 @@ public class ShapeTool: FlooringToolBase {
     func activate() { }
     
     func deactivate() {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) {
@@ -74,7 +76,7 @@ public class ShapeTool: FlooringToolBase {
     }
     
     func mouseExited(with event: TileMapMouseEvent) {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
@@ -87,7 +89,7 @@ public class ShapeTool: FlooringToolBase {
     
     func mouseUp(with event: TileMapMouseEvent) {
         drawShape()
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
         startCoordinates = nil
         endCoordinates = nil
     }
@@ -103,11 +105,13 @@ public class ShapeTool: FlooringToolBase {
         
         for col in topLeftCorner.i ... bottomRightCorner.i {
             for row in bottomRightCorner.j ... topLeftCorner.j {
-                tileMap.setFlooringTile(
-                    toTileSet: getTileSet(atColumn: col, row: row),
-                    forColumn: col,
-                    row: row
-                )
+                if backgroundLayer.canBeOccupied(atColumn: col, row: row) {
+                    flooringLayer.setTile(
+                        toTileSet: getTileSet(atColumn: col, row: row),
+                        forColumn: col,
+                        row: row
+                    )
+                }
             }
         }
     }
@@ -117,7 +121,7 @@ public class ShapeTool: FlooringToolBase {
         
         var tileSet = strokeTileSet != .Empty ? strokeTileSet : fillTileSet != .Empty ? fillTileSet : .Empty
         if strokeTileSet != .Empty && row >= bottomRightCorner.j + Int(strokeWidth) && row <= topLeftCorner.j - Int(strokeWidth) &&
-           column >= topLeftCorner.i + Int(strokeWidth) && column <= bottomRightCorner.i - Int(strokeWidth)
+            column >= topLeftCorner.i + Int(strokeWidth) && column <= bottomRightCorner.i - Int(strokeWidth)
         {
             tileSet = fillTileSet
         }
@@ -125,19 +129,19 @@ public class ShapeTool: FlooringToolBase {
     }
     
     private func moveOverlayTile(to location: CGPoint) {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
         let positionInGrid = location.toGridCoordinate()
         let tileSet = strokeTileSet == .Empty ? fillTileSet : strokeTileSet
-        tileMap.overlay.setFlooringTile(toTileSet: tileSet, at: positionInGrid)
+        flooringOverlayLayer.setTile(toTileSet: tileSet, at: positionInGrid)
     }
     
     private func updateOverlay() {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
         guard let topLeftCorner = topLeftCorner, let bottomRightCorner = bottomRightCorner else { return }
         
         for col in topLeftCorner.i ... bottomRightCorner.i {
             for row in bottomRightCorner.j ... topLeftCorner.j {
-                tileMap.overlay.setFlooringTile(toTileSet: getTileSet(atColumn: col, row: row), forColumn: col, row: row)
+                flooringOverlayLayer.setTile(toTileSet: getTileSet(atColumn: col, row: row), forColumn: col, row: row)
             }
         }
     }
@@ -156,7 +160,7 @@ public class ShapeTool: FlooringToolBase {
         guard let options = notification.object as? ShapeToolOptions else { return }
         drawOptions = options
     }
-
+    
     private func subscribe() {
         NotificationController.instance.subscribe(observer: self, name: .onShapeToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
         NotificationController.instance.subscribe(observer: self, name: .onPrimaryTileChanged, callbackSelector: #selector(handleFillTileChanged), object: nil)

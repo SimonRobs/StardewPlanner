@@ -12,6 +12,7 @@ extension Notification.Name {
     // MARK: - General Events
     static let onEditorModeChanged = Notification.Name("Event::EditorModeChanged")
     static let onSeasonChanged = Notification.Name("Event::EditorSeasonChanged")
+    static let onShownLayersChanged = Notification.Name("Event::ShownLayersChanged")
     static let onShowObjectRangeChanged = Notification.Name("Event::EditorShowObjectRangeChanged")
     
     
@@ -43,7 +44,6 @@ extension Notification.Name {
     
     // MARK: - Building Mode Events
     static let onObjectSelected = Notification.Name("Event::BuildTool::onObjectSelected")
-    static let onObjectPlaced = Notification.Name("Event::BuildTool::onObjectPlaced")
     static let onObjectRemoved = Notification.Name("Event::BuildTool::onObjectRemoved")
     static let onObjectVariantChanged = Notification.Name("Event::BuildTool::onObjectVariantChanged")
     

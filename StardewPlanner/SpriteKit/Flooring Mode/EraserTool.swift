@@ -13,8 +13,8 @@ public class EraserTool: FlooringToolBase {
     
     private var drawOptions = EraserToolOptions()
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
     private var eraserSize: CGFloat {
         get {
@@ -28,20 +28,20 @@ public class EraserTool: FlooringToolBase {
         }
     }
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
+    init() {
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         
         subscribe()
     }
     
     func activate() {
-        tileMap.overlay.alpha = 1
+        flooringOverlayLayer.overrideAlpha(1)
     }
     
     func deactivate() {
-        tileMap.overlay.alpha = FlooringTileMapOverlay.DefaultAlpha
-        tileMap.overlay.clear()
+        flooringOverlayLayer.resetAlpha()
+        flooringOverlayLayer.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) { }
@@ -66,15 +66,15 @@ public class EraserTool: FlooringToolBase {
     }
     
     private func moveOverlay(to location: CGPoint) {
-        tileMap.overlay.clear()
-        tileMap.overlay.enableAutomapping = false
+        flooringOverlayLayer.clear()
+        flooringOverlayLayer.disableAutomapping()
         for gridCoord in BrushShapeCreator.GetFlooringTiles(inShape: eraserShape,
                                                             ofSize: eraserSize,
                                                             centerAt: location.toGridCoordinate())
         {
-            tileMap.overlay.setFlooringTile(toTileSet: .Eraser, at: gridCoord)
+            flooringOverlayLayer.setTile(toTileSet: .Eraser, at: gridCoord)
         }
-        tileMap.overlay.enableAutomapping = true
+        flooringOverlayLayer.enableAutomapping()
     }
     
     private func eraseTiles(at location: CGPoint) {
@@ -82,7 +82,7 @@ public class EraserTool: FlooringToolBase {
                                                             ofSize: eraserSize,
                                                             centerAt: location.toGridCoordinate())
         {
-            tileMap.clearFlooringTile(at: gridCoord)
+            flooringLayer.clearTile(at: gridCoord)
         }
     }
     

@@ -13,19 +13,17 @@ class LibraryObject: ScenePlaceable {
         case Red, Green, Clear
     }
     
-    public static let PlacementTileName = "LibraryObject::PlacementTileSprite"
-    
-    private(set) var sprite: SKSpriteNode
-    
     private(set) var type: ObjectTypes
-    
     private(set) var sizeInGrid: LibraryObjectSize
-    
     private(set) var modifiers: [ModifierTypes: LibraryObjectModifier]
     
     private let TintColorBlendFactor = 0.8
     
     private var occupiedTiles: [LibraryObjectPlacementTileSprite] = []
+    private let rootSprite: SKNode
+    private let sprite: SKSpriteNode
+    private let cropContainer: SKCropNode
+    private let cropMask: SKSpriteNode
     
     var hasEvenWidth: Bool {
         return sizeInGrid.columns.isMultiple(of: 2)
@@ -39,15 +37,38 @@ class LibraryObject: ScenePlaceable {
         return sizeInGrid.verticalOverflow.isMultiple(of: 2)
     }
     
+    var hasParent: Bool {
+        return rootSprite.parent != nil
+    }
+    
     init(ofType type: ObjectTypes, withSize size: LibraryObjectSize) {
         self.type = type
         sizeInGrid = size
         let objectTexture = SKTexture(imageNamed: type.rawValue)
         objectTexture.filteringMode = .nearest
-        sprite = SKSpriteNode(texture: objectTexture, color: .clear, size: size.toSceneSize())
         modifiers = [:]
-        populateOccupiedTiles()
+        rootSprite = SKNode()
+        sprite = SKSpriteNode(texture: objectTexture, color: .clear, size: size.toSceneSize())
         sprite.colorBlendFactor = TintColorBlendFactor
+        cropContainer = SKCropNode()
+        cropContainer.addChild(sprite)
+        rootSprite.addChild(cropContainer)
+        cropMask = SKSpriteNode(color: .red, size: size.toSceneSize(noVerticalOverflow: true))
+        cropMask.position.y += cropMask.size.height / 2 - sprite.size.height / 2
+        populateOccupiedTiles()
+    }
+    
+    
+    func removeFromParent() {
+        rootSprite.removeFromParent()
+    }
+    
+    func getSprite() -> SKNode {
+        return rootSprite
+    }
+    
+    func getSpriteInternal() -> SKSpriteNode {
+        return sprite
     }
     
     func addModifier(ofType type: ModifierTypes, _ modifier: LibraryObjectModifier) {
@@ -62,6 +83,25 @@ class LibraryObject: ScenePlaceable {
         return modifiers[type]
     }
     
+    func hideVerticalOverflow() {
+        if sizeInGrid.verticalOverflow <= 0 { return }
+        cropContainer.maskNode = cropMask
+    }
+    
+    func showVerticalOverflow() {
+        if sizeInGrid.verticalOverflow <= 0 { return }
+        cropContainer.maskNode = nil
+    }
+    
+    func contains(_ location: CGPoint) -> Bool {
+        if rootSprite.contains(location) { return true }
+        if hasModifier(ofType: .ComposedTexture) {
+            let composedTexModifier = modifiers[.ComposedTexture] as! ComposedTextureModifier
+            return composedTexModifier.contains(location)
+        }
+        return false
+    }
+    
     func setSubsprites(subsprites: [(SKSpriteNode, CGPoint3D)]) {
         //        for (subsprite, offset) in subsprites {
         //            subsprite.position = CGPoint(x: offset.x * TileSize, y: offset.y * TileSize)
@@ -70,16 +110,13 @@ class LibraryObject: ScenePlaceable {
         //        }
     }
     
-    // TODO: This functionality should be deferred to the LibraryObjectPlacer,
-    // TODO: so as to take into account other properties like subsprites and area range.
-    // TODO: Or, provide a 'center' attribute which is modified by the decorators and used by the placer
     func setPosition(_ newPosition: CGPoint) {
-        sprite.position = newPosition
+        rootSprite.position = newPosition
         // Move the sprite to its top-left tile, like in Stardew Valley
-        sprite.position.x += sprite.size.width / 2 - TileSize / 2
-        sprite.position.y += sprite.size.height / 2 - TileSize / 2
-        sprite.position.y -= CGFloat(sizeInGrid.rows - 1) * TileSize
-        sprite.zPosition = CGFloat(sprite.position.toGridCoordinate().j)
+        rootSprite.position.x += sprite.size.width / 2 - TileSize / 2
+        rootSprite.position.y += sprite.size.height / 2 - TileSize / 2
+        rootSprite.position.y -= CGFloat(sizeInGrid.rows - 1) * TileSize
+        rootSprite.zPosition = CGFloat(rootSprite.position.toGridCoordinate().j)
         
         recalculateOccupiedTilesPositions()
     }
@@ -99,9 +136,9 @@ class LibraryObject: ScenePlaceable {
         sprite.removeAllChildren()
     }
     
-    func containsUnbuildableTiles() -> Bool {
+    func cannotBePlaced() -> Bool {
         for tile in occupiedTiles {
-            if !tile.isBuidable() {
+            if !tile.isPlaceable() {
                 return true
             }
         }
@@ -153,7 +190,7 @@ class LibraryObject: ScenePlaceable {
     }
     
     private func getChildTileCoordinates(_ column: Int, _ row: Int) -> GridCoordinate {
-        let center = sprite.position.toGridCoordinate()
+        let center = rootSprite.position.toGridCoordinate()
         let columnOffset = hasEvenWidth ? 1 : 0
         // Place the tiles at the bottom of the sprite
         return  GridCoordinate(

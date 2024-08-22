@@ -9,14 +9,10 @@ import SpriteKit
 
 public class FarmingModeController: Controller, LibraryObjectHandler {
     
-    private let tileMap: FlooringTileMap
     private let objectPlacer: LibraryObjectPlacer
-    private let tilledDirtTileSet: SKTileSet
     
-    init(in scene: SKScene, tileMap: FlooringTileMap, overlayTileMap: RangeOverlayTileMap) {
-        self.tileMap = tileMap
-        tilledDirtTileSet = TileSetController.MakeTileSet(from: TilledDirtTileSets.allCases.map({$0.rawValue}))
-        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap, overlayTileMap: overlayTileMap)
+    init() {
+        objectPlacer = LibraryObjectPlacer()
     }
     
     func activate() {
@@ -36,17 +32,14 @@ public class FarmingModeController: Controller, LibraryObjectHandler {
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseMoved(with: event)
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseDown(with: event)
     }
     
     func mouseUp(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseUp(with: event)
     }
     

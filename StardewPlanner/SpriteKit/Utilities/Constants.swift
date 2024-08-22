@@ -14,11 +14,14 @@ let BackgroundColumns = 80
 let BackgroundRows = 65
 let TileSize: CGFloat = 16
 
-let BackgroundSpriteName =  "Background"
-let BackgroundTileName   =  "Background Tile"
-
 let ObjectPlacementTileName = "Library Object Placement Tile"
 
-let RangeOverlayTilesZPosition: CGFloat = 100
+let BackgroundLayerZPosition: CGFloat = 0
+let FlooringLayerZPosition = BackgroundLayerZPosition + 1
+let BuildableLayerZPosition = FlooringLayerZPosition + 1
+let ForegroundLayerZPosition = BuildableLayerZPosition + CGFloat(BackgroundRows) + 1
+let RangeOverlayLayerZPosition = ForegroundLayerZPosition + 1
+let ObjectOverlayLayerZPosition = RangeOverlayLayerZPosition + 1
+let FlooringOverlayLayerZPosition = ObjectOverlayLayerZPosition + 1
 
 let AnimationsFPS = 8

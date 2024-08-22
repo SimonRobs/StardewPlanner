@@ -8,10 +8,10 @@
 import Foundation
 
 extension LibraryObjectSize {
-    func toSceneSize() -> CGSize {
+    func toSceneSize(noVerticalOverflow: Bool = false) -> CGSize {
         return CGSize(
             width: CGFloat(columns) * TileSize,
-            height: CGFloat(rows) * TileSize + CGFloat(verticalOverflow) * TileSize
+            height: CGFloat(rows) * TileSize + ((noVerticalOverflow) ? 0 : CGFloat(verticalOverflow) * TileSize)
         )
     }
 }

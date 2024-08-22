@@ -15,8 +15,9 @@ public class FreeDrawTool: FlooringToolBase {
     
     private var drawOptions = FreeDrawToolOptions()
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let backgroundLayer: BackgroundLayer
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
     private var brushSize: CGFloat {
         get {
@@ -30,17 +31,17 @@ public class FreeDrawTool: FlooringToolBase {
         }
     }
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
-        
+    init() {
+        backgroundLayer = LayersManager.instance.getLayer(ofType: .Background) as! BackgroundLayer
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         subscribe()
     }
     
     func activate() { }
     
     func deactivate() {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
     }
     
     func mouseEntered(with event: TileMapMouseEvent) { }
@@ -52,7 +53,7 @@ public class FreeDrawTool: FlooringToolBase {
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        tileMap.overlay.clear()
+        flooringOverlayLayer.clear()
         drawTiles(at: event.location)
     }
     
@@ -63,14 +64,15 @@ public class FreeDrawTool: FlooringToolBase {
     func mouseDragged(with event: TileMapMouseEvent) {
         drawTiles(at: event.location)
     }
-
+    
     private func moveSelectedSprite(to location: CGPoint) {
-        tileMap.overlay.clear()
-        for gridCoord in BrushShapeCreator.GetFlooringTiles(inShape: brushShape,
-                                                            ofSize: brushSize,
-                                                            centerAt: location.toGridCoordinate())
+        flooringOverlayLayer.clear()
+        for gridCoord in BrushShapeCreator.GetFlooringTiles(
+            inShape: brushShape,
+            ofSize: brushSize,
+            centerAt: location.toGridCoordinate())
         {
-            tileMap.overlay.setFlooringTile(toTileSet: selectedTileSet, at: gridCoord)
+            flooringOverlayLayer.setTile(toTileSet: selectedTileSet, at: gridCoord)
         }
     }
     
@@ -84,7 +86,9 @@ public class FreeDrawTool: FlooringToolBase {
                                                             ofSize: brushSize,
                                                             centerAt: location.toGridCoordinate())
         {
-            tileMap.setFlooringTile(toTileSet: selectedTileSet, forColumn: gridCoord.i, row: gridCoord.j)
+            if backgroundLayer.canBeOccupied(at: gridCoord) {
+                flooringLayer.setTile(toTileSet: selectedTileSet, forColumn: gridCoord.i, row: gridCoord.j)
+            }
         }
     }
     
@@ -92,7 +96,7 @@ public class FreeDrawTool: FlooringToolBase {
         guard let options = notification.object as? FreeDrawToolOptions else { return }
         drawOptions = options
     }
-
+    
     private func subscribe() {
         NotificationController.instance.subscribe(observer: self, name: .onPrimaryTileChanged, callbackSelector: #selector(handleTileChanged), object: nil)
         NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)

@@ -1,25 +1,24 @@
 //
-//  BackgroundSprite.swift
+//  BackgroundLayer.swift
 //  StardewPlanner
 //
-//  Created by Simon Robatto on 2022-11-06.
+//  Created by Simon Robatto on 2024-08-21.
 //
 
 import SpriteKit
 
-class BackgroundSprite: SKSpriteNode {
+class BackgroundLayer: SKNode, SceneLayer {
     
     private var allTiles: [[BackgroundTile]] = []
     
-    private var backgroundLayout: SKNode
+    private var backgroundTileMap: SKNode?
     
-    init() {
-        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: .Spring)
-        super.init(texture: nil, color:.clear, size: BackgroundSize)
+    init(with scene: SKScene, forSeason season: Seasons) {
+        super.init()
+        changeBackgroundTileMap(forSeason: season)
         subscribeObservers()
-        
-        name = BackgroundSpriteName
-        addChild(backgroundLayout)
+        zPosition = BackgroundLayerZPosition
+        scene.addChild(self)
         
         for i in 0..<BackgroundColumns {
             allTiles.append([])
@@ -37,6 +36,10 @@ class BackgroundSprite: SKSpriteNode {
         unsubscribeObservers()
     }
     
+    override func contains(_ p: CGPoint) -> Bool {
+        return backgroundTileMap?.contains(p) ?? false
+    }
+    
     func getTile(at location: CGPoint) -> BackgroundTile? {
         return getTile(at: location.toGridCoordinate())
     }
@@ -51,36 +54,53 @@ class BackgroundSprite: SKSpriteNode {
         return allTiles[column][row]
     }
     
-    func setBuildableStatus(at coords: GridCoordinate, to status: Bool) {
-        allTiles[coords.i][coords.j].buildable = status
+    func isOccupied(at gridCoordinate: GridCoordinate) -> Bool {
+        if let targetTile = getTile(at: gridCoordinate) {
+            return targetTile.occupied
+        }
+        return false
+    }
+    
+    func canBeOccupied(at gridCoordinate: GridCoordinate) -> Bool {
+        if let targetTile = getTile(at: gridCoordinate) {
+            return targetTile.buildable && !targetTile.occupied
+        }
+        return false
+    }
+    
+    func canBeOccupied(atColumn column: Int, row: Int) -> Bool {
+        if let targetTile = getTile(atColumn: column, row: row) {
+            return targetTile.buildable && !targetTile.occupied
+        }
+        return false
+    }
+    
+    func setOccupied(at coords: GridCoordinate, to occupied: Bool) {
+        getTile(at: coords)!.occupied = occupied
     }
     
     private func subscribeObservers() {
         NotificationController.instance.subscribe(observer: self, name: .onSeasonChanged, callbackSelector: #selector(handleSeasonChanged), object: nil)
-        NotificationController.instance.subscribe(observer: self, name: .onObjectPlaced, callbackSelector: #selector(handleObjectPlaced), object: nil)
     }
     
     private func unsubscribeObservers() {
         NotificationController.instance.unsubscribe(observer: self)
     }
     
-    @objc private func handleSeasonChanged(_ notification: Notification) {
-        guard let newSeason = notification.object as? Seasons else { return }
+    private func changeBackgroundTileMap(forSeason season: Seasons) {
         // TODO: add loading screen when changing the season. This may need to be done in the Farm Scene directly.
-        backgroundLayout.removeFromParent()
-        backgroundLayout = LayoutBuilder.instance.loadLayout("Default", forSeason: newSeason)
-        addChild(backgroundLayout)
+        backgroundTileMap?.removeFromParent()
+        backgroundTileMap = LayoutBuilder.instance.getBackgroundTileMap(forSeason: season)
+        addChild(backgroundTileMap!)
     }
     
-    @objc private func handleObjectPlaced(_ notification: Notification) {
-        guard let occupiedCoordinates = notification.object as? [GridCoordinate] else { return }
-        for coordinate in occupiedCoordinates {
-            setBuildableStatus(at: coordinate, to: false)
-        }
+    @objc private func handleSeasonChanged(_ notification: Notification) {
+        guard let newSeason = notification.object as? Seasons else { return }
+        changeBackgroundTileMap(forSeason: newSeason)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("Not Implemented")
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

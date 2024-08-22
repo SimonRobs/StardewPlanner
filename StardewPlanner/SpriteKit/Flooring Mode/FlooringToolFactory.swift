@@ -9,20 +9,20 @@ import SpriteKit
 
 class FlooringToolFactory {
     
-    static func createTool(ofType type: FlooringTools, in scene: SKScene, tileMap: FlooringTileMap) -> FlooringToolBase {
+    static func createTool(ofType type: FlooringTools) -> FlooringToolBase {
         switch type {
         case .FreeDraw:
-            return FreeDrawTool(in: scene, tileMap: tileMap)
+            return FreeDrawTool()
         case .Eraser:
-            return EraserTool(in: scene, tileMap: tileMap)
+            return EraserTool()
         case .Bucket:
-            return BucketTool(in: scene, tileMap: tileMap)
+            return BucketTool()
         case .Eyedropper:
-            return EyedropperTool(in: scene, tileMap: tileMap)
+            return EyedropperTool()
         case .Shape:
-            return ShapeTool(in: scene, tileMap: tileMap)
+            return ShapeTool()
         case .Line:
-            return LineTool(in: scene, tileMap: tileMap)
+            return LineTool()
         }
     }
 }

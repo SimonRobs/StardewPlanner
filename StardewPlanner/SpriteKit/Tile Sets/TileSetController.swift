@@ -12,6 +12,7 @@ class TileSetController {
     static let instance = TileSetController()
     
     public let flooringTileSet: SKTileSet
+    
     public let rangeOverlayTileSet: SKTileSet
     
     private init() {
@@ -135,7 +136,9 @@ class TileSetController {
     
     
     private static func MakeRangeOverlayGroup() -> SKTileGroup {
-        let group = SKTileGroup(rules: [SKTileGroupRule(adjacency: [.adjacencyAll], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Green Tile"))])])
+        let group = SKTileGroup(rules: [
+            SKTileGroupRule(adjacency: [], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "Green Tile"))])
+        ])
         group.name = "Range Overlay"
         return group
     }

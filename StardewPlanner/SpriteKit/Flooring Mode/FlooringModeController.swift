@@ -12,16 +12,13 @@ public class FlooringModeController: Controller {
     private var tools: [FlooringTools: FlooringToolBase] = [:]
     private var selectedTool: FlooringToolBase?
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
-    
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
-        
-        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolChanged, callbackSelector: #selector(handleToolSelected), object: nil)
-        
+    init() {
+        subscribe()
         setSelectedTool(ofType: .FreeDraw)
+    }
+    
+    deinit {
+        unsubscribe()
     }
     
     func activate() {
@@ -57,6 +54,14 @@ public class FlooringModeController: Controller {
         selectedTool?.mouseDragged(with: event)
     }
     
+    private func subscribe() {
+        NotificationController.instance.subscribe(observer: self, name: .onFlooringToolChanged, callbackSelector: #selector(handleToolSelected), object: nil)
+    }
+    
+    private func unsubscribe() {
+        NotificationController.instance.unsubscribe(observer: self)
+    }
+    
     @objc private func handleToolSelected(_ notification: Notification) {
         guard let type = notification.object as? FlooringTools else { return }
         setSelectedTool(ofType: type)
@@ -65,7 +70,7 @@ public class FlooringModeController: Controller {
     private func setSelectedTool(ofType type: FlooringTools) {
         if selectedTool?.type == type { return }
         if tools[type] == nil {
-            tools[type] = FlooringToolFactory.createTool(ofType: type, in: scene, tileMap: tileMap)
+            tools[type] = FlooringToolFactory.createTool(ofType: type)
         }
         selectedTool?.deactivate()
         selectedTool = tools[type]!

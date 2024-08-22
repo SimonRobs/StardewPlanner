@@ -1,28 +1,23 @@
 //
-//  LibraryObjectBuilder.swift
+//  ComposedTextureModifier.swift
 //  StardewPlanner
 //
-//  Created by Simon Robatto on 2023-03-16.
+//  Created by Simon Robatto on 2023-08-13.
 //
 
-import SpriteKit
+import Foundation
 
-class LibraryObjectBuilder {
+// Object with multiple sprites as the texture
+class ComposedTextureModifier: LibraryObjectModifier {
+    var type: ModifierTypes = .ComposedTexture
+    var object: any ScenePlaceable
     
-    static func buildObject(from definition: LibraryObjectDef, overlayTileMap: RangeOverlayTileMap) -> ScenePlaceable? {
-        // TODO: Determine sprite size extension
-        guard let objectSize = definition.metadata?.size else { return nil }
-        let object = LibraryObject(ofType: definition.type, withSize: objectSize)
-        
-        if let area = definition.metadata?.area {
-            object.addModifier(ofType: .Ranged, RangedModifier(object, area: area, overlayTileMap: overlayTileMap))
-        }
-        
-        if definition.metadata?.hasBuildingShadow != nil {
-            object.addModifier(ofType: .Shadowed, ShadowedModifier(object))
-        }
-        
-        return object
+    init(_ object: ScenePlaceable) {
+        self.object = object
+    }
+    
+    func contains(_ location: CGPoint) -> Bool {
+        return false
     }
     
     //    private static func getSubsprites(from subtextures: [LibraryObjectSubtexture]) -> [(SKSpriteNode, CGPoint3D)] {
@@ -46,4 +41,5 @@ class LibraryObjectBuilder {
     //        }
     //        return subsprites
     //    }
+    
 }

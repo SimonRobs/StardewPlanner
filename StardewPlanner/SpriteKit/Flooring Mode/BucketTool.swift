@@ -15,12 +15,14 @@ public class BucketTool: FlooringToolBase {
     
     private var newTileSet: TileSets? = .Wood
     
-    private var tileMap: FlooringTileMap
-    private var scene: SKScene
+    private let backgroundLayer: BackgroundLayer
+    private let flooringLayer: FlooringLayer
+    private let flooringOverlayLayer: FlooringOverlayLayer
     
-    init(in scene: SKScene, tileMap: FlooringTileMap) {
-        self.scene = scene
-        self.tileMap = tileMap
+    init() {
+        backgroundLayer = LayersManager.instance.getLayer(ofType: .Background) as! BackgroundLayer
+        flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
+        flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         
         subscribe()
     }
@@ -37,7 +39,7 @@ public class BucketTool: FlooringToolBase {
     
     func mouseDown(with event: TileMapMouseEvent) {
         let coordinates = event.location.toGridCoordinate()
-        let oldTileSet = tileMap.getFlooringTileSet(atColumn: coordinates.i, row: coordinates.j)
+        let oldTileSet = flooringLayer.getTileSet(atColumn: coordinates.i, row: coordinates.j)
         doFloodFill(atColumn: coordinates.i, row: coordinates.j, oldTileSet: oldTileSet)
     }
     
@@ -61,7 +63,7 @@ public class BucketTool: FlooringToolBase {
             
             targetColumn = currentCoords.i
             while (targetColumn >= 0 &&
-            tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
+                   flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
             {
                 targetColumn -= 1
             }
@@ -69,26 +71,30 @@ public class BucketTool: FlooringToolBase {
             spanAbove = false
             spanBelow = false
             while (targetColumn < BackgroundColumns &&
-                   tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
+                   flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j) == oldTileSet)
             {
-                tileMap.setFlooringTile(toTileSet: newTileSet, forColumn: targetColumn, row: currentCoords.j)
+                if newTileSet == nil {
+                    flooringLayer.clearTile(atColumn: targetColumn, row: currentCoords.j)
+                } else if backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j) {
+                    flooringLayer.setTile(toTileSet: newTileSet, forColumn: targetColumn, row: currentCoords.j)
+                }
                 if (!spanAbove && currentCoords.j > 0 &&
-                    tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j - 1) == oldTileSet &&
-                    tileMap.isBuildable(atColumn: targetColumn, row: currentCoords.j - 1)) {
+                    flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j - 1) == oldTileSet &&
+                    backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j - 1)) {
                     stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j - 1))
                     spanAbove = true
                 } else if (spanAbove && currentCoords.j > 0 &&
-                           tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j - 1) != oldTileSet) {
+                           flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j - 1) != oldTileSet) {
                     spanAbove = false
                 }
                 
                 if (!spanBelow && currentCoords.j < BackgroundRows - 1 &&
-                    tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j + 1) == oldTileSet &&
-                    tileMap.isBuildable(atColumn: targetColumn, row: currentCoords.j + 1)) {
+                    flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j + 1) == oldTileSet &&
+                    backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j + 1)) {
                     stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j + 1))
                     spanBelow = true
                 } else if (spanBelow && currentCoords.j < BackgroundRows - 1 &&
-                           tileMap.getFlooringTileSet(atColumn: targetColumn, row: currentCoords.j + 1) != oldTileSet) {
+                           flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j + 1) != oldTileSet) {
                     spanBelow = false
                 }
                 targetColumn += 1
@@ -105,10 +111,10 @@ public class BucketTool: FlooringToolBase {
         guard let tileSet = notification.object as? TileSets else { return }
         newTileSet = tileSet
     }
-
+    
     private func subscribe() {
         NotificationController.instance.subscribe(observer: self, name: .onPrimaryTileChanged, callbackSelector: #selector(handlePrimaryTileChanged), object: nil)
-        NotificationController.instance.subscribe(observer: self, name: .onFreeDrawToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
+        NotificationController.instance.subscribe(observer: self, name: .onBucketToolOptionsChanged, callbackSelector: #selector(handleOptionsChanged), object: nil)
     }
     
     private func unsubscribe() {

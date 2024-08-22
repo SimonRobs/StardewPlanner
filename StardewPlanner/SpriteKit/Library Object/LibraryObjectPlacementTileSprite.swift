@@ -11,14 +11,14 @@ class LibraryObjectPlacementTileSprite: SKSpriteNode {
     
     private(set) var gridCoordinates: GridCoordinate
     
-    private var buildable = true {
+    private var placeable = true {
         didSet {
             texture = dynamicTexture
         }
     }
     
     private var dynamicTexture: SKTexture {
-        let tex = SKTexture(imageNamed: buildable ? "Green Tile" : "Red Tile")
+        let tex = SKTexture(imageNamed: placeable ? "Green Tile" : "Red Tile")
         tex.filteringMode = .nearest
         return tex
     }
@@ -35,12 +35,12 @@ class LibraryObjectPlacementTileSprite: SKSpriteNode {
         gridCoordinates = coords
     }
     
-    func isBuidable() -> Bool {
-        return buildable
+    func isPlaceable() -> Bool {
+        return placeable
     }
     
-    func setBuildable(_ buildable: Bool) {
-        self.buildable = buildable
+    func setPlaceable(_ placeable: Bool) {
+        self.placeable = placeable
     }
     
     required init?(coder aDecoder: NSCoder) {

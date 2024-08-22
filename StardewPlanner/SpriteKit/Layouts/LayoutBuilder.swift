@@ -11,17 +11,41 @@ class LayoutBuilder {
     
     static let instance = LayoutBuilder()
     
-    func loadLayout(_ fileName: String, forSeason season: Seasons) -> SKNode {
+    private var layoutData: LayoutData? = nil
+    private var tileMapsBySeason: [Seasons: (SKNode, SKNode)] = [:] // First SKNode contains the background. Second contains the foreground
+    
+    func getBackgroundTileMap(forSeason season: Seasons) -> SKNode {
+        if let tileMap = tileMapsBySeason[season] {
+            return tileMap.0
+        } else {
+            loadTileMap(forSeason: season)
+            return tileMapsBySeason[season]!.0
+        }
+    }
+    
+    func getForegroundTileMap(forSeason season: Seasons) -> SKNode {
+        if let tileMap = tileMapsBySeason[season] {
+            return tileMap.1
+        } else {
+            loadTileMap(forSeason: season)
+            return tileMapsBySeason[season]!.1
+        }
+    }
+    
+    func loadLayoutData(_ fileName: String) {
         // Parse the JSON File
-        var layoutData: LayoutData
         switch LayoutData.from(localJSON: fileName) {
         case .success(let data):
             layoutData = data
         case .failure(let error):
             fatalError(error.localizedDescription)
         }
+    }
+    
+    private func loadTileMap(forSeason season: Seasons) {
+        // TODO: Make this function async and add loading screen when loading a new Tile Map.
+        guard let layoutData = self.layoutData else { fatalError("Did you forget to load the layout data?") }
         
-        let layoutNode = SKNode()
         let tileSize = CGSize(width: layoutData.tilewidth, height: layoutData.tileheight)
         let outdoorTileSet = layoutData.tilesets.first!
         
@@ -47,6 +71,8 @@ class LayoutBuilder {
         let tileset = SKTileSet(tileGroups: tileGroups)
         
         // Populate each layer (SKTileMapNode) with the respective tiles
+        let backgroundNode = SKNode()
+        let foregroundNode = SKNode()
         for layer in layoutData.layers {
             let tileMap = SKTileMapNode(tileSet: tileset, columns: layoutData.width, rows: layoutData.height, tileSize: tileSize)
             var col = 0, row = 0
@@ -58,9 +84,13 @@ class LayoutBuilder {
                 col += 1
                 if col >= layoutData.width { col = 0; row += 1 }
             }
-            layoutNode.addChild(tileMap)
+            if layer.id == 1 || layer.id == 2 {
+                backgroundNode.addChild(tileMap)
+            } else {
+                foregroundNode.addChild(tileMap)
+            }
         }
         
-        return layoutNode
+        tileMapsBySeason[season] = (backgroundNode, foregroundNode)
     }
 }

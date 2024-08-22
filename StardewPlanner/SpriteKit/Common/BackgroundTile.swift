@@ -10,12 +10,14 @@ import SpriteKit
 class BackgroundTile: SKSpriteNode {
     let i: Int
     let j: Int
-    var buildable = false
+    let buildable: Bool
+    var occupied = false
     
-    init(i: Int, j: Int, buildable: Bool = false) {
+    init(i: Int, j: Int, buildable: Bool = false, occupied: Bool = false) {
         self.i = i
         self.j = j
         self.buildable = buildable
+        self.occupied = occupied
         
         if BUILDING_DEBUG {
             super.init(texture: SKTexture(imageNamed: "\(buildable ? "Green":"Red") Tile"), color: .clear, size: CGSize(width: TileSize, height: TileSize))
@@ -24,7 +26,6 @@ class BackgroundTile: SKSpriteNode {
         }
         
         alpha = 0.4
-        name = BackgroundTileName
     }
     
     required init?(coder aDecoder: NSCoder) {

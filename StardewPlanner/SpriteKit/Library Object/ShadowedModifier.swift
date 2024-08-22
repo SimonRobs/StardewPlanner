@@ -17,9 +17,10 @@ class ShadowedModifier: LibraryObjectModifier {
     }
     
     private func drawShadow() {
-        let sprite = object.sprite
-        let yOffset = sprite.size.height / 2 + TileSize / 2
-        let xOffset = sprite.size.width / 2 - TileSize / 2
+        let sprite = object.getSprite()
+        let size = object.sizeInGrid.toSceneSize()
+        let yOffset = size.height / 2 + TileSize / 2
+        let xOffset = size.width / 2 - TileSize / 2
         
         // Left Shadow
         let leftShadow = SKSpriteNode(imageNamed: "Building Shadow Left")

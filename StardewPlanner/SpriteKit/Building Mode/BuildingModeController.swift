@@ -9,12 +9,10 @@ import SpriteKit
 
 public class BuildingModeController: Controller, LibraryObjectHandler {
     
-    private let tileMap: FlooringTileMap
     private let objectPlacer: LibraryObjectPlacer
     
-    init(in scene: SKScene, tileMap: FlooringTileMap, overlayTileMap: RangeOverlayTileMap) {
-        self.tileMap = tileMap
-        objectPlacer = LibraryObjectPlacer(in: scene, tileMap: tileMap, overlayTileMap: overlayTileMap)
+    init() {
+        objectPlacer = LibraryObjectPlacer()
     }
     
     func activate() {
@@ -34,17 +32,14 @@ public class BuildingModeController: Controller, LibraryObjectHandler {
     }
     
     func mouseMoved(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseMoved(with: event)
     }
     
     func mouseDown(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseDown(with: event)
     }
     
     func mouseUp(with event: TileMapMouseEvent) {
-        if !tileMap.contains(event.location) { return }
         objectPlacer.mouseUp(with: event)
     }
     

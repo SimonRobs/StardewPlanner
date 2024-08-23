@@ -118,8 +118,11 @@ class TileSetController {
         var rules: [SKTileGroupRule] = []
         let assetName = CustomTileSets.Eraser.rawValue
         
+        // Centers
         rules.append(SKTileGroupRule(adjacency: [], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Center Solo"))]))
         rules.append(SKTileGroupRule(adjacency: [.adjacencyAll], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Center"))]))
+        
+        // Edges
         rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyUp), .adjacencyLowerLeft,.adjacencyLowerRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Up Edge"))]))
         rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyDown),.adjacencyUpperLeft,.adjacencyUpperRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Down Edge"))]))
         rules.append(SKTileGroupRule(adjacency: [.adjacencyCardinal.subtracting(.adjacencyLeft),.adjacencyUpperRight,.adjacencyLowerRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Left Edge"))]))
@@ -128,6 +131,12 @@ class TileSetController {
         rules.append(SKTileGroupRule(adjacency: [.adjacencyUp,.adjacencyRight,.adjacencyUpperRight], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Lower Left Edge"))]))
         rules.append(SKTileGroupRule(adjacency: [.adjacencyUp,.adjacencyLeft,.adjacencyUpperLeft], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Lower Right Edge"))]))
         rules.append(SKTileGroupRule(adjacency: [.adjacencyLeft,.adjacencyDown, .adjacencyLowerLeft], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Upper Right Edge"))]))
+        
+        // Centres with Insets
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyAll.subtracting(.adjacencyLowerLeft)], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Lower Left Inset"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyAll.subtracting(.adjacencyLowerRight)], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Lower Right Inset"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyAll.subtracting(.adjacencyUpperLeft)], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Upper Left Inset"))]))
+        rules.append(SKTileGroupRule(adjacency: [.adjacencyAll.subtracting(.adjacencyUpperRight)], tileDefinitions: [SKTileDefinition(texture: SKTexture(imageNamed: "\(assetName) Upper Right Inset"))]))
         
         let group = SKTileGroup(rules: rules)
         group.name = assetName

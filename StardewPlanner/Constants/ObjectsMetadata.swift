@@ -170,7 +170,12 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // Special
     .GoldClock: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), hasBuildingShadow: true),
-    .JunimoHut: .init(size: .init(columns:  3, rows:  2, verticalOverflow:  3), hasBuildingShadow: true, seasonal: true),
+    .JunimoHut: .init(
+        size: .init(columns:  3, rows:  2, verticalOverflow:  2),
+        area: .init(radius: 8, shape: .Square),
+        hasBuildingShadow: true,
+        seasonal: true
+    ),
     .MiniShippingBin: .init(),
     
     // MARK: - Trees

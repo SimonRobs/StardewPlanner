@@ -12,6 +12,7 @@ import SpriteKit
 let farmScene = SKScene(fileNamed: "FarmScene")!
 
 struct PlannerView: View {
+    @EnvironmentObject var configsStore: GlobalConfigurationStore
     
     @State private var isLibraryPresented = false
     
@@ -28,6 +29,8 @@ struct PlannerView: View {
         .sheet(isPresented: $isLibraryPresented) {
             LibraryView()
                 .frame(idealWidth: 1000, idealHeight: 600)
+        }.onAppear {
+            GlobalSceneState.instance.setStore(configsStore)
         }
     }
 }

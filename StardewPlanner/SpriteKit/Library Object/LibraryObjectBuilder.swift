@@ -18,8 +18,12 @@ class LibraryObjectBuilder {
             object.addModifier(ofType: .Ranged, RangedModifier(object, area: area))
         }
         
-        if definition.metadata?.hasBuildingShadow != nil {
+        if definition.metadata?.hasBuildingShadow == true {
             object.addModifier(ofType: .Shadowed, ShadowedModifier(object))
+        }
+        
+        if definition.metadata?.seasonal == true {
+            object.addModifier(ofType: .Seasonal, SeasonalModifier(object))
         }
         
         return object

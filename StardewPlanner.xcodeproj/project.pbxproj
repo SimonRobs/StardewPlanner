@@ -19,6 +19,7 @@
 		F4258073291C7977005F1CCC /* ObjectSubCategories.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */; };
 		F4258075291C797F005F1CCC /* ObjectTypes.enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */; };
 		F4258077291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4258076291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift */; };
+		F426C91E2C77DE88005FF768 /* GlobalSceneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426C91D2C77DE88005FF768 /* GlobalSceneState.swift */; };
 		F433C697292436E50075E2F1 /* CGPointAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C696292436E50075E2F1 /* CGPointAdditions.swift */; };
 		F433C69A2924373A0075E2F1 /* GridCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F433C6992924373A0075E2F1 /* GridCoordinate.swift */; };
 		F4388A1329135F0600FB39BC /* StardewPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4388A1229135F0600FB39BC /* StardewPlannerApp.swift */; };
@@ -156,6 +157,7 @@
 		F4258072291C7977005F1CCC /* ObjectSubCategories.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSubCategories.enum.swift; sourceTree = "<group>"; };
 		F4258074291C797F005F1CCC /* ObjectTypes.enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectTypes.enum.swift; sourceTree = "<group>"; };
 		F4258076291CC42F005F1CCC /* LibraryObjectPlacementTileSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryObjectPlacementTileSprite.swift; sourceTree = "<group>"; };
+		F426C91D2C77DE88005FF768 /* GlobalSceneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSceneState.swift; sourceTree = "<group>"; };
 		F433C696292436E50075E2F1 /* CGPointAdditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointAdditions.swift; sourceTree = "<group>"; };
 		F433C6992924373A0075E2F1 /* GridCoordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCoordinate.swift; sourceTree = "<group>"; };
 		F4388A0F29135F0600FB39BC /* StardewPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StardewPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -630,6 +632,7 @@
 				F4FA0DA229513E01004F9120 /* CameraController.swift */,
 				F4E5A5F4291829EA00970C07 /* BackgroundTile.swift */,
 				F4C93B2E2915CE0600D121B2 /* BackgroundBuildableTiles.swift */,
+				F426C91D2C77DE88005FF768 /* GlobalSceneState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -819,6 +822,7 @@
 				F4BB2977293943DB00151917 /* FlooringModeController.swift in Sources */,
 				F4258061291C04E1005F1CCC /* NotificationAdditions.swift in Sources */,
 				F4DED31929C15224008BC367 /* LibraryObjectMetadata.swift in Sources */,
+				F426C91E2C77DE88005FF768 /* GlobalSceneState.swift in Sources */,
 				F4DED32929C3A78F008BC367 /* LibraryObjectHandler.swift in Sources */,
 				F4A7F49E2981B66C00351461 /* DecodableAdditions.swift in Sources */,
 				F49075802C765C4300BFD2D6 /* RangeOverlayLayer.swift in Sources */,

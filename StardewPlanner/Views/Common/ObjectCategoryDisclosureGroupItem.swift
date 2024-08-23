@@ -10,6 +10,7 @@ import SwiftUI
 struct ObjectCategoryDisclosureGroupItem: View {
     
     @EnvironmentObject() var libraryStore: ObjectLibraryStore
+    @EnvironmentObject var configsStore: GlobalConfigurationStore
     
     let type: ObjectTypes
     
@@ -20,7 +21,7 @@ struct ObjectCategoryDisclosureGroupItem: View {
     var body: some View {
         Button(action: selectObject) {
             HStack {
-                Image(type.rawValue)
+                Image(getImageName())
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(idealHeight: 32)
@@ -36,6 +37,13 @@ struct ObjectCategoryDisclosureGroupItem: View {
     
     private func selectObject() {
         libraryStore.selectedType = type
+    }
+    
+    private func getImageName() -> String {
+        if ObjectsMetadata[type]!.seasonal == true {
+            return "\(configsStore.selectedSeason.rawValue) \(type.rawValue)"
+        }
+        return type.rawValue
     }
 }
 

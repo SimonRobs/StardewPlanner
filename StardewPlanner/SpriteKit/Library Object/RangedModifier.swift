@@ -19,11 +19,19 @@ class RangedModifier: LibraryObjectModifier {
         self.object = object
         
         tilePositions = ShapeProvider.getTiles(for: area.shape, with: area.radius)
+            .map { position in
+                CGPoint(x: position.x, y: position.y - CGFloat(Int(object.sizeInGrid.rows / 2)) * TileSize)
+            }
+            .filter { position in
+                return !object.getOccupiedTiles().contains { tile in
+                    return (tile.position.x == position.x && (tile.position.y + (object.hasEvenHeight ? TileSize / 2 : 0)) == position.y)
+                }
+            }
         for position in tilePositions {
             let rangeTile = SKSpriteNode(imageNamed: "Green Tile")
             rangeTile.name = ObjectPlacementTileName
             rangeTile.position = position
-            rangeTile.zPosition = position.equalTo(object.getSprite().position) ? -1 : RangeOverlayLayerZPosition
+            rangeTile.zPosition = RangeOverlayLayerZPosition
             if object.hasEvenHeight { rangeTile.position.y -= TileSize / 2 }
             object.getSprite().addChild(rangeTile)
         }

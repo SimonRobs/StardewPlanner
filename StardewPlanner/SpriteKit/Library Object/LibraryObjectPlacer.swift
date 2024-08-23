@@ -55,10 +55,16 @@ class LibraryObjectPlacer {
         buildableLayer.addObject(selectedObject)
         
         selectedObject.getOccupiedTiles().forEach { tile in
+            
+            let canBePlacedOnFlooring = selectedObjectDef?.metadata?.canBePlacedOnFlooring
+            
             // Occupy the tiles in the background layer
-            backgroundLayer.setOccupied(at: tile.gridCoordinates, to: true)
-            // Clear any occupied flooring tiles
-            flooringLayer.clearTile(at: tile.gridCoordinates)
+            backgroundLayer.setOccupied(at: tile.gridCoordinates, to: true, allowsFlooring: canBePlacedOnFlooring)
+            
+            if canBePlacedOnFlooring != true {
+                // Clear any occupied flooring tiles
+                flooringLayer.clearTile(at: tile.gridCoordinates)
+            }
         }
         
         // Add the range tiles to the range overlay layer

@@ -105,7 +105,7 @@ public class ShapeTool: FlooringToolBase {
         
         for col in topLeftCorner.i ... bottomRightCorner.i {
             for row in bottomRightCorner.j ... topLeftCorner.j {
-                if backgroundLayer.canBeOccupied(atColumn: col, row: row) {
+                if backgroundLayer.allowsFlooring(atColumn: col, row: row) {
                     flooringLayer.setTile(
                         toTileSet: getTileSet(atColumn: col, row: row),
                         forColumn: col,

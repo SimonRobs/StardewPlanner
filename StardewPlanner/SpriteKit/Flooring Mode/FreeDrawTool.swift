@@ -86,7 +86,7 @@ public class FreeDrawTool: FlooringToolBase {
                                                             ofSize: brushSize,
                                                             centerAt: location.toGridCoordinate())
         {
-            if backgroundLayer.canBeOccupied(at: gridCoord) {
+            if backgroundLayer.allowsFlooring(at: gridCoord) {
                 flooringLayer.setTile(toTileSet: selectedTileSet, forColumn: gridCoord.i, row: gridCoord.j)
             }
         }

@@ -61,6 +61,20 @@ class BackgroundLayer: SKNode, SceneLayer {
         return false
     }
     
+    func allowsFlooring(at gridCoordinate: GridCoordinate) -> Bool {
+        if let targetTile = getTile(at: gridCoordinate) {
+            return targetTile.buildable && targetTile.allowsFlooring
+        }
+        return false
+    }
+    
+    func allowsFlooring(atColumn column: Int, row: Int) -> Bool {
+        if let targetTile = getTile(atColumn: column, row: row) {
+            return targetTile.buildable && targetTile.allowsFlooring
+        }
+        return false
+    }
+    
     func canBeOccupied(at gridCoordinate: GridCoordinate) -> Bool {
         if let targetTile = getTile(at: gridCoordinate) {
             return targetTile.buildable && !targetTile.occupied
@@ -75,8 +89,10 @@ class BackgroundLayer: SKNode, SceneLayer {
         return false
     }
     
-    func setOccupied(at coords: GridCoordinate, to occupied: Bool) {
-        getTile(at: coords)!.occupied = occupied
+    func setOccupied(at coords: GridCoordinate, to occupied: Bool, allowsFlooring: Bool?) {
+        let tile = getTile(at: coords)!
+        tile.occupied = occupied
+        tile.allowsFlooring = allowsFlooring ?? !occupied
     }
     
     private func subscribeObservers() {

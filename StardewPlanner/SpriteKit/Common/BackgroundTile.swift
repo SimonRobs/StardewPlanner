@@ -12,11 +12,13 @@ class BackgroundTile: SKSpriteNode {
     let j: Int
     let buildable: Bool
     var occupied = false
+    var allowsFlooring = false
     
     init(i: Int, j: Int, buildable: Bool = false, occupied: Bool = false) {
         self.i = i
         self.j = j
         self.buildable = buildable
+        self.allowsFlooring = buildable
         self.occupied = occupied
         
         if BUILDING_DEBUG {

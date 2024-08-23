@@ -15,6 +15,7 @@ public class LineTool: FlooringToolBase {
     
     private var drawOptions = LineToolOptions()
     
+    private let backgroundLayer: BackgroundLayer
     private let flooringLayer: FlooringLayer
     private let flooringOverlayLayer: FlooringOverlayLayer
     
@@ -34,6 +35,7 @@ public class LineTool: FlooringToolBase {
     }
     
     init() {
+        backgroundLayer = LayersManager.instance.getLayer(ofType: .Background) as! BackgroundLayer
         flooringLayer = LayersManager.instance.getLayer(ofType: .Flooring) as! FlooringLayer
         flooringOverlayLayer = LayersManager.instance.getLayer(ofType: .FlooringOverlay) as! FlooringOverlayLayer
         
@@ -78,7 +80,9 @@ public class LineTool: FlooringToolBase {
     
     private func drawTiles() {
         for tileCoords in getTilesToDraw() {
-            flooringLayer.setTile(toTileSet: selectedTileSet, forColumn: tileCoords.i, row: tileCoords.j)
+            if backgroundLayer.allowsFlooring(at: tileCoords) {
+                flooringLayer.setTile(toTileSet: selectedTileSet, forColumn: tileCoords.i, row: tileCoords.j)
+            }
         }
     }
     

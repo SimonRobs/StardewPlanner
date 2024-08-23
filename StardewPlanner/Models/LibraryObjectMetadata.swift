@@ -56,9 +56,12 @@ struct LibraryObjectMetadata  {
     // Looks for "Giant \(name)"
     // Object Size for giant crops is always 3x3x1
     var canBeGiant: Bool?
-
+    
     // If true, only one item of the same type can be placed on the farm
     var maxPlaceable: Int?
+    
+    // If true, placing this item on a floor tile will not remove it
+    var canBePlacedOnFlooring: Bool?
 
 }
 

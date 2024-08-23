@@ -11,18 +11,45 @@ struct OptionsPanel: View {
     
     @EnvironmentObject() var globalConfigsStore: GlobalConfigurationStore
     
+    @State private var width: CGFloat = 256
+    
+    @State private var interactiveAreaWidth: CGFloat = 1
+    @State private var interactiveAreaFill = Color.border
+    
     var body: some View {
-        VStack {
-            switch globalConfigsStore.editorMode {
-            case .Select: SelectOptionsPanel()
-            case .Farming: FarmingOptionsPanel()
-            case .Flooring: FlooringOptionsPanel()
-            case .Building: BuildingOptionsPanel()
+        HStack(spacing: 0) {
+            VStack {
+                switch globalConfigsStore.editorMode {
+                case .Select: SelectOptionsPanel()
+                case .Farming: FarmingOptionsPanel()
+                case .Flooring: FlooringOptionsPanel()
+                case .Building: BuildingOptionsPanel()
+                }
+                Spacer()
             }
-            Spacer()
-        }
-        .frame(width: 256)
+            .frame(width: width)
             .background(Color.background)
+            
+            Rectangle()
+                .fill(interactiveAreaFill)
+                .frame(width: interactiveAreaWidth)
+                .contentShape(Rectangle())
+                .onHover(perform: { hovering in
+                    if hovering {
+                        interactiveAreaWidth = 2
+                        interactiveAreaFill = Color.accentColor
+                    } else {
+                        interactiveAreaWidth = 1
+                        interactiveAreaFill = Color.border
+                    }
+                })
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            width = min(max(256, width + value.translation.width), 512)
+                        }
+                )
+        }
     }
 }
 

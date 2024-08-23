@@ -22,9 +22,10 @@ struct ObjectCategoryDisclosureGroupItem: View {
         Button(action: selectObject) {
             HStack {
                 Image(getImageName())
+                    .interpolation(.none)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(idealHeight: 32)
+                    .frame(width: 32, height: 32)
                 Text(type.rawValue)
                     .foregroundColor(.white)
                     .font(.title3)
@@ -49,6 +50,12 @@ struct ObjectCategoryDisclosureGroupItem: View {
 
 struct ObjectCategoryDisclosureGroupItem_Previews: PreviewProvider {
     static var previews: some View {
-        ObjectCategoryDisclosureGroupItem(type: .Parsnip)
+        VStack(spacing: 0) {
+            ObjectCategoryDisclosureGroupItem(type: .Torch)
+            ObjectCategoryDisclosureGroupItem(type: .GoldBrazier)
+            ObjectCategoryDisclosureGroupItem(type: .SlimeHutch)
+        }
+            .environmentObject(GlobalConfigurationStore())
+            .environmentObject(ObjectLibraryStore())
     }
 }

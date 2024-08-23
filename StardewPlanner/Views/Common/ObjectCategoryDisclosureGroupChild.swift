@@ -29,6 +29,13 @@ struct ObjectCategoryDisclosureGroupChild: View {
 
 struct ObjectCategoryDisclosureGroupChild_Previews: PreviewProvider {
     static var previews: some View {
-        ObjectCategoryDisclosureGroupChild(subCategory: .Spring, objectTypes: [.Parsnip, .BlueJazz], isExpanded: .constant(true), titleOverride: nil)
+        ObjectCategoryDisclosureGroupChild(
+            subCategory: .Spring,
+            objectTypes: [.Torch, .SkullBrazier],
+            isExpanded: .constant(true),
+            titleOverride: nil
+        )
+        .environmentObject(GlobalConfigurationStore())
+        .environmentObject(ObjectLibraryStore())
     }
 }

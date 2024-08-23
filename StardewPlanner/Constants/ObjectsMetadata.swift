@@ -266,21 +266,45 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // Lighting
     .Torch: .init(
-        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0),
+        canBePlacedOnFlooring: true
     ),
-    .Campfire: .init(),
-    .WoodenBrazier: .init(),
-    .StoneBrazier: .init(),
-    .GoldBrazier: .init(),
-    .CarvedBrazier: .init(),
-    .StumpBrazier: .init(),
-    .BarrelBrazier: .init(),
-    .SkullBrazier: .init(),
-    .MarbleBrazier: .init(),
-    .WoodLampPost: .init(),
-    .IronLampPost: .init(),
+    .Campfire: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .WoodenBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .StoneBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .GoldBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .CarvedBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .StumpBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .BarrelBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .SkullBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .MarbleBrazier: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .WoodLampPost: .init(
+        canBePlacedOnFlooring: true
+    ),
+    .IronLampPost: .init(
+        canBePlacedOnFlooring: true
+    ),
     .JackOLantern: .init(
-        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0),
+        canBePlacedOnFlooring: true
     ),
     
     // Furniture

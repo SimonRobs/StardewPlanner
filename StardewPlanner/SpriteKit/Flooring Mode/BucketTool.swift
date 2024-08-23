@@ -75,12 +75,12 @@ public class BucketTool: FlooringToolBase {
             {
                 if newTileSet == nil {
                     flooringLayer.clearTile(atColumn: targetColumn, row: currentCoords.j)
-                } else if backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j) {
+                } else if backgroundLayer.allowsFlooring(atColumn: targetColumn, row: currentCoords.j) {
                     flooringLayer.setTile(toTileSet: newTileSet, forColumn: targetColumn, row: currentCoords.j)
                 }
                 if (!spanAbove && currentCoords.j > 0 &&
                     flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j - 1) == oldTileSet &&
-                    backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j - 1)) {
+                    backgroundLayer.allowsFlooring(atColumn: targetColumn, row: currentCoords.j - 1)) {
                     stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j - 1))
                     spanAbove = true
                 } else if (spanAbove && currentCoords.j > 0 &&
@@ -90,7 +90,7 @@ public class BucketTool: FlooringToolBase {
                 
                 if (!spanBelow && currentCoords.j < BackgroundRows - 1 &&
                     flooringLayer.getTileSet(atColumn: targetColumn, row: currentCoords.j + 1) == oldTileSet &&
-                    backgroundLayer.canBeOccupied(atColumn: targetColumn, row: currentCoords.j + 1)) {
+                    backgroundLayer.allowsFlooring(atColumn: targetColumn, row: currentCoords.j + 1)) {
                     stack.append(GridCoordinate(i: targetColumn, j: currentCoords.j + 1))
                     spanBelow = true
                 } else if (spanBelow && currentCoords.j < BackgroundRows - 1 &&

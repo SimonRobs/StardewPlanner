@@ -195,9 +195,9 @@ enum ObjectTypes: String, CaseIterable, Codable {
 
     // Removable
     case LargeLog = "Large Log"
-    case LargeRock = "Large Rock"
+    case Boulder = "Boulder"
     case LargeStump = "Large Stump"
-    case Stone = "Stone"
+    case Rock = "Rock"
     case Twig = "Twig"
     case Meteorite = "Meteorite"
 }

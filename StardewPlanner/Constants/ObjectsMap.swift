@@ -163,8 +163,6 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
             .SlimeIncubator,
             .OstrichIncubator,
             .SlimeEggPress,
-            .Tapper,
-            .HeavyTapper,
             .WormBin,
             .BoneMill,
             .GeodeCrusher
@@ -210,11 +208,11 @@ let ObjectsMap: [ObjectCategories: [ObjectSubCategories: [ObjectTypes]]] = [
             .DarkSign
         ],
         .Removable: [
-            .LargeLog,
-            .LargeRock,
-            .LargeStump,
-            .Stone,
             .Twig,
+            .LargeLog,
+            .LargeStump,
+            .Rock,
+            .Boulder,
             .Meteorite
         ],
     ],

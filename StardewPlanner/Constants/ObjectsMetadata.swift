@@ -68,13 +68,13 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Buildings
     // Farming
-    .Greenhouse: .init(
-        size: .init(columns:  7, rows:  6, verticalOverflow:  4),
-        sizeExtension:.init(columns: 3,rows: 2, textureName: "GREENHOUSE TILE", offset: .init(x: 0, y: 0)),
-        subtextures: [.init(name: "Greenhouse Shadow", offset: .init(x: -0.5, y: -3, z: -1 ))],
-        alternativeTextures: ["Greenhouse Broken"],
-        maxPlaceable: 1
-    ),
+        .Greenhouse: .init(
+            size: .init(columns:  7, rows:  6, verticalOverflow:  4),
+            sizeExtension:.init(columns: 3,rows: 2, textureName: "GREENHOUSE TILE", offset: .init(x: 0, y: 0)),
+            subtextures: [.init(name: "Greenhouse Shadow", offset: .init(x: -0.5, y: -3, z: -1 ))],
+            alternativeTextures: ["Greenhouse Broken"],
+            maxPlaceable: 1
+        ),
     .Mill: .init(
         size: .init(columns:  4, rows:  2, verticalOverflow:  6),
         subtextures: [.init(name: "Mill Blades", offset: .init(x: -0.5, y: 2.96, z: 1 ), animationFrames: 10)],
@@ -180,7 +180,7 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Trees
     // Spring Trees
-    .ApricotTree: .init(),
+        .ApricotTree: .init(),
     .CherryTree: .init(),
     
     // Summer Trees
@@ -202,7 +202,7 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Farming Utilities
     // Miscellaneous
-    .CrabPot: .init(inWaterOnly: true),
+        .CrabPot: .init(inWaterOnly: true),
     .GardenPot: .init(),
     .Scarecrow: .init(
         upgrades: [
@@ -225,7 +225,7 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Equipment
     // Artisan
-    .BeeHouse: .init(area: .init(radius: 5, shape: .Kite)),
+        .BeeHouse: .init(area: .init(radius: 5, shape: .Kite)),
     .Keg: .init(),
     // ProcessingMachines
     .Cask: .init(),
@@ -258,14 +258,16 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     
     // MARK: - Decoration
     // Fences
-    .Gate: .init(),
+        .Gate: .init(),
     .WoodFence: .init(),
     .StoneFence: .init(),
     .IronFence: .init(),
     .HardwoodFence: .init(),
     
     // Lighting
-    .Torch: .init(),
+    .Torch: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+    ),
     .Campfire: .init(),
     .WoodenBrazier: .init(),
     .StoneBrazier: .init(),
@@ -277,13 +279,19 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     .MarbleBrazier: .init(),
     .WoodLampPost: .init(),
     .IronLampPost: .init(),
-    .JackOLantern: .init(),
+    .JackOLantern: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+    ),
     
     // Furniture
     .TubOfFlowers: .init(),
     .WickedStatue: .init(),
-    .FluteBlock: .init(),
-    .DrumBlock: .init(),
+    .FluteBlock: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+    ),
+    .DrumBlock: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0)
+    ),
     .MiniJukebox: .init(),
     
     // Signs
@@ -292,10 +300,24 @@ let ObjectsMetadata: [ObjectTypes: LibraryObjectMetadata] = [
     .DarkSign: .init(),
     
     // Removable
-    .LargeLog: .init(),
-    .LargeRock: .init(),
-    .LargeStump: .init(),
-    .Stone: .init(),
-    .Twig: .init(),
-    .Meteorite: .init(),
+    .Twig: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0),
+        alternativeTextures: ["Twig 1"]
+    ),
+    .LargeLog: .init(
+        size: .init(columns: 2, rows: 2, verticalOverflow: 0)
+    ),
+    .LargeStump: .init(
+        size: .init(columns: 2, rows: 2, verticalOverflow: 0)
+    ),
+    .Rock: .init(
+        size: .init(columns: 1, rows: 1, verticalOverflow: 0),
+        alternativeTextures: ["Rock 1"]
+    ),
+    .Boulder: .init(
+        size: .init(columns: 2, rows: 2, verticalOverflow: 0)
+    ),
+    .Meteorite: .init(
+        size: .init(columns: 2, rows: 2, verticalOverflow: 0)
+    ),
 ]
